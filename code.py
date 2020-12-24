@@ -21,17 +21,8 @@ def test():
     
     else:
         cmd_name = request.json["data"]["name"] #to make it easy to check for name
-        if cmd_name == "test":
-            return jsonify({
-                "type": 4,
-                "data": {
-                    "tts": False,
-                    "content": f'Your name is {request.json["data"]["options"][0]["value"]}',
-                    "embeds": [],
-                    "allowed_mentions": []
-                }
-            })
-        elif cmd_name == 'simon':
+        print(cmd_name)
+        if cmd_name == 'simon':
             return jsonify(
                 {
                     "type": 4,
