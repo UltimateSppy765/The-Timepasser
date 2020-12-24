@@ -2,8 +2,6 @@ import os
 from random import choice,randint
 from flask import Flask, request, jsonify,abort
 from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
-from nacl.signing import VerifyKey
-from nacl.exceptions import BadSignatureError
 
 
 CLIENT_PUBLIC_KEY = '731d23ca5906b7f156c4f606ad29ae1d6efaf82661889227e9226f8694d5fbce'
