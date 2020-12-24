@@ -21,7 +21,6 @@ def test():
     
     else:
         cmd_name = request.json["data"]["name"] #to make it easy to check for name
-        print(cmd_name)
         if cmd_name == 'simon':
             return jsonify(
                 {
