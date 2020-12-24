@@ -47,9 +47,12 @@ def test():
                 }
             )
         elif cmd_name == "guessnum":
-            num = randint(1,10)
             guess = request.json["data"]["options"][0]["value"]
-            result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong\nThe number was {num}'
+            if guess not in range(1,11):
+                result = "Guess a number between 1 to 10, silly!"
+            else:
+                num = randint(1,10)
+                result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong\nThe number was {num}'
 
             return jsonify(
                 {
