@@ -34,7 +34,7 @@ def test():
         elif cmd_name == "dice":
             dice = [1,2,3,4,5,6,"**The dice got stuck against the wall. Try Again!**","**The dice got lost. Try Again!**"]
             roll = choice(dice)
-            content = f"The dice rolled {roll}" if roll.isdigit() else roll
+            content = f"The dice rolled {roll}" if type(roll) == int else roll
             return jsonify(
                 {
                     "type": 4,
