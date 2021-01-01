@@ -81,7 +81,6 @@ def test():
                         "tts": False,
                         "content":[],
                         "embeds" : [
-                            "embed":
                         {"image"{
                             "url":imgurl}
                         }],
