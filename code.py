@@ -65,7 +65,7 @@ def test():
                     }
                 }
             )
-        elif cmd_name == "ranAni":
+        elif cmd_name == "ranani":
             res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
             soup = bs4.BeautifulSoup(res.text,"lxml")
             soup = soup.p.text
