@@ -1,2 +1,5 @@
 flask
 discord_interactions
+lxml
+bs4
+requests
