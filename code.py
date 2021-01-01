@@ -65,6 +65,24 @@ def test():
                     }
                 }
             )
+        elif cmd_name == "ranAni":
+            res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
+            soup = bs4.BeautifulSoup(res.text,"lxml")
+            soup = soup.p.text
+            imglist = eval(soup)
+            imgurl = imglist[0]['url']
+            return jsonify(
+                {
+                    "type": 4,
+                    "data": {
+                        "tts": False,
+                        "content":result,
+                        "embeds" : [
+                        {"img":imgurl}],
+                        "allowed_mentions": []
+                    }
+                }
+            )
 
 port = os.getenv('PORT')
 if port:
