@@ -79,7 +79,7 @@ def test():
                     "type": 4,
                     "data": {
                         "tts": False,
-                        "content":[],
+                        "content":"meow",
                         "embeds" : [
                         {"image":{
                             "url":imgurl}
