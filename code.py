@@ -79,7 +79,7 @@ def test():
                     "type": 4,
                     "data": {
                         "tts": False,
-                        "content":result,
+                        "content":[],
                         "embeds" : [
                         {"img":imgurl}],
                         "allowed_mentions": []
