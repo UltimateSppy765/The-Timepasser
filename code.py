@@ -69,6 +69,8 @@ def test():
                 }
             )
         elif cmd_name == "ranani":
+            print(request.json["data"])
+            print(request.json["data"]["options"][0]["value"])
             if request.json["data"]["options"][0]["value"] == 'Cat':              
                 res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
