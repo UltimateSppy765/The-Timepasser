@@ -69,13 +69,13 @@ def test():
                 }
             )
         elif cmd_name == "ranani":
-           if request.json["data"]["options"][0]["value"] == 'Cat':              
-               res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
-               soup = bs4.BeautifulSoup(res.text,"lxml")
-               soup = soup.p.text
-               imglist = eval(soup)
-               imgurl = imglist[0]['url']
-               greet = "Here's a cat pic for you"
+            if request.json["data"]["options"][0]["value"] == 'Cat':              
+                res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
+                soup = bs4.BeautifulSoup(res.text,"lxml")
+                soup = soup.p.text
+                imglist = eval(soup)
+                imgurl = imglist[0]['url']
+                greet = "Here's a cat pic for you"
             elif request.json["data"]["options"][0]["value"] == 'Dog':
                 res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=png,jpg&api_key=f118c7ee-c9fe-4fb6-8836-d2487e3b0f28-d50b5ed28db3')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
