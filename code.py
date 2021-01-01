@@ -81,7 +81,10 @@ def test():
                         "tts": False,
                         "content":[],
                         "embeds" : [
-                        {"img":imgurl}],
+                            "embed":
+                        {"image"{
+                            "url":imgurl}
+                        }],
                         "allowed_mentions": []
                     }
                 }
