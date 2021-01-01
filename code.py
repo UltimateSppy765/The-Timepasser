@@ -74,6 +74,7 @@ def test():
             soup = soup.p.text
             imglist = eval(soup)
             imgurl = imglist[0]['url']
+            print(imgurl)
             return jsonify(
                 {
                     "type": 4,
