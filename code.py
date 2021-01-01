@@ -75,7 +75,7 @@ def test():
                 soup = soup.p.text
                 imglist = eval(soup)
                 imgurl = imglist[0]['url']
-                greet = "Here's a cat pic for you."
+                greet = ":cat: Here's a cat pic for you."
                 fttext = "Powered by The Cat API"
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
                 titletxt = "Meow..."
@@ -85,7 +85,7 @@ def test():
                 soup = soup.p.text
                 imglist = eval(soup)
                 imgurl = imglist[0]['url']
-                greet = "Here's a dog pic for you."
+                greet = ":dog: Here's a dog pic for you."
                 fttext = "Powered by The Dog API"
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
                 titletxt= "Woof!"
