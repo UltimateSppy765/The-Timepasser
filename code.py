@@ -68,8 +68,8 @@ def test():
                     }
                 }
             )
-        elif cmd_name == "ranani":
-            if request.json["data"]["options"][0]["value"] == 'Cat':              
+        elif cmd_name == "anipic":
+            if request.json["data"]["options"][0]["value"] == 'animal_cat':              
                 res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
                 soup = soup.p.text
@@ -79,7 +79,7 @@ def test():
                 fttext = "Powered by The Cat API"
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
                 titletxt = "Meow..."
-            elif request.json["data"]["options"][0]["value"] == 'Dog':
+            elif request.json["data"]["options"][0]["value"] == 'animal_dog':
                 res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=png,jpg')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
                 soup = soup.p.text
