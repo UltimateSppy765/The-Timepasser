@@ -55,7 +55,7 @@ def test():
                 result = "Guess a number between 1 to 10, silly!"
             else:
                 num = randint(1,10)
-                result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong\nThe number was {num}'
+                result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong\nThe number was {num}.'
 
             return jsonify(
                 {
@@ -68,6 +68,28 @@ def test():
                     }
                 }
             )
+        elif cmd_name == "echo":
+            usname = request.json["member"]["user"]["username"]
+            usid = request.json["member"]["user"]["id"]
+            usav = request.json["member"]["user"]["avatar"]
+            intext = request.json["data"]["options"][0]["value"]
+            return jsonify({
+                "type": 4,
+                "data": {
+                    "tts": False,
+                    "content": "",
+                    "embeds": [
+                        {
+                            "description": intext,
+                            "author": {
+                                "name": f"{usname}'s Echo!",
+                                "icon_url": f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
+                            }
+                        }
+                    ],
+                    "allowed_mentions": []
+                }
+            })
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':              
                 res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg')
