@@ -79,7 +79,7 @@ def test():
             else:
                 imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
             return jsonify({
-                "type": 4,
+                "type": 3,
                 "data": {
                     "tts": False,
                     "content": "",
