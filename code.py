@@ -73,6 +73,11 @@ def test():
             usid = request.json["member"]["user"]["id"]
             usav = request.json["member"]["user"]["avatar"]
             intext = request.json["data"]["options"][0]["value"]
+            img = requests.get(f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif")
+            if img.ok:
+                imgurl = img.url
+            else:
+                imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
             return jsonify({
                 "type": 4,
                 "data": {
@@ -83,7 +88,7 @@ def test():
                             "description": intext,
                             "author": {
                                 "name": f"{usname}'s Echo!",
-                                "icon_url": f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
+                                "icon_url": imgurl
                             }
                         }
                     ],
