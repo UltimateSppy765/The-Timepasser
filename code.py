@@ -73,11 +73,11 @@ def test():
             usid = request.json["member"]["user"]["id"]
             usav = request.json["member"]["user"]["avatar"]
             intext = request.json["data"]["options"][0]["value"]
-            img = requests.get(f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif")
-            if img.ok:
-                imgurl = img.url
+            
+            if usav.startswith('a_'):
+                imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
             else:
-                imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
+                imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
             return jsonify({
                 "type": 3,
                 "data": {
