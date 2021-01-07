@@ -166,7 +166,7 @@ def test():
                         "description": f"{qt}\n- {autor}",
                         "thumbnail": {
                             "url": "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
-                        }
+                        },
                         "footer": {    
                              "text": fttext,
                              "icon_url": fticon
