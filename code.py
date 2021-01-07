@@ -139,43 +139,43 @@ def test():
                     }
                 }
             )
-      elif cmd_name == "quote":
-        if request.json["data"]["options"][0]["value"] == "qotd":
-            z = wikiquotes.quote_of_the_day("english")
-            (qt, autor) = z
-            fttext = "Quotes from Wikiquotes"
-            titl = "Quote of the Day:"
-            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-        elif request.json["data"]["options"][0]["value"] == "random":
-            api = " http://api.quotable.io/random"
-            random_quote = requests.get(api).json()
-            qt = random_quote["content"]
-            autor = random_quote["author"]
-            titl = "Random Quote:"
-            fttext = "Powered by Quotable"
-            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
-        return jsonify({
-            "type": 4,
-            "data": {
-                
-                "tts": False,
-                "content": "",
-                "embeds": [
-                    {
-                        "title": titl,
-                        "description": f"{qt}\n- {autor}",
-                        "thumbnail": {
-                            "url": "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
-                        },
-                        "footer": {    
-                             "text": fttext,
-                             "icon_url": fticon
-                         }
-                    }
-                ],
-                "allowed_mentions": []
-            }
-        })
+        elif cmd_name == "quote":
+            if request.json["data"]["options"][0]["value"] == "qotd":
+                z = wikiquotes.quote_of_the_day("english")
+                (qt, autor) = z
+                fttext = "Quotes from Wikiquotes"
+                titl = "Quote of the Day:"
+                fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+            elif request.json["data"]["options"][0]["value"] == "random":
+                api = " http://api.quotable.io/random"
+                random_quote = requests.get(api).json()
+                qt = random_quote["content"]
+                autor = random_quote["author"]
+                titl = "Random Quote:"
+                fttext = "Powered by Quotable"
+                fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
+            return jsonify({
+                "type": 4,
+                "data": {
+
+                    "tts": False,
+                    "content": "",
+                    "embeds": [
+                        {
+                            "title": titl,
+                            "description": f"{qt}\n- {autor}",
+                            "thumbnail": {
+                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
+                            },
+                            "footer": {    
+                                 "text": fttext,
+                                 "icon_url": fticon
+                             }
+                        }
+                    ],
+                    "allowed_mentions": []
+                }
+            })
 port = os.getenv('PORT')
 if port:
     app.run(host='0.0.0.0',port=port)
