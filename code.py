@@ -143,7 +143,7 @@ def test():
             if request.json["data"]["options"][0]["value"] == "qotd":
                 z = wikiquotes.quote_of_the_day("english")
                 (qt, autor) = z
-                fttext = "Quotes from Wikiquotes"
+                fttext = "Quotes from Wikiquote"
                 titl = "Quote of the Day:"
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
             elif request.json["data"]["options"][0]["value"] == "random":
