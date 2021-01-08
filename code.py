@@ -1,6 +1,6 @@
 import os
 import requests
-import wikiquotes
+import wikiquote
 import lxml
 import bs4
 from random import choice,randint
@@ -141,7 +141,7 @@ def test():
             )
         elif cmd_name == "quote":
             if request.json["data"]["options"][0]["value"] == "qotd":
-                z = wikiquotes.quote_of_the_day("english")
+                z = wikiquote.quote_of_the_day()
                 (qt, autor) = z
                 fttext = "Quotes from Wikiquote"
                 titl = "Quote of the Day:"
