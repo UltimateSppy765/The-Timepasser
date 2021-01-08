@@ -1,6 +1,6 @@
 flask
 discord_interactions
-wikiquotes
+wikiquote
 lxml
 bs4
 requests
