@@ -139,7 +139,7 @@ def test():
                     }
                 }
             )
-        elif cmd_name == "quote":
+        elif cmd_name == "testquote":
             if request.json["data"]["options"][0]["value"] == "qotd":
                 z = wikiquote.quote_of_the_day()
                 (qt, autor) = z
