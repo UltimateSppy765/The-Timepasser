@@ -98,7 +98,7 @@ def test():
             })
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':
-                if len( request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Static':
+                if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Static':
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
                 else:
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
@@ -109,7 +109,7 @@ def test():
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
                 titletxt = "Meow..."
             elif request.json["data"]["options"][0]["value"] == 'Dog':
-                if len( request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Static':
+                if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Static':
                     res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=jpg,png')
                 else:
                     res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=gif')
