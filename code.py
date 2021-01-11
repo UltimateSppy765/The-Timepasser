@@ -98,7 +98,7 @@ def test():
             })
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':
-                if request.json["data"]["options"][1]["name"] == 'Animated':
+                if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Animated':
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
                 else:
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
