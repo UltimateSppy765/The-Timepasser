@@ -152,7 +152,7 @@ def code():
                                                 "url": "https://tenor.com/view/fox-cute-adorable-sleepy-gif-15311158"
                                             },
                                             "footer": {
-                                                "text": "Gif from Tenor,
+                                                "text": "Gif from Tenor",
                                                 "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/798133763896377404/9XiZf6X9.png"
                                             }
                                         }
