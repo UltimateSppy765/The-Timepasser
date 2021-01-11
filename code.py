@@ -22,6 +22,20 @@ def test():
         })
     
     else:
+        if request.json["channel_id"] == 789147777069744182:
+            usd = request.json["member"]["user"]["id"]
+            return jsonify(
+                {
+                    "type": 3,
+                    "data": {
+                        "tts": False,
+                        "content": f"Sorry <@{usd}>, I've been instructed not to do anything in <#789147777069744182>.",
+                        "embeds" : [],
+                        "allowed_mentions": []
+                    }
+                }
+            )
+        else: {
         cmd_name = request.json["data"]["name"] #to make it easy to check for name
         if cmd_name == 'simon':
             return jsonify(
@@ -178,6 +192,7 @@ def test():
                     "allowed_mentions": []
                 }
             })
+        }
 port = os.getenv('PORT')
 if port:
     app.run(host='0.0.0.0',port=port)
