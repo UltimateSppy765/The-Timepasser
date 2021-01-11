@@ -119,7 +119,7 @@ def code():
                             fticon = "https://cdn.discordapp.com/attachments/789798190353743874/798118721091928074/logo.png"
                             titletxt= "Ring-ding-ding-ding-dingeringeding!"
                             return jsonify({
-                                "type": 4,
+                                "type": 3,
                                 "data":{
                                     "tts": False,
                                     "content": greet,
