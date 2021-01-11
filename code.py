@@ -20,8 +20,7 @@ def test():
         })
     
     else:
-        print(request.json)
-        if request.json["guild_id"] == 789147777069744179 and request.json["channel_id"] == 789147777069744182:
+        if request.json["guild_id"] == '789147777069744179' and request.json["channel_id"] == '789147777069744182':
             usd = request.json["member"]["user"]["id"]
             return jsonify(
                 {
