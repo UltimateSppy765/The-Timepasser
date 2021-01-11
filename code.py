@@ -238,7 +238,7 @@ def code():
                                     "author": {
                                         "name": autext,
                                         "icon_url": avurl
-                                    }
+                                    },
                                     "title": titl,
                                     "description": f"{qt}\n- {autor}",
                                     "thumbnail": {
