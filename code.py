@@ -193,7 +193,7 @@ def test():
             else:
                 return jsonify(
                     {
-                        "type": 3,
+                        "type": 4,
                         "data": {
                             "tts": False,
                             "content":f'Command Under :tools:Development:tools:',
