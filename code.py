@@ -130,6 +130,7 @@ def test():
                         "embeds" : [
                         {
                             "title": titletxt,
+                            "description": z,
                             "footer":{
                                 "text": fttext,
                                 "icon_url": fticon
