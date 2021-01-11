@@ -98,7 +98,7 @@ def test():
             })
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':              
-                res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=png,jpg,gif')
+                res = requests.get('https://api.thecatapi.com/v1/images/search?size=small')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
                 soup = soup.p.text
                 imglist = eval(soup)
@@ -108,7 +108,7 @@ def test():
                 fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
                 titletxt = "Meow..."
             elif request.json["data"]["options"][0]["value"] == 'Dog':
-                res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=png,jpg,gif')
+                res = requests.get('https://api.thedogapi.com/v1/images/search?size=small')
                 soup = bs4.BeautifulSoup(res.text,"lxml")
                 soup = soup.p.text
                 imglist = eval(soup)
