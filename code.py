@@ -191,6 +191,18 @@ def test():
                         "allowed_mentions": []
                     }
                 })
+            else:
+                return jsonify(
+                    {
+                        "type": 3,
+                        "data": {
+                            "tts": False,
+                            "content":f'Command Under :tools:Development:tools:',
+                            "embeds" : [],
+                            "allowed_mentions": []
+                        }
+                    }
+                )
 port = os.getenv('PORT')
 if port:
     app.run(host='0.0.0.0',port=port)
