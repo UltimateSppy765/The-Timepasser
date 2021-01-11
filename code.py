@@ -99,9 +99,9 @@ def test():
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':
                 if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["name"] == 'Static':
-                    res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
-                else:
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
+                else:
+                    res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
                 imgjson = res.json()
                 imgurl = imgjson[0]['url']
                 greet = ":cat: Here's a cat pic for you."
