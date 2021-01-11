@@ -20,14 +20,14 @@ def code():
             })
 
         else:
+            usid = request.json["member"]["user"]["id"]
             if request.json["guild_id"] == '789147777069744179' and request.json["channel_id"] == '789147777069744182':
-                usd = request.json["member"]["user"]["id"]
                 return jsonify(
                     {
                         "type": 3,
                         "data": {
                             "tts": False,
-                            "content": f"Sorry <@{usd}>, I've been instructed not to do anything in <#789147777069744182>.",
+                            "content": f"Sorry <@{usid}>, I've been instructed not to do anything in <#789147777069744182>.",
                             "embeds" : [],
                             "allowed_mentions": []
                         }
@@ -35,6 +35,12 @@ def code():
                 )
             else:
                 cmd_name = request.json["data"]["name"] #to make it easy to check for name
+                usname = request.json["member"]["user"]["username"]
+                usav = request.json["member"]["user"]["avatar"]
+                if usav.startswith('a_'):
+                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
+                else:
+                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
                 if cmd_name == 'simon':
                     return jsonify(
                         {
@@ -82,15 +88,7 @@ def code():
                         }
                     )
                 elif cmd_name == "echo":
-                    usname = request.json["member"]["user"]["username"]
-                    usid = request.json["member"]["user"]["id"]
-                    usav = request.json["member"]["user"]["avatar"]
                     intext = request.json["data"]["options"][0]["value"]
-
-                    if usav.startswith('a_'):
-                        imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
-                    else:
-                        imgurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
                     return jsonify({
                         "type": 3,
                         "data": {
@@ -101,7 +99,7 @@ def code():
                                     "description": intext,
                                     "author": {
                                         "name": f"{usname}'s Echo!",
-                                        "icon_url": imgurl
+                                        "icon_url": avurl
                                     }
                                 }
                             ],
@@ -109,6 +107,7 @@ def code():
                         }
                     })
                 elif cmd_name == "anipic":
+                    autext = f"Requested by {usname}"
                     if request.json["data"]["options"][0]["value"] == 'Fox':
                         if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
                             api = "https://randomfox.ca/floof"
@@ -125,6 +124,10 @@ def code():
                                     "content": greet,
                                     "embeds": [
                                         {
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                            },
                                             "title": titletxt,
                                             "image": {
                                                 "url": fox
@@ -190,6 +193,10 @@ def code():
                                 "content":greet,
                                 "embeds" : [
                                 {
+                                    "author": {
+                                        "name": autext,
+                                        "icon_url": avurl
+                                    },
                                     "title": titletxt,
                                     "footer":{
                                         "text": fttext,
@@ -205,6 +212,7 @@ def code():
                     )
                     
                 elif cmd_name == "testquote":
+                    autext = f"Requested by {usname}"
                     if request.json["data"]["options"][0]["value"] == "qotd":
                         z = wikiquote.quote_of_the_day()
                         (qt, autor) = z
@@ -227,6 +235,10 @@ def code():
                             "content": "",
                             "embeds": [
                                 {
+                                    "author": {
+                                        "name": autext,
+                                        "icon_url": avurl
+                                    }
                                     "title": titl,
                                     "description": f"{qt}\n- {autor}",
                                     "thumbnail": {
