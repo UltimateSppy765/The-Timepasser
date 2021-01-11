@@ -38,7 +38,7 @@ def code():
                 if cmd_name == 'simon':
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "tts": False,
                                 "content":f'Simon says {request.json["data"]["options"][0]["value"]}',
@@ -72,7 +72,7 @@ def code():
 
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "tts": False,
                                 "content":result,
