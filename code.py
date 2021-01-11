@@ -131,7 +131,6 @@ def code():
                         fttext = "Powered by The Dog API"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
                         titletxt= "Woof!"
-
                     return jsonify(
                         {
                             "type": 3,
@@ -153,6 +152,57 @@ def code():
                             }
                         }
                     )
+                    elif request.json["data"]["options"][0]["value"] == 'Fox':
+                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
+                            api = "https://randomfox.ca/floof"
+                            foxy = requests.get(api).json()
+                            fox = foxy["image"]
+                            greet = ":fox: Here's a fox pic for you."
+                            fttext = "Powered by RandomFox"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/798118721091928074/logo.png"
+                            titletxt= "Ring-ding-ding-ding-dingeringeding!"
+                            return jsonify({
+                                "type": 4,
+                                "data":{
+                                    "tts": False,
+                                    "content": greet,
+                                    "embeds": [
+                                        {
+                                            "title": titletxt,
+                                            "image": {
+                                                "url": fox
+                                            },
+                                            "footer": {
+                                                "text": fttext,
+                                                "icon_url": fticon
+                                            }
+                                        }
+                                    ],
+                                    "allowed_mentions": []
+                                }
+                            })
+                        else:
+                            return jsonify({
+                                "type": 4,
+                                "data":{
+                                    "tts": False,
+                                    "content": "",
+                                    "embeds": [
+                                        {
+                                            "title": "I'm so sorry",
+                                            "description": "I cannot get you random animated pictures for foxes just yet, but please look at this one :fox: pic I know of:"
+                                            "image": {
+                                                "url": "https://tenor.com/view/fox-cute-adorable-sleepy-gif-15311158"
+                                            },
+                                            "footer": {
+                                                "text": "Gif from Tenor,
+                                                "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/798133763896377404/9XiZf6X9.png"
+                                            }
+                                        }
+                                    ],
+                                    "allowed_mentions": []
+                                }
+                            })
                 elif cmd_name == "testquote":
                     if request.json["data"]["options"][0]["value"] == "qotd":
                         z = wikiquote.quote_of_the_day()
