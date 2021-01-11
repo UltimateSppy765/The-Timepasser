@@ -102,7 +102,7 @@ def test():
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
                 elif request.json["data"]["options"][0]["value"] == "False":
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
-                else request.json["data"]["options"][0]["value"] == "True":
+                elif request.json["data"]["options"][0]["value"] == "True":
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
                 imgjson = res.json()
                 imgurl = imgjson[0]['url']
