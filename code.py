@@ -208,7 +208,7 @@ def code():
                             "type": 4,
                             "data": {
                                 "tts": False,
-                                "content":f'Sorry, A Error Has Occured\n```py {type(e).__name__} : {e}```',
+                                "content":f'Sorry, A Error Has Occured\n```py\n{type(e).__name__} : {e}\n```',
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
