@@ -266,12 +266,14 @@ def code():
                         }
                     )
     except Exception as e:
+        tings = ["Drank too much juice...", "Lazed around too much...", "**Started studying**...", "Looked at myself in the mirror...", "Walked into the 'I give up Pit'..."]
+        choi = choice(tings)
         return jsonify(
                         {
                             "type": 4,
                             "data": {
                                 "tts": False,
-                                "content":f'Sorry, A Error Has Occured\n```py\n{type(e).__name__} : {e}\n```',
+                                "content":f"Sorry, an error has occured. :negative_squared_cross_mark: Either your input has caused this error or it is from my side. Please report :clipboard: this to the bot developers along with the error code:\nError Code: {choi} *Joking*\n```py\n{type(e).__name__} : {e}\n```",
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
