@@ -109,50 +109,7 @@ def code():
                         }
                     })
                 elif cmd_name == "anipic":
-                    if request.json["data"]["options"][0]["value"] == 'Cat':
-                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
-                            res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
-                        else:
-                            res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
-                        imgjson = res.json()
-                        imgurl = imgjson[0]['url']
-                        greet = ":cat: Here's a cat pic for you."
-                        fttext = "Powered by The Cat API"
-                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
-                        titletxt = "Meow..."
-                    elif request.json["data"]["options"][0]["value"] == 'Dog':
-                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
-                            res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=jpg,png')
-                        else:
-                            res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=gif')
-                        imgjson = res.json()
-                        imgurl = imgjson[0]['url']
-                        greet = ":dog: Here's a dog pic for you."
-                        fttext = "Powered by The Dog API"
-                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
-                        titletxt= "Woof!"
-                    return jsonify(
-                        {
-                            "type": 3,
-                            "data": {
-                                "tts": False,
-                                "content":greet,
-                                "embeds" : [
-                                {
-                                    "title": titletxt,
-                                    "footer":{
-                                        "text": fttext,
-                                        "icon_url": fticon
-                                    },
-                                    "image":{
-                                    "url":imgurl
-                                    }
-                                }],
-                                "allowed_mentions": []
-                            }
-                        }
-                    )
-                    elif request.json["data"]["options"][0]["value"] == 'Fox':
+                    if request.json["data"]["options"][0]["value"] == 'Fox':
                         if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
                             api = "https://randomfox.ca/floof"
                             foxy = requests.get(api).json()
@@ -203,6 +160,50 @@ def code():
                                     "allowed_mentions": []
                                 }
                             })
+                    elif request.json["data"]["options"][0]["value"] == 'Cat':
+                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
+                            res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
+                        else:
+                            res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
+                        imgjson = res.json()
+                        imgurl = imgjson[0]['url']
+                        greet = ":cat: Here's a cat pic for you."
+                        fttext = "Powered by The Cat API"
+                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
+                        titletxt = "Meow..."
+                    elif request.json["data"]["options"][0]["value"] == 'Dog':
+                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
+                            res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=jpg,png')
+                        else:
+                            res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=gif')
+                        imgjson = res.json()
+                        imgurl = imgjson[0]['url']
+                        greet = ":dog: Here's a dog pic for you."
+                        fttext = "Powered by The Dog API"
+                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
+                        titletxt= "Woof!"
+                    return jsonify(
+                        {
+                            "type": 3,
+                            "data": {
+                                "tts": False,
+                                "content":greet,
+                                "embeds" : [
+                                {
+                                    "title": titletxt,
+                                    "footer":{
+                                        "text": fttext,
+                                        "icon_url": fticon
+                                    },
+                                    "image":{
+                                    "url":imgurl
+                                    }
+                                }],
+                                "allowed_mentions": []
+                            }
+                        }
+                    )
+                    
                 elif cmd_name == "testquote":
                     if request.json["data"]["options"][0]["value"] == "qotd":
                         z = wikiquote.quote_of_the_day()
