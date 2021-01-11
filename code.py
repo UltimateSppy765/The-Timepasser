@@ -40,7 +40,7 @@ def test():
             if cmd_name == 'simon':
                 return jsonify(
                     {
-                        "type": 4,
+                        "type": 3,
                         "data": {
                             "tts": False,
                             "content":f'Simon says {request.json["data"]["options"][0]["value"]}',
@@ -55,7 +55,7 @@ def test():
                 content = f"The dice rolled {roll}." if type(roll) == int else roll
                 return jsonify(
                     {
-                        "type": 4,
+                        "type": 3,
                         "data": {
                             "tts": False,
                             "content":content,
@@ -74,7 +74,7 @@ def test():
 
                 return jsonify(
                     {
-                        "type": 4,
+                        "type": 3,
                         "data": {
                             "tts": False,
                             "content":result,
@@ -136,7 +136,7 @@ def test():
 
                 return jsonify(
                     {
-                        "type": 4,
+                        "type": 3,
                         "data": {
                             "tts": False,
                             "content":greet,
@@ -171,7 +171,7 @@ def test():
                     fttext = "Powered by Quotable"
                     fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
                 return jsonify({
-                    "type": 4,
+                    "type": 3,
                     "data": {
 
                         "tts": False,
