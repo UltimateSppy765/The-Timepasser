@@ -147,7 +147,7 @@ def code():
                                     "embeds": [
                                         {
                                             "title": "I'm so sorry",
-                                            "description": "I cannot get you random animated pictures for foxes just yet, but please look at this one :fox: pic I know of:",
+                                            "description": "I cannot get you random animated pictures of foxes just yet, but please look at this one :fox: pic I know of:",
                                             "image": {
                                                 "url": "https://tenor.com/view/fox-cute-adorable-sleepy-gif-15311158"
                                             },
