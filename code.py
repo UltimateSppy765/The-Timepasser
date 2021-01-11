@@ -98,7 +98,7 @@ def test():
             })
         elif cmd_name == "anipic":
             if request.json["data"]["options"][0]["value"] == 'Cat':
-                if len(request.json["data"]["options"]) == 2 or request.json["data"]["options"][1]["value"] == false:
+                if len(request.json["data"]["options"]) == 2 or request.json["data"]["options"][1]["value"] == False:
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
                 elif request.json["data"]["options"][1]["value"] == true:
                     res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
@@ -130,7 +130,7 @@ def test():
                         "embeds" : [
                         {
                             "title": titletxt,
-                            "description": z,
+                            "description": f"Animated: {z}",
                             "footer":{
                                 "text": fttext,
                                 "icon_url": fticon
