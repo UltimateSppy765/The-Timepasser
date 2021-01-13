@@ -1,6 +1,7 @@
 import os
 import requests
 import wikiquote
+import wikiquotes
 from random import choice,randint
 from flask import Flask, request, jsonify,abort
 from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
