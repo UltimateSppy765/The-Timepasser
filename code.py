@@ -55,7 +55,7 @@ def code():
                         }
                     )
                 elif cmd_name == "dice":
-                    dice = [1,2,3,4,5,6,"**The dice got stuck against the wall. Try Again! :exploding_head:**","**The dice got lost. Try Again! :thinking:**"]
+                    dice = [1,2,3,4,5,6,"**The dice got stuck against the wall. Try Again!** :exploding_head:","**The dice got lost. Try Again!** :thinking:"]
                     roll = choice(dice)
                     if type(roll) == int:
                         rolle = roll - 1
