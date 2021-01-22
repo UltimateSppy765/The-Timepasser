@@ -297,7 +297,7 @@ def code():
                             "type": 4,
                             "data": {
                                 "tts": False,
-                                "content":f'Command Under :tools:Development:tools:',
+                                "content":f'Sorry to say but the command you tried to use is currently unavailable (and probably under development :tools:).\n-Please try again later.',
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
@@ -305,7 +305,7 @@ def code():
                     )
     
     except Exception as e:
-        tings = ["Drank too much juice...", "Lazed around too much...", "**Started studying**...", "Looked at myself in the mirror...", "Walked into the 'I give up Pit'..."]
+        tings = ["Drank too much juice...", "Lazed around too much...", "**Started studying**...", "Looked at myself in the mirror...", "Walked into the 'I give up Pit'...", "**Someone asked me whether I was smart...**"]
         choi = choice(tings)
         return jsonify(
                         {
