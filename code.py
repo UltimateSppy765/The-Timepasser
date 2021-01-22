@@ -264,7 +264,7 @@ def code():
                         url = avurl
                     else:
                         uid = request.json["data"]["options"][0]["value"]
-                        res = requests.get(f"https://discord.com/api/v8/users/{uid}")
+                        res = requests.get(f"https://discord.com/api/v8/users/{uid}",headers={"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"})
                         user = res.json()
                         print(user)
                         uav = user["avatar"]
