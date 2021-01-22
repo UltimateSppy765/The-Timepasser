@@ -258,12 +258,17 @@ def code():
                         }
                     })
                 elif cmd_name == "avatar":
-                    if not request.json["data"]["options"]:
+                    try:
+                        options = request.json["data"]["options"]
+                    except KeyError:
                         url = avurl
                     else:
-                        res = requests.get("https://discord.com/api/v8/users/{user.id}")
+                        res = requests.get(f"https://discord.com/api/v8/users/{request.json["data"]["options"][0]["value"]}")
                         user = res.json()
-                        print(user)
+                        if user["avatar"].startswith('a_'):
+                            url = f"https://cdn.discordapp.com/avatars/{user["id"]}/{user["avatar"]}.gif"
+                        else:
+                            url = f"https://cdn.discordapp.com/avatars/{user["id"]}/{user["avatar"]}"
                     return jsonify({
                         "type": 3,
                         "data": {
@@ -272,14 +277,14 @@ def code():
                             "content": "",
                             "embeds": [
                                 {
-                                    "author": {    
-                                         "name": f"Requested by {usname}",
-                                         "icon_url": avurl
-                                     },
                                     "title": f"{usname}'s Avatar:",
                                     "image": {
                                         "url": url
-                                    }  
+                                    },
+                                    "author": {    
+                                         "text": f"Requested by {usname}",
+                                         "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                                     }
                                 }
                             ],
                             "allowed_mentions": []
