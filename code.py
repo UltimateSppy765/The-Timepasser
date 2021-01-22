@@ -272,8 +272,8 @@ def code():
                                         "url": avurl
                                     },
                                     "author": {    
-                                         "text": f"Requested by {usname}",
-                                         "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                                         "name": f"Requested by {usname}",
+                                         "icon_url": avurl
                                      }
                                 }
                             ],
