@@ -268,7 +268,7 @@ def code():
                             "embeds": [
                                 {
                                     "title": f"{usname}'s pfp",
-                                    "thumbnail": {
+                                    "image": {
                                         "url": avurl
                                     },
                                     "footer": {    
