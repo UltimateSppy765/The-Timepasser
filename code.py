@@ -42,7 +42,7 @@ def code():
                 if usav.startswith('a_'):
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
                 else:
-                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}"
+                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
                 if cmd_name == 'simon':
                     return jsonify(
                         {
@@ -262,7 +262,7 @@ def code():
                     try:
                         options = request.json["data"]["options"]
                     except KeyError:
-                        url = avurl
+                        url = f"{avurl}?size=1024"
                         uname = usname
                     else:
                         uid = request.json["data"]["options"][0]["value"]
@@ -271,9 +271,9 @@ def code():
                         uav = user["avatar"]
                         uname = user["username"]
                         if user["avatar"].startswith('a_'):
-                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif?size=1024"
                         else:
-                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=1024"
                     return jsonify({
                         "type": 3,
                         "data": {
