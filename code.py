@@ -266,6 +266,7 @@ def code():
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"https://discord.com/api/v8/users/{uid}")
                         user = res.json()
+                        print(user)
                         uav = user["avatar"]
                         if user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif"
