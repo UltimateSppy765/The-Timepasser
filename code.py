@@ -263,7 +263,8 @@ def code():
                     except KeyError:
                         url = avurl
                     else:
-                        res = requests.get(f"https://discord.com/api/v8/users/{request.json["data"]["options"][0]["value"]}")
+                        uid = request.json["data"]["options"][0]["value"]
+                        res = requests.get(f"https://discord.com/api/v8/users/{uid}")
                         user = res.json()
                         if user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{user["id"]}/{user["avatar"]}.gif"
