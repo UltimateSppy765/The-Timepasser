@@ -267,11 +267,11 @@ def code():
                             "content": "",
                             "embeds": [
                                 {
-                                    "title": f"{usname}'s pfp",
+                                    "title": f"{usname}'s Avatar:",
                                     "image": {
                                         "url": avurl
                                     },
-                                    "footer": {    
+                                    "author": {    
                                          "text": f"Requested by {usname}",
                                          "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
                                      }
