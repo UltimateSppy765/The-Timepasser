@@ -257,6 +257,29 @@ def code():
                             "allowed_mentions": []
                         }
                     })
+                elif cmd_name == "avatar":
+                    print(request.json)
+                    return jsonify({
+                        "type": 3,
+                        "data": {
+
+                            "tts": False,
+                            "content": "",
+                            "embeds": [
+                                {
+                                    "title": f"{usname}'s pfp",
+                                    "thumbnail": {
+                                        "url": avurl
+                                    },
+                                    "footer": {    
+                                         "text": f"Requested by {usname}",
+                                         "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                                     }
+                                }
+                            ],
+                            "allowed_mentions": []
+                        }
+                    })
                 else:
                     return jsonify(
                         {
@@ -269,6 +292,7 @@ def code():
                             }
                         }
                     )
+    
     except Exception as e:
         tings = ["Drank too much juice...", "Lazed around too much...", "**Started studying**...", "Looked at myself in the mirror...", "Walked into the 'I give up Pit'..."]
         choi = choice(tings)
