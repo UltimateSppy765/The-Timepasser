@@ -258,7 +258,12 @@ def code():
                         }
                     })
                 elif cmd_name == "avatar":
-                    print(request.json)
+                    if not request.json["data"]["options"]:
+                        url = avurl
+                    else:
+                        res = requests.get("https://discord.com/api/v8/users/{user.id}"
+                        user = res.json()
+                        print(user)
                     return jsonify({
                         "type": 3,
                         "data": {
@@ -269,11 +274,11 @@ def code():
                                 {
                                     "title": f"{usname}'s Avatar:",
                                     "image": {
-                                        "url": avurl
+                                        "url": url
                                     },
                                     "author": {    
-                                         "name": f"Requested by {usname}",
-                                         "icon_url": avurl
+                                         "text": f"Requested by {usname}",
+                                         "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
                                      }
                                 }
                             ],
