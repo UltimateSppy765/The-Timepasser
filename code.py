@@ -148,12 +148,16 @@ def code():
                             })
                         else:
                             return jsonify({
-                                "type": 4,
+                                "type": 3,
                                 "data":{
                                     "tts": False,
                                     "content": "",
                                     "embeds": [
                                         {
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                            },
                                             "title": "I'm so sorry",
                                             "description": "I cannot get you random animated pictures of foxes just yet, but please look at this one :fox: pic I know of:",
                                             "image": {
