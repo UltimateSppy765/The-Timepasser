@@ -262,12 +262,13 @@ def code():
                         options = request.json["data"]["options"]
                     except KeyError:
                         url = avurl
+                        uname = usname
                     else:
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"https://discord.com/api/v8/users/{uid}",headers={"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"})
                         user = res.json()
-                        print(user)
                         uav = user["avatar"]
+                        uname = user["name"]
                         if user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif"
                         else:
@@ -280,7 +281,7 @@ def code():
                             "content": "",
                             "embeds": [
                                 {
-                                    "title": f"{usname}'s Avatar:",
+                                    "title": f"{uname}'s Avatar:",
                                     "image": {
                                         "url": url
                                     },
