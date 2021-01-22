@@ -261,7 +261,7 @@ def code():
                     if not request.json["data"]["options"]:
                         url = avurl
                     else:
-                        res = requests.get("https://discord.com/api/v8/users/{user.id}"
+                        res = requests.get("https://discord.com/api/v8/users/{user.id}")
                         user = res.json()
                         print(user)
                     return jsonify({
