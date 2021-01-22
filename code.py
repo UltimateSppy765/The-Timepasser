@@ -299,7 +299,7 @@ def code():
                             "type": 4,
                             "data": {
                                 "tts": False,
-                                "content":f'Sorry to say but the command you tried to use is currently unavailable (and probably under development :tools:).\n-Please try again later.',
+                                "content":f'Sorry to say but the command you tried to use is currently unavailable (and probably under development :tools:).\nPlease try again later.',
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
