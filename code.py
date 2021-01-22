@@ -27,6 +27,7 @@ def code():
                     {
                         "type": 3,
                         "data": {
+                            "flags": 64,
                             "tts": False,
                             "content": f"Sorry <@{usid}>, I've been instructed not to do anything in <#789147777069744182>.",
                             "embeds" : [],
