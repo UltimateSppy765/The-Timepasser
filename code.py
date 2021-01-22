@@ -299,6 +299,18 @@ def code():
                             "allowed_mentions": []
                         }
                     })
+                elif cmd_name == "aboutme":
+                    reuturn jsonify(
+                        {
+                            "type": 3,
+                            "data": {
+                                "flags": 64,
+                                "tts": False,
+                                "content": f"Hey <@{usid}>, let me tell you my story :notebook_with_decorative_cover: of origin:\nOnce upon a time, there used to be 2 people, who had a *passion* for coding. One was *lazy* while the other was diligent. Nevertheless, both of them managed to make great stuff! The *lazy* one wanted to build a community of people whom he could spend free time with. Eventually, they made a server where they brought some people. They tried to make it active and needed many sources for that. One source was making their own server bot. And as the name of the server was **':beginner:│The Timepass Squad'** (which they took 2 days to decide), they made me: **'The Timepasser'**! My job is to provide you with recreational things to do so that you can spend your time joyfully.\nPlease support our community server :people_holding_hands: so that we can become a huge group of friends and do stuff together!\nOur Server: https://discord.gg/cDG67DQDFu",
+                                "embeds": [],
+                                "allowed_mentions": []
+                            }
+                        }    
                 else:
                     return jsonify(
                         {
