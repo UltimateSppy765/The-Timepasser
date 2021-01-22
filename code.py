@@ -300,7 +300,7 @@ def code():
                         }
                     })
                 elif cmd_name == "aboutme":
-                    reuturn jsonify(
+                    return jsonify(
                         {
                             "type": 3,
                             "data": {
@@ -310,7 +310,8 @@ def code():
                                 "embeds": [],
                                 "allowed_mentions": []
                             }
-                        }    
+                        }
+                    )    
                 else:
                     return jsonify(
                         {
