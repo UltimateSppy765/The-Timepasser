@@ -297,10 +297,11 @@ def code():
                 else:
                     return jsonify(
                         {
-                            "type": 4,
+                            "flags": 64,
+                            "type": 3,
                             "data": {
                                 "tts": False,
-                                "content":f'Sorry to say but the command you tried to use is currently unavailable (and probably under development :tools:).\nPlease try again later.',
+                                "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development :tools:).\nPlease try again later.',
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
