@@ -268,7 +268,7 @@ def code():
                         res = requests.get(f"https://discord.com/api/v8/users/{uid}",headers={"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"})
                         user = res.json()
                         uav = user["avatar"]
-                        uname = user["name"]
+                        uname = user["username"]
                         if user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif"
                         else:
