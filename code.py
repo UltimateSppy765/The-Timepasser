@@ -266,10 +266,11 @@ def code():
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"https://discord.com/api/v8/users/{uid}")
                         user = res.json()
+                        uav = user["avatar"]
                         if user["avatar"].startswith('a_'):
-                            url = f"https://cdn.discordapp.com/avatars/{user["id"]}/{user["avatar"]}.gif"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif"
                         else:
-                            url = f"https://cdn.discordapp.com/avatars/{user["id"]}/{user["avatar"]}"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}"
                     return jsonify({
                         "type": 3,
                         "data": {
