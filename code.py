@@ -281,14 +281,14 @@ def code():
                             "content": "",
                             "embeds": [
                                 {
+                                    "author": {    
+                                         "name": f"Requested by {usname}",
+                                         "icon_url": avurl
+                                     },
                                     "title": f"{uname}'s Avatar:",
                                     "image": {
                                         "url": url
                                     },
-                                    "author": {    
-                                         "text": f"Requested by {usname}",
-                                         "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
-                                     }
                                 }
                             ],
                             "allowed_mentions": []
