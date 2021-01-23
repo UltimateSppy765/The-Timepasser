@@ -325,7 +325,7 @@ def code():
                             "type": 3,
                             "data": {
                                 "tts": False,
-                                "content": f"**Invite created by {usname}**\nInvite Link: {inviteLink}}
+                                "content": f"**Invite created by {usname}\n**Invite Link: {inviteLink}**"
                                 "embeds": [],
                                 "allowed_mentions": []
                             }
