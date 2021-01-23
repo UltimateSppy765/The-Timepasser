@@ -320,7 +320,7 @@ def code():
                     cid = request.json["channel_id"]
                     res = requests.post(f"{baseUrl}/channels/{cid}/invites",headers=headers,params=params)
                     inviteCode = res.json()["code"]
-                    inviteLink = r"https:\\discord.gg\{0}".format(inviteCode)
+                    inviteLink = f"https://discord.gg/{inviteCode}"
                     return jsonify(
                         {
                             "type": 3,
