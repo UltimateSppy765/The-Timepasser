@@ -41,7 +41,11 @@ def code():
                 cmd_name = request.json["data"]["name"] #to make it easy to check for name
                 usname = request.json["member"]["user"]["username"]
                 usav = request.json["member"]["user"]["avatar"]
-                if usav.startswith('a_'):
+                discid = request.json["member"]["user"]["discriminator"]
+                if usav is None:
+                    heh = int(discid)%5
+                    avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
+                elif usav.startswith('a_'):
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
                 else:
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
