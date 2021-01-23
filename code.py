@@ -273,6 +273,18 @@ def code():
                     else:
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"{baseUrl}users/{uid}",headers=headers)
+                        if not res.ok:
+                             return jsonify(
+                                {
+                                    "type": 3,
+                                    "data": {
+                                        "tts": False,
+                                        "content": f"Invalid User",
+                                        "embeds": [],
+                                        "allowed_mentions": []
+                                    }
+                                }
+                            )
                         user = res.json()
                         uav = user["avatar"]
                         uname = user["username"]
@@ -325,7 +337,7 @@ def code():
                             "type": 3,
                             "data": {
                                 "tts": False,
-                                "content": f"Invite created by {usname}\n**Invite Link: {inviteLink}**",
+                                "content": f"Invite created by {usname}**Invite Link:\n {inviteLink}**",
                                 "embeds": [],
                                 "allowed_mentions": []
                             }
