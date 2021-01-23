@@ -315,7 +315,7 @@ def code():
                             }
                         }
                     )
-                elif cmd_name == "createInvite":
+                elif cmd_name == "createinvite":
                     params = {}
                     res = requests.post(f"{baseUrl}/channels/{channel.id}/invites",headers=headers,params=params)
                     inviteCode = res.json()["code"]
