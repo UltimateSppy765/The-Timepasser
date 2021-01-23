@@ -318,6 +318,7 @@ def code():
                 elif cmd_name == "createinvite":
                     cid = request.json["channel_id"]
                     res = requests.post(f"{baseUrl}/channels/{cid}/invites",headers=headers)
+                    print(res.json())
                     inviteCode = res.json()["code"]
                     inviteLink = f"https://discord.gg/{inviteCode}"
                     return jsonify(
