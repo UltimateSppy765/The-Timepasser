@@ -8,6 +8,8 @@ from discord_interactions import verify_key_decorator, InteractionType, Interact
 
 
 CLIENT_PUBLIC_KEY = os.environ['CLIENT_ID']
+baseUrl = "https://discord.com/api/v8/"
+headers = {"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"}
 
 app = Flask(__name__)
 
@@ -270,7 +272,7 @@ def code():
                         uname = usname
                     else:
                         uid = request.json["data"]["options"][0]["value"]
-                        res = requests.get(f"https://discord.com/api/v8/users/{uid}",headers={"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"})
+                        res = requests.get(f"{baseUrl}users/{uid}",headers=headers)
                         user = res.json()
                         uav = user["avatar"]
                         uname = user["username"]
@@ -312,7 +314,23 @@ def code():
                                 "allowed_mentions": []
                             }
                         }
-                    )    
+                    )
+                elif cmd_name == "createInvite":
+                    params = {}
+                    res = requests.post(f"{baseUrl}/channels/{channel.id}/invites",headers=headers,params=params)
+                    inviteCode = res.json()["code"]
+                    inviteLink = r"https:\\discord.gg\{0}".format(inviteCode)
+                    return jsonify(
+                        {
+                            "type": 3,
+                            "data": {
+                                "tts": False,
+                                "content": f"**Invite created by {usname}**\nInvite Link: {inviteLink}}
+                                "embeds": [],
+                                "allowed_mentions": []
+                            }
+                        }
+                    )
                 else:
                     return jsonify(
                         {
