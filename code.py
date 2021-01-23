@@ -262,7 +262,7 @@ def code():
                             "allowed_mentions": []
                         }
                     })
-                elif cmd_name == "avarat":
+                elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
                     except KeyError:
