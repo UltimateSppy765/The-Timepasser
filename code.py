@@ -284,17 +284,13 @@ def code():
                         else:
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=256"
                     return jsonify({
-                        "type": 3,
+                        "type": 4,
                         "data": {
 
                             "tts": False,
                             "content": "",
                             "embeds": [
                                 {
-                                    "author": {    
-                                         "name": f"Requested by {usname}",
-                                         "icon_url": avurl
-                                     },
                                     "title": f"{uname}'s Avatar:",
                                     "image": {
                                         "url": url
