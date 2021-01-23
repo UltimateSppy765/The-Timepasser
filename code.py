@@ -319,7 +319,7 @@ def code():
                             "data": {
                                 "flags": 64,
                                 "tts": False,
-                                "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development :tools:).\nPlease try again later.',
+                                "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development or modification :tools:).\nPlease try again later.',
                                 "embeds" : [],
                                 "allowed_mentions": []
                             }
