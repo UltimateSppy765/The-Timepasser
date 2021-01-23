@@ -276,7 +276,7 @@ def code():
                         if not res.ok:
                              return jsonify(
                                 {
-                                    "type": 3,
+                                    "type": 4,
                                     "data": {
                                         "tts": False,
                                         "content": f"Invalid User",
