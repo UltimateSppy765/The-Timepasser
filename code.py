@@ -266,7 +266,7 @@ def code():
                     try:
                         options = request.json["data"]["options"]
                     except KeyError:
-                        url = f"{avurl}?size=1024"
+                        url = f"{avurl}?size=256"
                         uname = usname
                     else:
                         uid = request.json["data"]["options"][0]["value"]
@@ -280,9 +280,9 @@ def code():
                             hah = int(disc)%5
                             url = f"https://cdn.discordapp.com/embed/avatars/{hah}.png"
                         elif user["avatar"].startswith('a_'):
-                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif?size=1024"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif?size=256"
                         else:
-                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=1024"
+                            url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=256"
                     return jsonify({
                         "type": 3,
                         "data": {
