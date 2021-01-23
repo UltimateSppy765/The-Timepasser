@@ -276,10 +276,11 @@ def code():
                         if not res.ok:
                              return jsonify(
                                 {
-                                    "type": 4,
+                                    "flags": 64,
+                                    "type": 3,
                                     "data": {
                                         "tts": False,
-                                        "content": f"Invalid User",
+                                        "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else.",
                                         "embeds": [],
                                         "allowed_mentions": []
                                     }
@@ -298,13 +299,17 @@ def code():
                         else:
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=256"
                     return jsonify({
-                        "type": 4,
+                        "type": 3,
                         "data": {
 
                             "tts": False,
                             "content": "",
                             "embeds": [
                                 {
+                                    "author": {
+                                        "name": f"Requested by {usname}",
+                                        "icon_url": avurl
+                                    },
                                     "title": f"{uname}'s Avatar:",
                                     "image": {
                                         "url": url
@@ -337,7 +342,7 @@ def code():
                             "type": 3,
                             "data": {
                                 "tts": False,
-                                "content": f"Invite created by {usname}**Invite Link:\n {inviteLink}**",
+                                "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** {inviteLink}\n*This link expires in 24 hours :clock:.*",
                                 "embeds": [],
                                 "allowed_mentions": []
                             }
