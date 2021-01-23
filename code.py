@@ -276,9 +276,9 @@ def code():
                         if not res.ok:
                              return jsonify(
                                 {
-                                    "flags": 64,
                                     "type": 3,
                                     "data": {
+                                        "flags": 64,
                                         "tts": False,
                                         "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else.",
                                         "embeds": [],
@@ -301,7 +301,6 @@ def code():
                     return jsonify({
                         "type": 3,
                         "data": {
-
                             "tts": False,
                             "content": "",
                             "embeds": [
