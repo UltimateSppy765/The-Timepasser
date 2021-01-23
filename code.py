@@ -274,7 +274,11 @@ def code():
                         user = res.json()
                         uav = user["avatar"]
                         uname = user["username"]
-                        if user["avatar"].startswith('a_'):
+                        disc = user["discriminator"]
+                        if user["avatar'] == None:
+                                hah = disc%5
+                                url = f"https://cdn.discordapp.com/embed/avatars/{hah}.png"
+                        elif user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif?size=1024"
                         else:
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=1024"
