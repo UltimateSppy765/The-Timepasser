@@ -339,7 +339,7 @@ def code():
                     inviteLink = f"https://discord.gg/{inviteCode}"
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "tts": False,
                                 "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** {inviteLink}\n*This link expires in 24 hours :clock:.*",
