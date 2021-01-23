@@ -277,7 +277,7 @@ def code():
                         disc = user["discriminator"]
                         if user["avatar"] is None:
                             print(disc)
-                            hah = disc%5
+                            hah = int(disc)%5
                             url = f"https://cdn.discordapp.com/embed/avatars/{hah}.png"
                         elif user["avatar"].startswith('a_'):
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.gif?size=1024"
