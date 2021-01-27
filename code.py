@@ -228,13 +228,13 @@ def code():
                     
                 elif cmd_name == "testquote":
                     autext = f"Requested by {usname}"
-                    if request.json["data"]["options"][0]["value"] == "qotd":
+                    if request.json["data"]["options"][0]["options"][0]["value"] == "qotd":
                         z = wikiquote.quote_of_the_day()
                         (qt, autor) = z
                         fttext = "Quotes from Wikiquote"
                         titl = "Quote of the Day:"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                    elif request.json["data"]["options"][0]["value"] == "random":
+                    elif request.json["data"]["options"][0]["options"][0]["value"] == "random":
                         api = " http://api.quotable.io/random"
                         random_quote = requests.get(api).json()
                         qt = random_quote["content"]
@@ -245,7 +245,6 @@ def code():
                     return jsonify({
                         "type": 3,
                         "data": {
-
                             "tts": False,
                             "content": "",
                             "embeds": [
@@ -268,6 +267,69 @@ def code():
                             "allowed_mentions": []
                         }
                     })
+                    elif request.json["data"]["options"][0]["name"] == "search":
+                        inpuq = request.json["data"]["options"][0]["options"][0]["value"]
+                        fttext = "Quotes from Wikiquote"
+                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+                        try:
+                            searc = wikiquotes.search(inpuq, "english")
+                            autor = searc[1]
+                            qt = wikiquotes.random(autor, "english")
+                            titl = f"Search result for quotes with author **'{autor}'**:"
+                            return jsonify({
+                                "type": 3,
+                                "data": {
+                                    "tts": False,
+                                    "content": "",
+                                    "embeds": [
+                                        {
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                            },
+                                            "title": titl,
+                                            "description": f"{qt}\n- {autor}",
+                                            "thumbnail": {
+                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                                            },
+                                            "footer": {    
+                                                 "text": fttext,
+                                                 "icon_url": fticon
+                                             }
+                                        }
+                                    ],
+                                    "allowed_mentions": []
+                                }
+                            })
+                        except:
+                            return jsonify({
+                                "type": 3,
+                                "data": {
+                                    "tts": False,
+                                    "content": "",
+                                    "embeds": [
+                                        {
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                            },
+                                            "title": f"No author found with name **'{inpuq}'**",
+                                            "description": f"Sorry, we could not find any author with that name. :pensive:\nPlease try with some other name.",
+                                            "thumbnail": {
+                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                                            },
+                                            "image": {
+                                                "url": "https://tenor.com/view/looking-around-searching-looking-observe-jerry-gif-16356157"
+                                            },
+                                            "footer": {    
+                                                 "text": fttext,
+                                                 "icon_url": fticon
+                                             }
+                                        }
+                                    ],
+                                    "allowed_mentions": []
+                                }
+                            })
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
