@@ -228,45 +228,46 @@ def code():
                     
                 elif cmd_name == "testquote":
                     autext = f"Requested by {usname}"
-                    if request.json["data"]["options"][0]["options"][0]["value"] == "qotd":
-                        z = wikiquote.quote_of_the_day()
-                        (qt, autor) = z
-                        fttext = "Quotes from Wikiquote"
-                        titl = "Quote of the Day:"
-                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                    elif request.json["data"]["options"][0]["options"][0]["value"] == "random":
-                        api = " http://api.quotable.io/random"
-                        random_quote = requests.get(api).json()
-                        qt = random_quote["content"]
-                        autor = random_quote["author"]
-                        titl = "Random Quote:"
-                        fttext = "Powered by Quotable"
-                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
-                    return jsonify({
-                        "type": 3,
-                        "data": {
-                            "tts": False,
-                            "content": "",
-                            "embeds": [
-                                {
-                                    "author": {
-                                        "name": autext,
-                                        "icon_url": avurl
-                                    },
-                                    "title": titl,
-                                    "description": f"{qt}\n- {autor}",
-                                    "thumbnail": {
-                                        "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
-                                    },
-                                    "footer": {    
-                                         "text": fttext,
-                                         "icon_url": fticon
-                                     }
-                                }
-                            ],
-                            "allowed_mentions": []
-                        }
-                    })
+                    if request.json["data"]["options"][0]["name"] == "get":
+                        if request.json["data"]["options"][0]["options"][0]["value"] == "qotd":
+                            z = wikiquote.quote_of_the_day()
+                            (qt, autor) = z
+                            fttext = "Quotes from Wikiquote"
+                            titl = "Quote of the Day:"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+                        elif request.json["data"]["options"][0]["options"][0]["value"] == "random":
+                            api = " http://api.quotable.io/random"
+                            random_quote = requests.get(api).json()
+                            qt = random_quote["content"]
+                            autor = random_quote["author"]
+                            titl = "Random Quote:"
+                            fttext = "Powered by Quotable"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
+                        return jsonify({
+                            "type": 3,
+                            "data": {
+                                "tts": False,
+                                "content": "",
+                                "embeds": [
+                                    {
+                                        "author": {
+                                            "name": autext,
+                                            "icon_url": avurl
+                                        },
+                                        "title": titl,
+                                        "description": f"{qt}\n- {autor}",
+                                        "thumbnail": {
+                                            "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                                        },
+                                        "footer": {    
+                                             "text": fttext,
+                                             "icon_url": fticon
+                                         }
+                                    }
+                                ],
+                                "allowed_mentions": []
+                            }
+                        })
                     elif request.json["data"]["options"][0]["name"] == "search":
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
