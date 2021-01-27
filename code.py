@@ -320,7 +320,7 @@ def code():
                                                 "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
                                             },
                                             "image": {
-                                                "url": "https://tenor.com/view/looking-around-searching-looking-observe-jerry-gif-16356157.gif"
+                                                "url": "https://cdn.discordapp.com/attachments/793873121451049080/804021598008770581/tenor.gif"
                                             },
                                             "footer": {    
                                                  "text": fttext,
