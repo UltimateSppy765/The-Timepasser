@@ -272,7 +272,7 @@ def code():
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                        try:
+                        if 1 > 0:
                             searc = wikiquotes.search(inpuq, "english")
                             autor = searc[1]
                             qt = wikiquotes.random(autor, "english")
@@ -302,7 +302,7 @@ def code():
                                     "allowed_mentions": []
                                 }
                             })
-                        except:
+                        else:
                             return jsonify({
                                 "type": 3,
                                 "data": {
