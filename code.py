@@ -276,7 +276,7 @@ def code():
                             searc = wikiquotes.search(inpuq, "english")
                             autor = searc[1]
                             qt = wikiquotes.random_quote(autor, "english")
-                            titl = f"Search result for quotes with author **'{inpuq}'**:"
+                            titl = f"Search result for quote with author **'{inpuq}'**:"
                             return jsonify({
                                 "type": 3,
                                 "data": {
