@@ -272,11 +272,7 @@ def code():
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                        try:
-                            searc = wikiquotes.search(inpuq, "english")
-                            autor = searc[0]
-                            qt = wikiquotes.random_quote(autor, "english")
-                            titl = f"Search result for quote with author **'{inpuq}'**:"
+                        if True:
                             return jsonify({
                                 "type": 3,
                                 "data": {
@@ -284,53 +280,13 @@ def code():
                                     "content": "",
                                     "embeds": [
                                         {
-                                            "author": {
-                                                "name": autext,
-                                                "icon_url": avurl
-                                            },
-                                            "title": titl,
-                                            "description": f"{qt}\n- {autor}",
-                                            "thumbnail": {
-                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
-                                            },
-                                            "footer": {    
-                                                 "text": fttext,
-                                                 "icon_url": fticon
-                                             }
+                                            "title": f":mag: Searching for query '{inpuq}...'"
                                         }
                                     ],
                                     "allowed_mentions": []
                                 }
                             })
-                        except:
-                            return jsonify({
-                                "type": 3,
-                                "data": {
-                                    "tts": False,
-                                    "content": "",
-                                    "embeds": [
-                                        {
-                                            "author": {
-                                                "name": autext,
-                                                "icon_url": avurl
-                                            },
-                                            "title": f"No author found with name **'{inpuq}'**",
-                                            "description": f"Sorry, we could not find any author with that name. :pensive:\nPlease try with some other name.",
-                                            "thumbnail": {
-                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
-                                            },
-                                            "image": {
-                                                "url": "https://cdn.discordapp.com/attachments/793873121451049080/804021598008770581/tenor.gif"
-                                            },
-                                            "footer": {    
-                                                 "text": fttext,
-                                                 "icon_url": fticon
-                                             }
-                                        }
-                                    ],
-                                    "allowed_mentions": []
-                                }
-                            })
+                        print("I'm cute")
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
