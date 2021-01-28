@@ -274,7 +274,7 @@ def code():
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                         try:
                             searc = wikiquotes.search(inpuq, "english")
-                            autor = searc[1]
+                            autor = searc[0]
                             qt = wikiquotes.random_quote(autor, "english")
                             titl = f"Search result for quote with author **'{inpuq}'**:"
                             return jsonify({
