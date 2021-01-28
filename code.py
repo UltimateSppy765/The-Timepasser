@@ -272,22 +272,21 @@ def code():
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                        if True:
-                            return jsonify({
-                                "type": 3,
-                                "data": {
-                                    "tts": False,
-                                    "content": "",
-                                    "embeds": [
-                                        {
-                                            "title": f":mag: Searching for query '{inpuq}...'"
-                                        }
-                                    ],
-                                    "allowed_mentions": []
-                                }
-                            })
-                        elif 1>0:
-                            print("I'm cute.")
+                        yield jsonify({    
+                            "type": 3,
+                            "data": {
+                                "tts": False,
+                                "content": "",
+                                "embeds": [
+                                    
+                                    {
+                                        "title": f":mag: Searching for query '{inpuq}...'"
+                                    }
+                                ],
+                                "allowed_mentions": []
+                            }
+                        })
+                        print("I'm cute.")
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
