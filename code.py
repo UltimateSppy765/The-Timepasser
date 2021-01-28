@@ -286,7 +286,8 @@ def code():
                                     "allowed_mentions": []
                                 }
                             })
-                        print("I'm cute")
+                        elif 1>0:
+                            print("I'm cute.")
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
