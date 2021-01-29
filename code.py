@@ -252,7 +252,7 @@ def code():
                             except:
                                 msg = "Sorry, nothing matched the query, please search a different one."
                                 title = f"Nothing found for query **'{inpuq}'**"
-                            else
+                            else:
                                 try:
                                     for c in a:
                                         if inpuq in c.lower():
