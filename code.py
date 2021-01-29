@@ -286,7 +286,8 @@ def code():
                                              "footer": {    
                                                 "text": fttext,
                                                 "icon_url": fticon
-                                         }
+                                             }
+                                        }
                                     ]
                                 }
                             res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
