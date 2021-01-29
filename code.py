@@ -4,7 +4,7 @@ import wikiquote
 import wikiquotes
 from random import choice,randint
 from threading import Thread
-from flask import Flask, request, jsonify,abort
+from flask import Flask, request, jsonify, abort
 from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
 
 
@@ -22,7 +22,6 @@ def code():
             return jsonify({
                 "type": 1
             })
-
         else:
             usid = request.json["member"]["user"]["id"]
             if request.json["guild_id"] == '789147777069744179' and request.json["channel_id"] == '789147777069744182':
@@ -78,7 +77,6 @@ def code():
                     else:
                         num = randint(1,10)
                         result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}.'
-
                     return jsonify(
                         {
                             "type": 4,
@@ -245,26 +243,38 @@ def code():
                             }
                         })
                     elif request.json["data"]["options"][0]["name"] == "search":
-                        
                         def searching(inpuq,token):
+                            fttext = "Quotes from Wikiquote"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+                            thumbu = "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
                             try:
                                 a = wikiquotes.search(inpuq, "english")
                             except:
-                                msg = None
+                                msg2 = "Sorry, nothing matched the query, please search a different one."
+                                json = {
+                                        "embeds":[
+                                            {
+                                                "author": {
+                                                    "name": autext,
+                                                    "icon_url": avurl
+                                                },
+                                                "title": f"Nothing found for query **'{a}'**",
+                                                "description": msg2,
+                                                "thumbnail": {
+                                                    "url": thumbu
+                                                },
+                                                "footer": {    
+                                                    "text": fttext,
+                                                    "icon_url": fticon
+                                                }
+                                            }
+                                        ]
+                                }
                             else:
                                 for c in a:
                                     if inpuq in c:
                                         autor = c
-                                        qt = ''
-                                        count = 0
-                                        while True:
-                                            if count > 10:
-                                                msg = None
-                                                break
-                                            qt = wikiquotes.random_quote(autor, "english")
-                                            if len(qt) <= 200:
-                                                break
-                                            count+=1
+                                        qt = wikiquotes.random_quote(autor, "english")
                                         break
                                 else:
                                     e = choice(a)
@@ -274,36 +284,49 @@ def code():
                                             autor = e
                                             qt = f
                                             break
-                            try:
-                                if not msg:
-                                    raise ValueError
-                                msg = f"{qt}\n- {autor}"
-                            except:
-                                msg = "Sorry, no Author or quote matched your query, please try again."
-                            
-                            fttext = "Quotes from Wikiquote"
-                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                            json = {
-                                    "embeds":[
-                                        {
-                                            "author": {
-                                                "name": autext,
-                                                "icon_url": avurl
-                                        },
-                                            "title": "Quote",
-                                            "description": msg,
-                                            "thumbnail": {
-                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
-                                        },
-                                             "footer": {    
-                                                "text": fttext,
-                                                "icon_url": fticon
-                                             }
+                                try:
+                                    msg = f"{qt}\n- {autor}"
+                                    json = {
+                                            "embeds":[
+                                                {
+                                                    "author": {
+                                                        "name": autext,
+                                                        "icon_url": avurl
+                                                    },
+                                                    "title": f"Search result for query **'{a}'**",
+                                                    "description": msg,
+                                                    "thumbnail": {
+                                                        "url": thumbu
+                                                    },
+                                                    "footer": {    
+                                                        "text": fttext,
+                                                        "icon_url": fticon
+                                                    }
+                                                }
+                                            ]
+                                    }
+                                except:
+                                    msg2 = "Sorry, no Author or quote matched your query, please try again."
+                                    json = {
+                                            "embeds":[
+                                                {
+                                                    "author": {
+                                                        "name": autext,
+                                                        "icon_url": avurl
+                                                    },
+                                                    "title": f"No result for query **'{a}'**",
+                                                    "description": msg2,
+                                                    "thumbnail": {
+                                                        "url": thumbu
+                                                    },
+                                                    "footer": {    
+                                                        "text": fttext,
+                                                        "icon_url": fticon
+                                                    }
+                                                }
+                                            ]
                                         }
-                                    ]
-                                }
                             res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
-                            
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
