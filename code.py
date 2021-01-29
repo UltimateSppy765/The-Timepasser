@@ -267,7 +267,9 @@ def code():
                             try:
                                 msg = f"Quote: {qt}\nAuthor: {autor}"
                             except:
-                                json = {
+                                msg = "Sorry, no Author or quote matched your query, please try again."
+                            
+                            json = {
                                     "embeds":[
                                         {
                                             "title":"Quote",
@@ -275,8 +277,6 @@ def code():
                                         }
                                     ]
                                 }
-                                msg = "Sorry, no Author or quote matched your query, please try again."
-                        
                             res = requests.get(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
                             
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
