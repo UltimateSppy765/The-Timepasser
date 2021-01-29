@@ -203,7 +203,7 @@ def code():
                         }
                     )
                     
-                elif cmd_name == "testquote":
+                elif cmd_name == "quote":
                     autext = f"Requested by {usname}"
                     if request.json["data"]["options"][0]["name"] == "get":
                         if request.json["data"]["options"][0]["options"][0]["value"] == "qotd":
