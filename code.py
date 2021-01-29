@@ -250,30 +250,12 @@ def code():
                             try:
                                 a = wikiquotes.search(inpuq, "english")
                             except:
-                                msg2 = "Sorry, nothing matched the query, please search a different one."
-                                json = {
-                                        "embeds":[
-                                            {
-                                                "author": {
-                                                    "name": autext,
-                                                    "icon_url": avurl
-                                                },
-                                                "title": f"Nothing found for query **'{inpuq}'**",
-                                                "description": msg2,
-                                                "thumbnail": {
-                                                    "url": thumbu
-                                                },
-                                                "footer": {    
-                                                    "text": fttext,
-                                                    "icon_url": fticon
-                                                }
-                                            }
-                                        ]
-                                }
-                            else:
+                                msg = "Sorry, nothing matched the query, please search a different one."
+                                title = f"Nothing found for query **'{inpuq}'**"
+                            else
                                 try:
                                     for c in a:
-                                        if inpuq in c:
+                                        if inpuq in c.lower():
                                             autor = c
                                             qt = wikiquotes.random_quote(autor, "english")
                                             break
@@ -281,20 +263,24 @@ def code():
                                         e = choice(a)
                                         g = wikiquotes.get_quotes(e, "english")
                                         for f in g:
-                                            if inpuq in f:
+                                            if inpuq in f.lower():
                                                 autor = e
                                                 qt = f
                                                 break
                                                 
                                     msg = f"{qt}\n- {autor}"
-                                    json = {
+                                    title = f"Search result for query **'{inpuq}'**"
+                                except (IndexError,NameError):
+                                    msg = "Sorry, no Author or quote matched your query, please try again."
+                                    title = f"No result for query **'{inpuq}'**"
+                            json = {
                                             "embeds":[
                                                 {
                                                     "author": {
                                                         "name": autext,
                                                         "icon_url": avurl
                                                     },
-                                                    "title": f"Search result for query **'{inpuq}'**",
+                                                    "title": title,
                                                     "description": msg,
                                                     "thumbnail": {
                                                         "url": thumbu
@@ -305,28 +291,7 @@ def code():
                                                     }
                                                 }
                                             ]
-                                    }
-                                except (IndexError,NameError):
-                                    msg2 = "Sorry, no Author or quote matched your query, please try again."
-                                    json = {
-                                            "embeds":[
-                                                {
-                                                    "author": {
-                                                        "name": autext,
-                                                        "icon_url": avurl
-                                                    },
-                                                    "title": f"No result for query **'{inpuq}'**",
-                                                    "description": msg2,
-                                                    "thumbnail": {
-                                                        "url": thumbu
-                                                    },
-                                                    "footer": {    
-                                                        "text": fttext,
-                                                        "icon_url": fticon
-                                                    }
-                                                }
-                                            ]
-                                        }
+                                        }        
                             res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         token = request.json["token"]
