@@ -250,12 +250,21 @@ def code():
                             try:
                                 a = wikiquotes.search(inpuq, "english")
                             except:
-                                msg = "Sorry, no Author matched the query, please search a different one."
+                                msg = None
                             else:
                                 for c in a:
                                     if inpuq in c:
                                         autor = c
-                                        qt = wikiquotes.random_quote(autor, "english")
+                                        qt = ''
+                                        count = 0
+                                        while True:
+                                            if count > 10:
+                                                msg = None
+                                                break
+                                            qt = wikiquotes.random_quote(autor, "english")
+                                            if len(qt) <= 200:
+                                                break
+                                            count+=1
                                         break
                                 else:
                                     e = choice(a)
@@ -266,6 +275,8 @@ def code():
                                             qt = f
                                             break
                             try:
+                                if not msg:
+                                    raise ValueError
                                 msg = f"{qt}\n- {autor}"
                             except:
                                 msg = "Sorry, no Author or quote matched your query, please try again."
