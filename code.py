@@ -273,6 +273,7 @@ def code():
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                         try:
+                            print("Statement before return.")
                             return jsonify({    
                                 "type": 3,
                                 "data": {
