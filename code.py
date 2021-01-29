@@ -269,10 +269,10 @@ def code():
                                                 break
                                                 
                                     msg = f"{qt}\n- {autor}"
-                                    title = f"Search result for query **'{inpuq}'**"
+                                    title = f"Search result for query **'{intup}'**"
                                 except (IndexError,NameError):
                                     msg = "Sorry, no Author or quote matched your query, please try again."
-                                    title = f"No result for query **'{inpuq}'**"
+                                    title = f"No result for query **'{intup}'**"
                             json = {
                                             "embeds":[
                                                 {
@@ -304,7 +304,7 @@ def code():
                                 "embeds": [
                                     
                                     {
-                                        "title": f":mag: Searching for query '{inpuq}'..."
+                                        "title": f":mag: Searching for query '{intup}'..."
                                     }
                                 ]
                             }
