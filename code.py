@@ -258,7 +258,7 @@ def code():
                                                     "name": autext,
                                                     "icon_url": avurl
                                                 },
-                                                "title": f"Nothing found for query **'{a}'**",
+                                                "title": f"Nothing found for query **'{inpuq}'**",
                                                 "description": msg2,
                                                 "thumbnail": {
                                                     "url": thumbu
@@ -293,7 +293,7 @@ def code():
                                                         "name": autext,
                                                         "icon_url": avurl
                                                     },
-                                                    "title": f"Search result for query **'{a}'**",
+                                                    "title": f"Search result for query **'{inpuq}'**",
                                                     "description": msg,
                                                     "thumbnail": {
                                                         "url": thumbu
@@ -314,7 +314,7 @@ def code():
                                                         "name": autext,
                                                         "icon_url": avurl
                                                     },
-                                                    "title": f"No result for query **'{a}'**",
+                                                    "title": f"No result for query **'{inpuq}'**",
                                                     "description": msg2,
                                                     "thumbnail": {
                                                         "url": thumbu
@@ -328,13 +328,9 @@ def code():
                                         }
                             res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
-                        fttext = "Quotes from Wikiquote"
-                        fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                        
                         token = request.json["token"]
                         thread = Thread(target=searching, args = (inpuq,token))
                         thread.start()
-                        
                         return jsonify({    
                             "type": 3,
                             "data": {
