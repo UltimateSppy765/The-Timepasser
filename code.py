@@ -292,8 +292,8 @@ def code():
                                                 }
                                             ]
                                         }        
-                            res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
-                        inpuq = request.json["data"]["options"][0]["options"][0]["value"]
+                            requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
+                        inpuq = request.json["data"]["options"][0]["options"][0]["value"].lower()
                         token = request.json["token"]
                         thread = Thread(target=searching, args = (inpuq,token))
                         thread.start()
