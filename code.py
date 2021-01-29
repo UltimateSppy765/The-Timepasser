@@ -258,10 +258,11 @@ def code():
                                         qt = wikiquotes.random_quote(autor, "english")
                                         break
                                 else:
-                                    g = wikiquotes.get_quotes(choice(a), "english")
-                                    for f in h:
+                                    e = choice(a)
+                                    g = wikiquotes.get_quotes(e, "english")
+                                    for f in g:
                                         if inpuq in f:
-                                            autor = choice(a)
+                                            autor = e
                                             qt = f
                                             break
                             try:
