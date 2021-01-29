@@ -271,20 +271,21 @@ def code():
                                         ]
                                 }
                             else:
-                                for c in a:
-                                    if inpuq in c:
-                                        autor = c
-                                        qt = wikiquotes.random_quote(autor, "english")
-                                        break
-                                else:
-                                    e = choice(a)
-                                    g = wikiquotes.get_quotes(e, "english")
-                                    for f in g:
-                                        if inpuq in f:
-                                            autor = e
-                                            qt = f
-                                            break
                                 try:
+                                    for c in a:
+                                        if inpuq in c:
+                                            autor = c
+                                            qt = wikiquotes.random_quote(autor, "english")
+                                            break
+                                    else:
+                                        e = choice(a)
+                                        g = wikiquotes.get_quotes(e, "english")
+                                        for f in g:
+                                            if inpuq in f:
+                                                autor = e
+                                                qt = f
+                                                break
+                                                
                                     msg = f"{qt}\n- {autor}"
                                     json = {
                                             "embeds":[
@@ -305,7 +306,7 @@ def code():
                                                 }
                                             ]
                                     }
-                                except:
+                                except IndexError,NameError:
                                     msg2 = "Sorry, no Author or quote matched your query, please try again."
                                     json = {
                                             "embeds":[
