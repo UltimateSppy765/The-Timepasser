@@ -3,6 +3,7 @@ import requests
 import wikiquote
 import wikiquotes
 from random import choice,randint
+from threading import Thread
 from flask import Flask, request, jsonify,abort
 from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
 
@@ -30,10 +31,7 @@ def code():
                         "type": 3,
                         "data": {
                             "flags": 64,
-                            "tts": False,
-                            "content": f"Sorry <@{usid}>, I've been instructed not to do anything in <#789147777069744182>.",
-                            "embeds" : [],
-                            "allowed_mentions": []
+                            "content": f"Sorry <@{usid}>, I've been instructed not to do anything in <#789147777069744182>."
                         }
                     }
                 )
@@ -54,10 +52,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "tts": False,
-                                "content":f'Simon says {request.json["data"]["options"][0]["value"]}',
-                                "embeds" : [],
-                                "allowed_mentions": []
+                                "content":f'Simon says {request.json["data"]["options"][0]["value"]}'
                             }
                         }
                     )
@@ -72,10 +67,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "tts": False,
-                                "content":content,
-                                "embeds" : [],
-                                "allowed_mentions": []
+                                "content":content
                             }
                         }
                     )
@@ -91,10 +83,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "tts": False,
-                                "content":result,
-                                "embeds" : [],
-                                "allowed_mentions": []
+                                "content":result
                             }
                         }
                     )
@@ -103,8 +92,6 @@ def code():
                     return jsonify({
                         "type": 3,
                         "data": {
-                            "tts": False,
-                            "content": "",
                             "embeds": [
                                 {
                                     "description": intext,
@@ -113,8 +100,7 @@ def code():
                                         "icon_url": avurl
                                     }
                                 }
-                            ],
-                            "allowed_mentions": []
+                            ]
                         }
                     })
                 elif cmd_name == "anipic":
@@ -131,7 +117,6 @@ def code():
                             return jsonify({
                                 "type": 3,
                                 "data":{
-                                    "tts": False,
                                     "content": greet,
                                     "embeds": [
                                         {
@@ -148,16 +133,13 @@ def code():
                                                 "icon_url": fticon
                                             }
                                         }
-                                    ],
-                                    "allowed_mentions": []
+                                    ]
                                 }
                             })
                         else:
                             return jsonify({
                                 "type": 3,
                                 "data":{
-                                    "tts": False,
-                                    "content": "",
                                     "embeds": [
                                         {
                                             "author": {
@@ -174,8 +156,7 @@ def code():
                                                 "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/798133763896377404/9XiZf6X9.png"
                                             }
                                         }
-                                    ],
-                                    "allowed_mentions": []
+                                    ]
                                 }
                             })
                     elif request.json["data"]["options"][0]["value"] == 'Cat':
@@ -204,7 +185,6 @@ def code():
                         {
                             "type": 3,
                             "data": {
-                                "tts": False,
                                 "content":greet,
                                 "embeds" : [
                                 {
@@ -220,8 +200,7 @@ def code():
                                     "image":{
                                     "url":imgurl
                                     }
-                                }],
-                                "allowed_mentions": []
+                                }]
                             }
                         }
                     )
@@ -246,8 +225,6 @@ def code():
                         return jsonify({
                             "type": 3,
                             "data": {
-                                "tts": False,
-                                "content": "",
                                 "embeds": [
                                     {
                                         "author": {
@@ -264,34 +241,77 @@ def code():
                                              "icon_url": fticon
                                          }
                                     }
-                                ],
-                                "allowed_mentions": []
+                                ]
                             }
                         })
                     elif request.json["data"]["options"][0]["name"] == "search":
+                        
+                        def searching(inpuq,token):
+                            try:
+                                a = wikiquotes.search(inpuq, "english")
+                            except:
+                                msg = "Sorry, no Author matched the query, please search a different one."
+                            else:
+                                for c in a:
+                                    if inpuq in c:
+                                        autor = c
+                                        qt = wikiquotes.random_quote(autor, "english")
+                                        break
+                                else:
+                                    e = choice(a)
+                                    g = wikiquotes.get_quotes(e, "english")
+                                    for f in g:
+                                        if inpuq in f:
+                                            autor = e
+                                            qt = f
+                                            break
+                            try:
+                                msg = f"{qt}\n- {autor}"
+                            except:
+                                msg = "Sorry, no Author or quote matched your query, please try again."
+                            
+                            fttext = "Quotes from Wikiquote"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+                            json = {
+                                    "embeds":[
+                                        {
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                        },
+                                            "title": "Quote",
+                                            "description": msg,
+                                            "thumbnail": {
+                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                                        },
+                                             "footer": {    
+                                                "text": fttext,
+                                                "icon_url": fticon
+                                             }
+                                        }
+                                    ]
+                                }
+                            res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
+                            
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
-                        try:
-                            print("Statement before return.")
-                            return jsonify({    
-                                "type": 3,
-                                "data": {
-                                    "tts": False,
-                                    "content": "",
-                                    "embeds": [
-
-                                        {
-                                            "title": f":mag: Searching for query '{inpuq}...'"
-                                        }
-                                    ],
-                                    "allowed_mentions": []
-                                }
-                            })
-                        except:
-                            print("This won't happen.")
-                        else:
-                            print("I'm cute.")
+                        
+                        token = request.json["token"]
+                        thread = Thread(target=searching, args = (inpuq,token))
+                        thread.start()
+                        
+                        return jsonify({    
+                            "type": 3,
+                            "data": {
+                                "embeds": [
+                                    
+                                    {
+                                        "title": f":mag: Searching for query '{inpuq}'..."
+                                    }
+                                ]
+                            }
+                        })
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
@@ -307,10 +327,7 @@ def code():
                                     "type": 3,
                                     "data": {
                                         "flags": 64,
-                                        "tts": False,
-                                        "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else.",
-                                        "embeds": [],
-                                        "allowed_mentions": []
+                                        "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else."
                                     }
                                 }
                             )
@@ -329,8 +346,6 @@ def code():
                     return jsonify({
                         "type": 3,
                         "data": {
-                            "tts": False,
-                            "content": "",
                             "embeds": [
                                 {
                                     "author": {
@@ -342,8 +357,7 @@ def code():
                                         "url": url
                                     },
                                 }
-                            ],
-                            "allowed_mentions": []
+                            ]
                         }
                     })
                 elif cmd_name == "aboutme":
@@ -352,10 +366,7 @@ def code():
                             "type": 3,
                             "data": {
                                 "flags": 64,
-                                "tts": False,
-                                "content": f"Hey <@{usid}>, let me tell you my story :notebook_with_decorative_cover: of origin:\n> Once upon a time, there used to be 2 people, who had a *passion* for coding. One was *lazy* while the other was diligent. Nevertheless, both of them managed to make great stuff! The *lazy* one wanted to build a community of people whom he could spend free time with. Eventually, they made a server where they brought some people. They tried to make it active and needed many sources for that. One source was making their own server bot. And as the name of the server was **':beginner:│The Timepass Squad'** (which they took 2 days to decide), they made me: **'The Timepasser'**! In process of my making, they even took help from a friend for testing things. (*who ended up being termed as **A Lab Rat** :test_tube: :rat: by the diligent one!*) My job is to provide you with recreational things to do so that you can spend your time joyfully.\nPlease support our community server :people_holding_hands: so that we can become a huge group of friends and do stuff together!\nOur Server: https://discord.gg/XGz4Pr34aR",
-                                "embeds": [],
-                                "allowed_mentions": []
+                                "content": f"Hey <@{usid}>, let me tell you my story :notebook_with_decorative_cover: of origin:\n> Once upon a time, there used to be 2 people, who had a *passion* for coding. One was *lazy* while the other was diligent. Nevertheless, both of them managed to make great stuff! The *lazy* one wanted to build a community of people whom he could spend free time with. Eventually, they made a server where they brought some people. They tried to make it active and needed many sources for that. One source was making their own server bot. And as the name of the server was **':beginner:│The Timepass Squad'** (which they took 2 days to decide), they made me: **'The Timepasser'**! In process of my making, they even took help from a friend for testing things. (*who ended up being termed as **A Lab Rat** :test_tube: :rat: by the diligent one!*) My job is to provide you with recreational things to do so that you can spend your time joyfully.\nPlease support our community server :people_holding_hands: so that we can become a huge group of friends and do stuff together!\nOur Server: https://discord.gg/XGz4Pr34aR"
                             }
                         }
                     )
@@ -368,10 +379,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "tts": False,
-                                "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** {inviteLink}\n*This link expires in 24 hours :clock:.*",
-                                "embeds": [],
-                                "allowed_mentions": []
+                                "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** {inviteLink}\n*This link expires in 24 hours :clock:.*"
                             }
                         }
                     )
@@ -381,10 +389,7 @@ def code():
                             "type": 3,
                             "data": {
                                 "flags": 64,
-                                "tts": False,
-                                "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development or modification :tools:).\nPlease try again later.',
-                                "embeds" : [],
-                                "allowed_mentions": []
+                                "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development or modification :tools:).\nPlease try again later.'
                             }
                         }
                     )
@@ -396,10 +401,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "tts": False,
-                                "content":f"Sorry, an error has occured. :negative_squared_cross_mark: Either your input has caused this error or it is from my side. Please report :clipboard: this to the bot developers along with the error code:\nError Code: {choi} *Joking*\n```py\n{type(e).__name__} : {e}\n```",
-                                "embeds" : [],
-                                "allowed_mentions": []
+                                "content":f"Sorry, an error has occured. :negative_squared_cross_mark: Either your input has caused this error or it is from my side. Please report :clipboard: this to the bot developers along with the error code:\nError Code: {choi} *Joking*\n```py\n{type(e).__name__} : {e}\n```"
                             }
                         }
                     )
