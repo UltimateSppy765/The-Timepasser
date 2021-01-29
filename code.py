@@ -306,7 +306,7 @@ def code():
                                                 }
                                             ]
                                     }
-                                except IndexError,NameError:
+                                except (IndexError,NameError):
                                     msg2 = "Sorry, no Author or quote matched your query, please try again."
                                     json = {
                                             "embeds":[
