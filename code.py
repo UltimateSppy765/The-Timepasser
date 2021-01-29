@@ -277,7 +277,9 @@ def code():
                                         }
                                     ]
                                 }
-                            res = requests.get(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
+                            res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
+                            if res.ok:
+                                print("Edit Successful")
                             
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
