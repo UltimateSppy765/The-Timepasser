@@ -265,21 +265,31 @@ def code():
                                             qt = f
                                             break
                             try:
-                                msg = f"Quote: {qt}\nAuthor: {autor}"
+                                msg = f"Quote: {qt}\n- {autor}"
                             except:
                                 msg = "Sorry, no Author or quote matched your query, please try again."
                             
+                            fttext = "Quotes from Wikiquote"
+                            fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                             json = {
                                     "embeds":[
                                         {
-                                            "title":"Quote",
-                                            "description":msg
-                                        }
+                                            "author": {
+                                                "name": autext,
+                                                "icon_url": avurl
+                                        },
+                                            "title": "Quote",
+                                            "description": msg,
+                                            "thumbnail": {
+                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                                        },
+                                             "footer": {    
+                                                "text": fttext,
+                                                "icon_url": fticon
+                                         }
                                     ]
                                 }
                             res = requests.patch(f"{baseUrl}/webhooks/791153806058455075/{token}/messages/@original",headers=headers,json=json)
-                            if res.ok:
-                                print("Edit Successful")
                             
                         inpuq = request.json["data"]["options"][0]["options"][0]["value"]
                         fttext = "Quotes from Wikiquote"
