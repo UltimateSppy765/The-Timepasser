@@ -266,7 +266,7 @@ def code():
                                             qt = f
                                             break
                             try:
-                                msg = f"Quote: {qt}\n- {autor}"
+                                msg = f"{qt}\n- {autor}"
                             except:
                                 msg = "Sorry, no Author or quote matched your query, please try again."
                             
