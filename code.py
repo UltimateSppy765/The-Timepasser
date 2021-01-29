@@ -3,7 +3,8 @@ import requests
 import wikiquote
 import wikiquotes
 from random import choice,randint
-from flask import Flask,Thread, request, jsonify,abort
+from threading import Thread
+from flask import Flask, request, jsonify,abort
 from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
 
 
@@ -283,7 +284,7 @@ def code():
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                         
                         token = request.json["token"]
-                        thread = Thread(target=do_work, kwargs={"inpuq":inpuq,"token":token})
+                        thread = Thread(target=searching, args = (inpuq,token))
                         thread.start()
                         
                         return jsonify({    
