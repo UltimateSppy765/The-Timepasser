@@ -251,7 +251,7 @@ def code():
                                 a = wikiquotes.search(inpuq, "english")
                             except:
                                 msg = "Sorry, nothing matched the query, please search a different one."
-                                title = f"Nothing found for query **'{inpuq}'**"
+                                title = f"Nothing found for query **'{intup}'**"
                             else:
                                 try:
                                     for c in a:
