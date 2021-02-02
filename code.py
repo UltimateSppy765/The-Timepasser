@@ -10,7 +10,7 @@ from discord_interactions import verify_key_decorator, InteractionType, Interact
 
 CLIENT_PUBLIC_KEY = os.environ['CLIENT_ID']
 baseUrl = "https://discord.com/api/v8/"
-headers = {"Authorization":"Bot NzkxMTUzODA2MDU4NDU1MDc1.X-LBZg.uhgfgX6U5tbRr0r0asEw0V52TGs"}
+headers = {"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}
 
 app = Flask(__name__)
 
