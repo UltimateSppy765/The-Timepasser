@@ -76,7 +76,7 @@ def code():
                         result = "Guess a number between 1 to 10, silly!"
                     else:
                         num = randint(1,10)
-                        result = ":confetti_ball:You guessed it right!:confetti_ball:" if num == guess else f'Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}.'
+                        result = ":confetti_ball: You guessed it right! :confetti_ball:" if num == guess else f'Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}.'
                     return jsonify(
                         {
                             "type": 4,
