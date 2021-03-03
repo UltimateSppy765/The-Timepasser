@@ -3,4 +3,3 @@ discord_interactions
 wikiquote
 wikiquotes
 requests
-waitress
