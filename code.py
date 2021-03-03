@@ -1,6 +1,5 @@
 import os
 import requests
-import waitress
 import wikiquote
 import wikiquotes
 from random import choice,randint
@@ -405,6 +404,6 @@ def code():
                     )
 port = os.getenv('PORT')
 if port:
-    waitress.serve(app=app,host='0.0.0.0',port=port)
+    app.run(host='0.0.0.0',port=port)
 else:
     print("Not able to get the PORT env variable.")
