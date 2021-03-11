@@ -46,7 +46,7 @@ def code():
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
                 else:
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
-                emcolor = "2f3137"
+                emcolor = "3092791"
                 if cmd_name == 'simon':
                     return jsonify(
                         {
