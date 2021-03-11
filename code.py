@@ -46,6 +46,7 @@ def code():
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
                 else:
                     avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
+                emcolor = "2f3137"
                 if cmd_name == 'simon':
                     return jsonify(
                         {
@@ -92,6 +93,7 @@ def code():
                         "data": {
                             "embeds": [
                                 {
+                                    "color": emcolor,
                                     "description": intext,
                                     "author": {
                                         "name": f"{usname}'s Echo!",
