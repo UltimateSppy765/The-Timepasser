@@ -120,7 +120,7 @@ def code():
                                     "content": greet,
                                     "embeds": [
                                         {
-                                            "color": emcolor
+                                            "color": emcolor,
                                             "author": {
                                                 "name": autext,
                                                 "icon_url": avurl
@@ -143,7 +143,7 @@ def code():
                                 "data":{
                                     "embeds": [
                                         {
-                                            "color": emcolor
+                                            "color": emcolor,
                                             "author": {
                                                 "name": autext,
                                                 "icon_url": avurl
@@ -190,7 +190,7 @@ def code():
                                 "content":greet,
                                 "embeds" : [
                                 {
-                                    "color": emcolor
+                                    "color": emcolor,
                                     "author": {
                                         "name": autext,
                                         "icon_url": avurl
@@ -230,7 +230,7 @@ def code():
                             "data": {
                                 "embeds": [
                                     {
-                                        "color": emcolor
+                                        "color": emcolor,
                                         "author": {
                                             "name": autext,
                                             "icon_url": avurl
@@ -282,7 +282,7 @@ def code():
                             json = {
                                             "embeds":[
                                                 {
-                                                    "color": emcolor
+                                                    "color": emcolor,
                                                     "author": {
                                                         "name": autext,
                                                         "icon_url": avurl
@@ -311,7 +311,7 @@ def code():
                                 "embeds": [
                                     
                                     {
-                                        "color": emcolor
+                                        "color": emcolor,
                                         "title": f":mag: Searching for query '{intup}'..."
                                     }
                                 ]
@@ -353,7 +353,7 @@ def code():
                         "data": {
                             "embeds": [
                                 {
-                                    "color": emcolor
+                                    "color": emcolor,
                                     "author": {
                                         "name": f"Requested by {usname}",
                                         "icon_url": avurl
