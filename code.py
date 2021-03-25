@@ -36,9 +36,6 @@ def code():
                 )
             else:
                 cmd_name = request.json["data"]["name"] #to make it easy to check for name
-                usname = request.json["member"]["user"]["username"]
-                usav = request.json["member"]["user"]["avatar"]
-                discid = request.json["member"]["user"]["discriminator"]
                 if usav is None:
                     heh = int(discid)%5
                     avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
