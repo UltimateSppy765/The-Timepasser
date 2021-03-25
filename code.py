@@ -36,13 +36,6 @@ def code():
                 )
             else:
                 cmd_name = request.json["data"]["name"] #to make it easy to check for name
-                if usav is None:
-                    heh = int(discid)%5
-                    avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
-                elif usav.startswith('a_'):
-                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
-                else:
-                    avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
                 emcolor = "3092791"
                 if cmd_name == 'simon':
                     return jsonify(
@@ -295,6 +288,16 @@ def code():
                             }
                         })
                 elif cmd_name == "avatar":
+                    usav=request.json["data"]["member"]["avatar"]
+                    usid=request.json["data"]["member"]["id"]
+                    discid=request.json["data"]["member"]["discriminator"]
+                    if usav is None:
+                        heh = int(discid)%5
+                        avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
+                    elif usav.startswith('a_'):
+                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
+                    else:
+                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
                     try:
                         options = request.json["data"]["options"]
                     except KeyError:
