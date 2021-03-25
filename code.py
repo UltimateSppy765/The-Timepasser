@@ -121,10 +121,6 @@ def code():
                                     "embeds": [
                                         {
                                             "color": emcolor,
-                                            "author": {
-                                                "name": autext,
-                                                "icon_url": avurl
-                                            },
                                             "title": titletxt,
                                             "image": {
                                                 "url": fox
@@ -144,10 +140,6 @@ def code():
                                     "embeds": [
                                         {
                                             "color": emcolor,
-                                            "author": {
-                                                "name": autext,
-                                                "icon_url": avurl
-                                            },
                                             "title": "I'm so sorry",
                                             "description": "I cannot get you random animated pictures of foxes just yet, but please look at this one :fox: pic I know of:",
                                             "image": {
@@ -191,10 +183,6 @@ def code():
                                 "embeds" : [
                                 {
                                     "color": emcolor,
-                                    "author": {
-                                        "name": autext,
-                                        "icon_url": avurl
-                                    },
                                     "title": titletxt,
                                     "footer":{
                                         "text": fttext,
@@ -231,10 +219,6 @@ def code():
                                 "embeds": [
                                     {
                                         "color": emcolor,
-                                        "author": {
-                                            "name": autext,
-                                            "icon_url": avurl
-                                        },
                                         "title": titl,
                                         "description": f"{qt}\n- {autor}",
                                         "thumbnail": {
@@ -283,10 +267,6 @@ def code():
                                             "embeds":[
                                                 {
                                                     "color": emcolor,
-                                                    "author": {
-                                                        "name": autext,
-                                                        "icon_url": avurl
-                                                    },
                                                     "title": title,
                                                     "description": msg,
                                                     "thumbnail": {
@@ -354,10 +334,6 @@ def code():
                             "embeds": [
                                 {
                                     "color": emcolor,
-                                    "author": {
-                                        "name": f"Requested by {usname}",
-                                        "icon_url": avurl
-                                    },
                                     "title": f"{uname}'s Avatar:",
                                     "image": {
                                         "url": url
