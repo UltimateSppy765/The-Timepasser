@@ -326,16 +326,6 @@ def code():
                     else:
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"{baseUrl}users/{uid}",headers=headers)
-                        if not res.ok:
-                             return jsonify(
-                                {
-                                    "type": 4,
-                                    "data": {
-                                        "flags": 64,
-                                        "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else."
-                                    }
-                                }
-                            )
                         user = res.json()
                         uav = user["avatar"]
                         uname = user["username"]
