@@ -27,7 +27,7 @@ def code():
             if request.json["guild_id"] == '789147777069744179' and request.json["channel_id"] == '789147777069744182':
                 return jsonify(
                     {
-                        "type": 3,
+                        "type": 4,
                         "data": {
                             "flags": 64,
                             "content": f"Sorry <@{usid}>, I've been instructed not to do anything in <#789147777069744182>."
@@ -89,7 +89,7 @@ def code():
                 elif cmd_name == "echo":
                     intext = request.json["data"]["options"][0]["value"]
                     return jsonify({
-                        "type": 3,
+                        "type": 4,
                         "data": {
                             "embeds": [
                                 {
@@ -115,7 +115,7 @@ def code():
                             fticon = "https://cdn.discordapp.com/attachments/789798190353743874/798118721091928074/logo.png"
                             titletxt= "Ring-ding-ding-ding-dingeringeding!"
                             return jsonify({
-                                "type": 3,
+                                "type": 4,
                                 "data":{
                                     "content": greet,
                                     "embeds": [
@@ -139,7 +139,7 @@ def code():
                             })
                         else:
                             return jsonify({
-                                "type": 3,
+                                "type": 4,
                                 "data":{
                                     "embeds": [
                                         {
@@ -185,7 +185,7 @@ def code():
                         titletxt= "Woof!"
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "content":greet,
                                 "embeds" : [
@@ -226,7 +226,7 @@ def code():
                             fttext = "Powered by Quotable"
                             fticon = "https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlPIfKPtH5.png"
                         return jsonify({
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "embeds": [
                                     {
@@ -306,7 +306,7 @@ def code():
                         thread = Thread(target=searching, args = (inpuq,token))
                         thread.start()
                         return jsonify({    
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "embeds": [
                                     
@@ -329,7 +329,7 @@ def code():
                         if not res.ok:
                              return jsonify(
                                 {
-                                    "type": 3,
+                                    "type": 4,
                                     "data": {
                                         "flags": 64,
                                         "content": f"Sorry <@{usid}>, but that user does not exist in Discord :thumbsdown:. Try with someone else."
@@ -349,7 +349,7 @@ def code():
                         else:
                             url = f"https://cdn.discordapp.com/avatars/{uid}/{uav}.webp?size=256"
                     return jsonify({
-                        "type": 3,
+                        "type": 4,
                         "data": {
                             "embeds": [
                                 {
@@ -369,7 +369,7 @@ def code():
                 elif cmd_name == "aboutme":
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "flags": 64,
                                 "content": f"Hey <@{usid}>, let me tell you my story :notebook_with_decorative_cover: of origin:\n> Once upon a time, there used to be 2 people, who had a *passion* for coding. One was *lazy* while the other was diligent. Nevertheless, both of them managed to make great stuff! The *lazy* one wanted to build a community of people whom he could spend free time with. Eventually, they made a server where they brought some people. They tried to make it active and needed many sources for that. One source was making their own server bot. And as the name of the server was **':beginner:│The Timepass Squad'** (which they took 2 days to decide), they made me: **'The Timepasser'**! In process of my making, they even took help from a friend for testing things. (*who ended up being termed as **A Lab Rat** :test_tube: :rat: by the diligent one!*) My job is to provide you with recreational things to do so that you can spend your time joyfully.\nPlease support our community server :people_holding_hands: so that we can become a huge group of friends and do stuff together!\nOur Server: https://discord.gg/XGz4Pr34aR"
@@ -392,7 +392,7 @@ def code():
                 else:
                     return jsonify(
                         {
-                            "type": 3,
+                            "type": 4,
                             "data": {
                                 "flags": 64,
                                 "content":f'Sorry to say but the command you tried to use (which is `/{cmd_name}`) is currently unavailable (and probably under development or modification :tools:).\nPlease try again later.'
