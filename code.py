@@ -97,6 +97,7 @@ def code():
                         }
                     )
                 elif cmd_name == "echo":
+                    intext=request.json["data"]["options"][0]["value"]
                     usname=request.json["member"]["user"]["username"]
                     return jsonify({
                         "type": 4,
@@ -310,7 +311,7 @@ def code():
                         options = request.json["data"]["options"]
                     except KeyError:
                         url = f"{avurl}?size=256"
-                        uname = usname
+                        uname = request.json["member"]["user"]["username"]
                     else:
                         uid = request.json["data"]["options"][0]["value"]
                         res = requests.get(f"{baseUrl}users/{uid}",headers=headers)
