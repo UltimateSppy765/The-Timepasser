@@ -35,6 +35,15 @@ def code():
                         }
                     }
                 )
+            usav=request.json["member"]["user"]["avatar"]
+            discid=request.json["member"]["user"]["discriminator"]
+            if usav is None:
+                heh = int(discid)%5
+                avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
+            elif usav.startswith('a_'):
+                avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
+            else:
+                avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
             if request.json["guild_id"] == '789147777069744179' and request.json["channel_id"] == '789147777069744182':
                 return jsonify(
                     {
@@ -88,18 +97,7 @@ def code():
                         }
                     )
                 elif cmd_name == "echo":
-                    usname=request.json["data"]["member"]["user"]["username"]
-                    intext = request.json["data"]["options"][0]["value"]
-                    usav=request.json["data"]["member"]["user"]["avatar"]
-                    usid=request.json["data"]["member"]["user"]["id"]
-                    discid=request.json["data"]["member"]["user"]["discriminator"]
-                    if usav is None:
-                        heh = int(discid)%5
-                        avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
-                    elif usav.startswith('a_'):
-                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
-                    else:
-                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
+                    usname=request.json["member"]["user"]["username"]
                     return jsonify({
                         "type": 4,
                         "data": {
@@ -308,16 +306,6 @@ def code():
                             }
                         })
                 elif cmd_name == "avatar":
-                    usav=request.json["data"]["member"]["user"]["avatar"]
-                    usid=request.json["data"]["member"]["user"]["id"]
-                    discid=request.json["data"]["member"]["user"]["discriminator"]
-                    if usav is None:
-                        heh = int(discid)%5
-                        avurl = f"https://cdn.discordapp.com/embed/avatars/{heh}.png"
-                    elif usav.startswith('a_'):
-                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.gif"
-                    else:
-                        avurl = f"https://cdn.discordapp.com/avatars/{usid}/{usav}.webp"
                     try:
                         options = request.json["data"]["options"]
                     except KeyError:
