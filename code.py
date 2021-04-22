@@ -23,7 +23,7 @@ def code():
                 "type": 1
             })
         else:
-           print(request.json)
+            print(request.json)
             try:
                 usid = request.json["member"]["user"]["id"]
             except:
