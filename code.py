@@ -367,6 +367,30 @@ def code():
                                         "components": [
                                             {
                                                 "type": 2,
+                                                "style": 1,
+                                                "custom_id": "button1",
+                                                "label": "Blurple"
+                                            },
+                                            {
+                                                "type": 2,
+                                                "style": 2,
+                                                "custom_id": "button2",
+                                                "label": "Grey"
+                                            },
+                                            {
+                                                "type": 2,
+                                                "style": 3,
+                                                "custom_id": "button3",
+                                                "label": "Green"
+                                            },
+                                            {
+                                                "type": 2,
+                                                "style": 4,
+                                                "custom_id": "button4",
+                                                "label": "Red"
+                                            },
+                                            {
+                                                "type": 2,
                                                 "style": 5,
                                                 "url": inviteLink,
                                                 "label": "Invite Link"
