@@ -360,7 +360,7 @@ def code():
                         {
                             "type": 4,
                             "data": {
-                                "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** {inviteLink}\n*This link expires in 24 hours :clock:.*",
+                                "content": f"<@{usid}>, I have created your invite :postbox: link to this channel!\n**Invite Link:** No Link lolol...\n*This link expires in 24 hours :clock:.*",
                                 "components": [
                                     {
                                         "type": 1,
