@@ -18,7 +18,7 @@ app = Flask(__name__)
 @verify_key_decorator(CLIENT_PUBLIC_KEY)
 def code():
     try:
-        if request.json["type"] == 1:        
+        if request.json["type"] == 1: # Pong response        
             return jsonify({
                 "type": 1
             })
@@ -35,6 +35,7 @@ def code():
                         }
                     }
                 )
+           # Some important global variables like user avatar id, discriminator etc.
             usav=request.json["member"]["user"]["avatar"]
             discid=request.json["member"]["user"]["discriminator"]
             if usav is None:
@@ -66,6 +67,7 @@ def code():
                             }
                         }
                     )
+                # The DICE command
                 elif cmd_name == "dice":
                     dice = [1,2,3,4,5,6,"**The dice got stuck against the wall. Try Again!** :exploding_head:","**The dice got lost. Try Again!** :thinking:"]
                     roll = choice(dice)
@@ -81,6 +83,7 @@ def code():
                             }
                         }
                     )
+                # The GUESSNUM command
                 elif cmd_name == "guessnum":
                     guess = request.json["data"]["options"][0]["value"]
                     if guess not in range(1,11):
@@ -96,6 +99,7 @@ def code():
                             }
                         }
                     )
+                # The ECHO command
                 elif cmd_name == "echo":
                     intext=request.json["data"]["options"][0]["value"]
                     usname=request.json["member"]["user"]["username"]
@@ -114,8 +118,9 @@ def code():
                             ]
                         }
                     })
+                # The ANIPIC command
                 elif cmd_name == "anipic":
-                    if request.json["data"]["options"][0]["value"] == 'Fox':
+                    if request.json["data"]["options"][0]["value"] == 'Fox':# Sends a cute fox picture
                         if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
                             api = "https://randomfox.ca/floof"
                             foxy = requests.get(api).json()
@@ -163,8 +168,8 @@ def code():
                                     ]
                                 }
                             })
-                    elif request.json["data"]["options"][0]["value"] == 'Cat':
-                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
+                    elif request.json["data"]["options"][0]["value"] == 'Cat': # Sends a cute cat picture
+                        if len(request.json["data"]["options"]) == 1 or not (request.json["data"]["options"][1]["value"]):
                             res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg,png')
                         else:
                             res = requests.get('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif')
@@ -174,8 +179,8 @@ def code():
                         fttext = "Powered by The Cat API"
                         fticon = "https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
                         titletxt = "Meow..."
-                    elif request.json["data"]["options"][0]["value"] == 'Dog':
-                        if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
+                    elif request.json["data"]["options"][0]["value"] == 'Dog': # Sends a cute dog picture
+                        if len(request.json["data"]["options"]) == 1 or not (request.json["data"]["options"][1]["value"]):
                             res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=jpg,png')
                         else:
                             res = requests.get('https://api.thedogapi.com/v1/images/search?size=small&mime_types=gif')
@@ -205,8 +210,9 @@ def code():
                             }
                         }
                     )
-                    
+                #The QUOTE command
                 elif cmd_name == "quote":
+                    # The quote-get subcommand
                     if request.json["data"]["options"][0]["name"] == "get":
                         if request.json["data"]["options"][0]["options"][0]["value"] == "qotd":
                             z = wikiquote.quote_of_the_day()
@@ -241,6 +247,7 @@ def code():
                                 ]
                             }
                         })
+                    # The quote-search subcommand
                     elif request.json["data"]["options"][0]["name"] == "search":
                         def searching(inpuq,token):
                             fttext = "Quotes from Wikiquote"
@@ -306,6 +313,7 @@ def code():
                                 ]
                             }
                         })
+                # The AVATAR command
                 elif cmd_name == "avatar":
                     try:
                         options = request.json["data"]["options"]
@@ -341,6 +349,7 @@ def code():
                             ]
                         }
                     })
+                #The ABOUTME command
                 elif cmd_name == "aboutme":
                     return jsonify(
                         {
@@ -351,6 +360,7 @@ def code():
                             }
                         }
                     )
+                #The CREATEINVITE COMMAND
                 elif cmd_name == "createinvite":
                     cid = request.json["channel_id"]
                     res = requests.post(f"{baseUrl}/channels/{cid}/invites",headers=headers,json={})
@@ -364,7 +374,7 @@ def code():
                                 "components": [
                                     {
                                         "type": 1,
-                                        "components": [
+                                        "components": [ # The new buttons(not yet available for the public. Shashaank has connection with secret shenanigans
                                             {
                                                 "type": 2,
                                                 "style": 1,
