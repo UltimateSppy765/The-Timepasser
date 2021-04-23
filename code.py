@@ -159,7 +159,7 @@ def code():
                                             "title": "I'm so sorry",
                                             "description": "I cannot get you random animated pictures of foxes just yet, but please look at this one :fox: pic I know of:",
                                             "image": {
-                                                "url": "https://cdn.discordapp.com/attachments/793873121451049080/819444809768763412/tenor_1.gif"
+                                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/835248004478402630/fox-happy.gif"
                                             },
                                             "footer": {
                                                 "text": "Gif from Tenor",
