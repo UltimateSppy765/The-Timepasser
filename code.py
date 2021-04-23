@@ -124,6 +124,7 @@ def code():
                         if len(request.json["data"]["options"]) == 1 or request.json["data"]["options"][1]["value"] == False:
                             api = "https://randomfox.ca/floof"
                             foxy = requests.get(api).json()
+                            print (foxy)
                             fox = foxy["image"]
                             greet = ":fox: Here's a fox pic for you."
                             fttext = "Powered by RandomFox"
