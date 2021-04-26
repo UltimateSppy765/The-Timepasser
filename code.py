@@ -36,6 +36,7 @@ def code():
                     }
                 )
            # Some important global variables like user avatar id, discriminator etc.
+            print(request.json)
             usav=request.json["member"]["user"]["avatar"]
             discid=request.json["member"]["user"]["discriminator"]
             if usav is None:
