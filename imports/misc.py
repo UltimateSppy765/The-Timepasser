@@ -27,7 +27,7 @@ def existnt(cname:str):
         "type": 4,
         "data": {
             "flags": 64,
-            "content": f"> <:tickNo:315009174163685377> Sorry to say but the command you tried to use (which is `/{cname}`) is currently unavailable (and probably under development or modification :tools:).\nPlease try again later."
+            "content": f"> <:tickNo:315009174163685377> Sorry to say but the command you tried to use (which is `/{cname}`) is currently unavailable (and probably under development or modification :tools:).\n> Please try again later."
         }
     }
 
