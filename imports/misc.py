@@ -125,7 +125,7 @@ def aboutme(subc:str,uid:str):
                                 "value": "meow435#9858 - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\nUltimateSppy765#0765 - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
                             },
                             {
-                                "name": "Collaborators:",
+                                "name": ":man_technologist: Collaborators:",
                                 "value": "Plexi#3266 - <@!730361955226746923>"
                             },
                             {
