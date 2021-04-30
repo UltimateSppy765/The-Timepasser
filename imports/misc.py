@@ -14,7 +14,7 @@ def err(error:str):
                     "description": f":clipboard: **Please report this error to the bot developers:**\n```py\n{error}\n```",
                     "color": 3092791,
                     "footer": {
-                        "text": "For finding the bot developers, run \"/aboutme\".",
+                        "text": "For finding the bot developers, run '/aboutme devs'.",
                         "icon_url": "https://cdn.discordapp.com/avatars/791153806058455075/4fc80d3c7cf9bf40fba1d461e1ad5c54.webp"
                     }
                 }
@@ -85,3 +85,55 @@ def eval(token:str,iid:str,sc:str,aid:str,jsn):
                 }
                 requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsnerr)
                 return
+
+def aboutme(subc:str,uid:str):
+    if subc=="story":
+        return {
+            "type": 4,
+            "data": {
+                "flags": 64,
+                "content": f"Hey <@!{uid}>, you want to know **more **about me?\n*About me?* (Really?...)\nI am so honored to be given this opportunity.\nFine, it's storytime! :magic_wand:",
+                "embeds": [
+                    {
+                        "color": 3092791,
+                        "fields": [
+                            {
+                                "name": ":notebook_with_decorative_cover: The Story:",
+                                "value": "Once upon a time, there used to be 2 people, who had a passion for coding. One was lazy while the other was diligent. Nevertheless, both of them managed to make great stuff! The lazy one wanted to build a community of people whom he could spend free time with. Eventually, they made a server where they brought some people. They tried to make it active and needed many sources for that. One source was making their own server bot. And as the name of the server was ':beginner:│The Timepass Squad' (which they took 2 days to decide), they made me: 'The Timepasser'! In process of my making, they even took help from a friend for testing things. (who ended up being termed as A Lab Rat :test_tube: :rat: by the diligent one!) My job is to provide you with recreational things to do so that you can spend your time joyfully.\nPlease support our community server :people_holding_hands: so that we can become a huge group of friends and do stuff together!"
+                            },
+                            {
+                                "name": "Our Community Server:",
+                                "value": "Please support us by joining our community server and making it a lively place!\nJoin Server: [Click Here!](https://discord.gg/JXGe9MfXPF)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    else:
+        return {
+            "type": 4,
+            "data": {
+                "flags": 64,
+                "content": f"> Hey <@!{uid}>!\n> <:developer2:792583451063615518> Want the list of the bot developers? \n> Here you go:",
+                "embeds": [
+                    {
+                        "color": 3092791,
+                        "fields": [
+                            {
+                                "name": ":pencil2: Bot Creators:",
+                                "value": "meow435#9858 - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\nUltimateSppy765#0765 - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
+                            },
+                            {
+                                "name": "Collaborators:",
+                                "value": "Plexi#3266 - <@!730361955226746923>"
+                            },
+                            {
+                                "name": "Want to contact someone listed above?",
+                                "value": "You might need to join our community server to contact them. (as their DMs might be disabled)\n[Join our Server!](https://discord.gg/JXGe9MfXPF)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
