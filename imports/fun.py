@@ -1,4 +1,4 @@
-import os,requests,json
+import os,requests,asyncio
 from random import choice
 
 baseurl=os.environ['BASE_URL']
