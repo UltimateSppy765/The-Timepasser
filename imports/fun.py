@@ -18,4 +18,4 @@ def dice(aid:str,iid:str,token:str):
         "content": f"The dice rolled {roll} {emojis[roll-1]}" if type(roll) == int else roll
   }
   await asyncio.sleep(1)
-  requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original"",json=dicerolled)
+  requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
