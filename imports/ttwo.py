@@ -1,4 +1,4 @@
-from imports import misc
+from imports import misc,fun
 import traceback
 def slashc(r):
     try:
@@ -13,7 +13,9 @@ def slashc(r):
                 return
             elif cmdname=="aboutme":
                 return misc.aboutme(subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
+            elif cmdname=="dice":
+                return fun.dice()
             else:
-                return misc.existnt(cname=cmdname)
+                return misc.existnt(cmdname)
         except:
-            return misc.err(error=traceback.format_exc())
+            return misc.err(traceback.format_exc())
