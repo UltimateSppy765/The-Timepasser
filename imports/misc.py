@@ -1,5 +1,5 @@
 from random import choice
-import os,requests,json,traceback
+import os,requests,json
 
 baseurl=os.environ['BASE_URL']
 tings=["Drank too much juice...","Lazed around too much...","**Started studying**...","Looked at myself in the mirror...","Walked into the 'I give up Pit'...","**Someone asked me whether I was smart...**"]
