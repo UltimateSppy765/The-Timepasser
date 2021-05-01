@@ -1,7 +1,7 @@
 from random import choice
-import requests,json,traceback
+import os,requests,json,traceback
 
-baseurl="https://discord.com/api/v9/"
+baseurl=os.environ['BASE_URL']
 tings=["Drank too much juice...","Lazed around too much...","**Started studying**...","Looked at myself in the mirror...","Walked into the 'I give up Pit'...","**Someone asked me whether I was smart...**"]
 
 def err(error:str):
