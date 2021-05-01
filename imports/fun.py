@@ -1,4 +1,5 @@
 import os,requests,json
+from random import choice
 
 baseurl=os.environ['BASE_URL']
 
