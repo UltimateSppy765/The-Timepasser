@@ -14,7 +14,7 @@ def slashc(r):
             elif cmdname=="aboutme":
                 return misc.aboutme(subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
             elif cmdname=="dice":
-                return fun.dice(token=r.json["token"],iid=r.json["id"])
+                return fun.dice(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
             else:
                 return misc.existnt(cmdname)
         except:
