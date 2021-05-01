@@ -21,7 +21,7 @@ def dice(aid:str,iid:str,token:str):
   sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
-def echo(text,usname,avurl):
+def echo(text):
   return {
     "type": 4,
     "data": {
@@ -30,8 +30,8 @@ def echo(text,usname,avurl):
             "color":"30",
             "description":text,
             "author":{
-              "name":f"{usname}'s Echo!",
-              "icon_url": avurl
+              "name":"Echo!",
+              "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
             }
           }
         ]
