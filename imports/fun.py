@@ -21,9 +21,10 @@ def dice(aid:str,iid:str,token:str):
   sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
-def echo(text,cid):
-  msg = {
-    "content":text
+def echo(text):
+  return {
+    "type": 4,
+    "data": {
+        "content": text
+    }
   }
-  res = requests.post(f"{baseurl}channels/{cid}/messages",json=msg)
-  print(res.json)
