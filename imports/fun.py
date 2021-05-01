@@ -1,4 +1,5 @@
-import os,requests,time
+import os,requests
+from time import sleep
 from random import choice
 
 baseurl=os.environ['BASE_URL']
@@ -17,5 +18,5 @@ def dice(aid:str,iid:str,token:str):
   dicerolled = {
         "content": f"The dice rolled {roll} {emojis[roll-1]}" if type(roll) == int else roll
   }
-  await time.sleep(1)
+  time.sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
