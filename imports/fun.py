@@ -19,5 +19,4 @@ def dice(aid:str,iid:str,token:str):
         "content": f"The dice rolled {roll} {emojis[roll-1]}" if type(roll) == int else roll
   }
   sleep(1)
-  rt=requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
-  print(rt.json())
+  requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
