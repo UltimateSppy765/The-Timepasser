@@ -25,4 +25,5 @@ def echo(text,cid):
   msg = {
     "content":text
   }
-  requests.post(f"{baseurl}channels/{cid}/messages",json=msg)
+  res = requests.post(f"{baseurl}channels/{cid}/messages",json=msg)
+  print(res.json)
