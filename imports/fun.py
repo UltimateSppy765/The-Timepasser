@@ -23,18 +23,27 @@ def dice(aid:str,iid:str,token:str):
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
 def echo(text:str,uname:str,id:str,disc:str,av):
-  return {
-    "type": 4,
-    "data": {
-        "embeds":[
-          {
-            "color": "3092791",
-            "description": text,
-            "author":{
-              "name": f"{uname}'s Echo!",
-              "icon_url": notcmd.usav(id=id,discid=disc,av=av)
-            }
-          }
-        ]
+  if notcmd.analyse(cont=text):
+    return {
+      "type": 4,
+      "data": {
+        "flags": 64,
+        "content": "> <:tickNo:315009174163685377> Sorry, your command usage was blocked as harmful text was detected in your input \n> If you think it is a mistake, please contact the bot developers. (You can see them through `/aboutme devs`.\n> :confused: Your input: (*just in case you forgot what you wrote...*)```\n{text}\n```"
+      }
     }
-  }
+  else:
+    return {
+      "type": 4,
+      "data": {
+          "embeds":[
+            {
+              "color": "3092791",
+              "description": text,
+              "author":{
+                "name": f"{uname}'s Echo!",
+                "icon_url": notcmd.usav(id=id,discid=disc,av=av)
+              }
+            }
+          ]
+      }
+    }
