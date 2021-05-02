@@ -44,7 +44,7 @@ def eval(token:str,iid:str,sc:str,aid:str,jsn):
     try:
         jsa=json.loads(jsn)
     except:
-        return jsnerr={
+        return {
             "type": 4,
             "data": {
                 "flags": 64,
@@ -75,7 +75,7 @@ def eval(token:str,iid:str,sc:str,aid:str,jsn):
             if res.status_code==200:
                 return
             else:
-                return jsnerr={
+                return {
                     "type":  4,
                     "data": {
                         "content": f"<:tickNo:315009174163685377> Your evaluation failed, detailed information given below:```\nReturned Status Code: {res.status_code}\n{res.json()}\n```"
