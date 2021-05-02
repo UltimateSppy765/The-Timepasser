@@ -1,6 +1,7 @@
 import os,requests
 from time import sleep
 from random import choice
+from imports import notcmd
 
 baseurl=os.environ['BASE_URL']
 
@@ -21,7 +22,7 @@ def dice(aid:str,iid:str,token:str):
   sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
-def echo(text):
+def echo(text:str,id:str,disc:str,av):
   return {
     "type": 4,
     "data": {
@@ -31,7 +32,7 @@ def echo(text):
             "description":text,
             "author":{
               "name":"Echo!",
-              "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+              "icon_url": notcmd.avatar(id=id,discid=disc,av=av)
             }
           }
         ]
