@@ -41,6 +41,18 @@ def analyse(cont:str):
         v=json.loads(json.dumps(res2))
         prof=v["attributeScores"]["PROFANITY"]["summaryScore"]["value"]
     if tox>0.9 or prof>0.95:
-        return True
+        if tox>0.9 and prof>0.95:
+            reason=f"Detected {tox*100}% Toxicity and {prof*100}% Profanity"
+        elif tox>0.9:
+            reason=f"Detected {tox*100}% Toxicity"
+        else:
+            reason=f"Detected {prof*100}% Profanity"
+        return {
+            "type": 4,
+            "data": {
+                "flags": 64,
+                "content": f"> <:tickNo:315009174163685377> Sorry, your command usage was blocked as harmful text was detected in your input.\n> If you think it is a mistake, please contact the bot developers. (You can see them through `/aboutme devs`)\n> Reason: {reason}\n> :confused: Your input: (*just in case you forgot what you wrote...*)\n```\n{cont}\n```"
+            }    
+        }
     else:
-        return False
+        return None
