@@ -42,3 +42,15 @@ def echo(text:str,uname:str,id:str,disc:str,av):
           ]
       }
     }
+
+def simon(text:str):
+  um=notcmd.analyse(cont=text)
+  if um is not None:
+    return um
+  else:
+    return {
+      "type": 4,
+      "data": {
+          "content": f"Simon says {text}"
+      }
+    }
