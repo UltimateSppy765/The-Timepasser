@@ -40,7 +40,7 @@ def analyse(cont:str):
     else:
         v=json.loads(json.dumps(res2))
         prof=v["attributeScores"]["PROFANITY"]["summaryScore"]["value"]
-    if tox>0.9 or prof>0.5:
+    if tox>0.9 or prof>0.95:
         return True
     else:
         return False
