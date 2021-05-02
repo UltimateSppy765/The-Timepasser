@@ -44,15 +44,13 @@ def eval(token:str,iid:str,sc:str,aid:str,jsn):
     try:
         jsa=json.loads(jsn)
     except:
-        jsnerr={
+        return jsnerr={
             "type": 4,
             "data": {
                 "flags": 64,
                 "content": "<:tickNo:315009174163685377> The input given was not a valid JSON, please enter a valid JSON."
             }
         }
-        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsnerr)
-        return 
     else:
         if sc=="followup":
             jsp={
@@ -77,14 +75,12 @@ def eval(token:str,iid:str,sc:str,aid:str,jsn):
             if res.status_code==200:
                 return
             else:
-                jsnerr={
+                return jsnerr={
                     "type":  4,
                     "data": {
                         "content": f"<:tickNo:315009174163685377> Your evaluation failed, detailed information given below:```\nReturned Status Code: {res.status_code}\n{res.json()}\n```"
                     }
                 }
-                requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsnerr)
-                return
 
 def aboutme(subc:str,uid:str):
     if subc=="story":
