@@ -20,11 +20,11 @@ def usav(id:str,discid:str,av):
 def analyse(cont:str):
     ar1= {
         "comment": {"text": f"{cont}"},
-        "requestedAttributes": {"SEVERE_TOXICITY": {}
+        "requestedAttributes": {"SEVERE_TOXICITY": {}}
     }
     ar2= {
         "comment": {"text": f"{cont}"},
-        "requestedAttributes": {"PROFANITY": {}
+        "requestedAttributes": {"PROFANITY": {}}
     }
     try:
         res1=service.comments().analyze(body=ar1).execute()
