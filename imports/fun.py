@@ -23,14 +23,9 @@ def dice(aid:str,iid:str,token:str):
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
 def echo(text:str,uname:str,id:str,disc:str,av):
-  if notcmd.analyse(cont=text):
-    return {
-      "type": 4,
-      "data": {
-        "flags": 64,
-        "content": f"> <:tickNo:315009174163685377> Sorry, your command usage was blocked as harmful text was detected in your input.\n> If you think it is a mistake, please contact the bot developers. (You can see them through `/aboutme devs`)\n> :confused: Your input: (*just in case you forgot what you wrote...*)\n```\n{text}\n```"
-      }
-    }
+  um=notcmd.analyse(cont=text)
+  if um is not None:
+    return um
   else:
     return {
       "type": 4,
