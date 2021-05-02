@@ -22,16 +22,16 @@ def dice(aid:str,iid:str,token:str):
   sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
   
-def echo(text:str,id:str,disc:str,av):
+def echo(text:str,uname:str,id:str,disc:str,av):
   return {
     "type": 4,
     "data": {
         "embeds":[
           {
-            "color":"30",
-            "description":text,
+            "color": "3092791",
+            "description": text,
             "author":{
-              "name":"Echo!",
+              "name": f"{uname}'s Echo!",
               "icon_url": notcmd.avatar(id=id,discid=disc,av=av)
             }
           }
