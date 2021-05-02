@@ -8,6 +8,8 @@ def slashc(r):
     else:
         try:
             cmdname=r.json["data"]["name"]
+            if r.json["member"]["user"]["id"] not in ["730361955226746923","698200925311074485"]:
+                return misc.existnt(cmdname)
             if cmdname=="eval":
                 return misc.eval(token=r.json["token"],iid=r.json["id"],sc=r.json["data"]["options"][0]["name"],aid=r.json["application_id"],jsn=r.json["data"]["options"][0]["options"][0]["value"])
             elif cmdname=="aboutme":
