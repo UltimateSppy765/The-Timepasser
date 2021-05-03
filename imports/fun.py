@@ -56,10 +56,23 @@ def simon(text:str):
       }
     }
 
-def guessnum(guess):
-  return {
+def guessnum(guess:int,aid:str,iid:str,token:str):
+  if guess not in range(1,11):
+    return {
       "type": 4,
       "data": {
-          "content": "Guess a number between 1 to 10, silly!" if not guess in range(1,11) else f":confetti_ball: You guessed it right! :confetti_ball:" if (guess==(num:=randint(1,10))) else f"Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}."
+        "flags": 64,
+        "content": "> <:tickNo:315009174163685377> Your choice must be an integer between 1 and 10. (*including them*)\n ***If you really think you can guess numbers in a longer range with this bot, contact the bot developers with a proof showing them at least 10 correct number guesses…***"
       }
     }
+  else:
+    requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":4,"data":{"content":f":thinking: You guessed {guess}. My guess is..."}})
+    jsr={
+      "type": 4,
+      "data": {
+        "content": f":confetti_ball: You guessed it right! :confetti_ball:\n:thinking: The number I thought of was {num}!" if (guess==(num:=randint(1,10))) else f"Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}."
+      }
+    }
+    sleep(1)
+    requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
+    return
