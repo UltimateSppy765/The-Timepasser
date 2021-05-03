@@ -21,7 +21,7 @@ def slashc(r):
             elif cmdname=="echo":
                 return fun.echo(text=r.json["data"]["options"][0]["value"],uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
             elif cmdname=="guessnum":
-                return fun.guessnum(r.json["data"]["options"][0]["value"])
+                return fun.guessnum(guess=r.json["data"]["options"][0]["value"])
             else:
                 return misc.existnt(cmdname)
         except:
