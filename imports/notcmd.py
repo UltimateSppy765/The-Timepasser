@@ -42,11 +42,11 @@ def analyse(cont:str):
         prof=v["attributeScores"]["PROFANITY"]["summaryScore"]["value"]
     if tox>0.9 or prof>0.95:
         if tox>0.9 and prof>0.95:
-            reason=f"Detected {tox*100}% Toxicity and {prof*100}% Profanity"
+            reason=f"Detected {round(tox*100,3)}% Toxicity and {prof*100}% Profanity"
         elif tox>0.9:
-            reason=f"Detected {tox*100}% Toxicity"
+            reason=f"Detected {round(tox*100,3)}% Toxicity"
         else:
-            reason=f"Detected {prof*100}% Profanity"
+            reason=f"Detected {round(prof*100,3)}% Profanity"
         return {
             "type": 4,
             "data": {
