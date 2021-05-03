@@ -17,11 +17,12 @@ def dice(aid:str,iid:str,token:str):
   }
   requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=rolling)
   dicerolled = {
-        "content": f"The dice rolled {roll} {emojis[roll-1]}" if type(roll) == int else roll
+        "content": f"The dice rolled {roll}! {emojis[roll-1]}" if type(roll) == int else roll
   }
   sleep(1)
   requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
-  
+  return
+
 def echo(text:str,uname:str,id:str,disc:str,av):
   um=notcmd.analyse(cont=text)
   if um is not None:
