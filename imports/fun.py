@@ -1,6 +1,6 @@
 import os,requests
 from time import sleep
-from random import choice
+from random import choice,randint
 from imports import notcmd
 
 baseurl=os.environ['BASE_URL']
@@ -53,5 +53,13 @@ def simon(text:str):
       "type": 4,
       "data": {
           "content": f"Simon says {text}"
+      }
+    }
+
+def guessnum(guess):
+  return {
+      "type": 4,
+      "data": {
+          "content": "Please guess a number between 1 to 10" if not guess in range(1,11) else f"You guessed it right!" if (guess == num := randint(1,10)) else f"You guessed it wrong!\nIt was {num}"
       }
     }
