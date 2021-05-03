@@ -68,10 +68,7 @@ def guessnum(guess:int,aid:str,iid:str,token:str):
   else:
     requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":4,"data":{"content":f":thinking: You guessed {guess}. My guess is..."}})
     jsr={
-      "type": 4,
-      "data": {
-        "content": f":confetti_ball: You guessed it right! :confetti_ball:\n:thinking: The number I thought of was {num}!" if (guess==(num:=randint(1,10))) else f"Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}."
-      }
+      "content": f":confetti_ball: You guessed it right! :confetti_ball:\n:thinking: The number I thought of was {num}!" if (guess==(num:=randint(1,10))) else f"Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}."
     }
     sleep(1)
     requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
