@@ -14,6 +14,8 @@ def code():
         })
     elif request.json["type"]==2:
         return jsonify(ttwo.slashc(r=request))
+    elif request.json["type"]==3:
+        return jsonify()
 
 port=os.getenv('PORT')
 if port:
