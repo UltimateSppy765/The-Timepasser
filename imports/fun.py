@@ -60,6 +60,6 @@ def guessnum(guess):
   return {
       "type": 4,
       "data": {
-          "content": "Please guess a number between 1 to 10" if not guess in range(1,11) else f":ballot_box_with_check: You guessed it right! :ballot_box_with_check:" if (guess == (num := randint(1,10))) else f":x: You guessed it wrong! :x:\nIt was {num}"
+          "content": "Guess a number between 1 to 10, silly!" if not guess in range(1,11) else f":confetti_ball: You guessed it right! :confetti_ball:" if (guess==(num=randint(1,10))) else f"Aah! You have guessed it wrong. :thumbdown:\nThe number was {num}."
       }
     }
