@@ -115,10 +115,10 @@ def aboutme(subc:str,uid:str):
             }
         }
     else:
-        m= requests.get(f"{baseUrl}users/698200925311074485",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
-        s=requests.get(f"{baseUrl}users/770542184310243342",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
-        p=requests.get(f"{baseUrl}users/730361955226746923",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
-        a=requests.get(f"{baseUrl}users/479195061792407562",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
+        m= requests.get(f"{baseurl}users/698200925311074485",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
+        s=requests.get(f"{baseurl}users/770542184310243342",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
+        p=requests.get(f"{baseurl}users/730361955226746923",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
+        a=requests.get(f"{baseurl}users/479195061792407562",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
         meow=m.json()
         sppy=s.json()
         plexi=p.json()
