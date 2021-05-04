@@ -13,7 +13,7 @@ def slashc(r):
             if cmdname=="eval":
                 return misc.eval(uid=r.json["member"]["user"]["id"],token=r.json["token"],iid=r.json["id"],sc=r.json["data"]["options"][0]["name"],aid=r.json["application_id"],jsn=r.json["data"]["options"][0]["options"][0]["value"])
             elif cmdname=="aboutme":
-                return misc.aboutme(subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
+                return misc.aboutme(token=r.json["token"],id=r.json["id"],aid=r.json["application_id"],subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
             elif cmdname=="dice":
                 return fun.dice(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
             elif cmdname=="simon":
