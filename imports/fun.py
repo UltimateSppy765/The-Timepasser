@@ -89,7 +89,7 @@ def avatar(us:str,uname:str,id:str,disc:str,av:str):
             "embeds": [
                 {
                     "title": f":mirror: {usname}'s Avatar:",
-                    "color": 3092791
+                    "color": 3092791,
                     "image": {
                         "url": f"{avurl}?size=256"
                     }
