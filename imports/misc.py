@@ -90,7 +90,7 @@ def eval(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
                     }
                 }
 
-def aboutme(token:str,id:str,aid:str,subc:str,uid:str):
+def aboutme(token:str,iid:str,aid:str,subc:str,uid:str):
     if subc=="story":
         return {
             "type": 4,
