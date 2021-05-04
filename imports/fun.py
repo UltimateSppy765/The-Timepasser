@@ -73,15 +73,16 @@ def guessnum(guess:int,aid:str,iid:str,token:str):
     sleep(1)
     requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
     return
-def avatar(us:str,uname:str,id:str,disc:str,av:str):
+def avatar(us,uname:str,id:str,disc:str,av:str):
     if us is None:
         usname=uname
         avurl=notcmd.usav(id=id,discid=disc,av=av)
     else:
         res=requests.get(f"{baseurl}users/{us}",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
-        av1=res.json["avatar"]
-        disc1=res.json["discriminator"]
-        usname=res.json["username"]
+        smth=res.json()
+        av1=smth["avatar"]
+        disc1=smth["discriminator"]
+        usname=smth["username"]
         avurl=notcmd.usav(id=us,discid=disc1,av=av1)
     return {
         "type": 4,
