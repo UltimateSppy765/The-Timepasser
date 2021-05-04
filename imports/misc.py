@@ -40,7 +40,15 @@ def dmerr():
         }
     }
 
-def eval(token:str,iid:str,sc:str,aid:str,jsn):
+def eval(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
+    if uid not in ["730361955226746923","698200925311074485"]:
+        return {
+            "type": 4,
+            "data": {
+                "flags": 64,
+                "content": "> <:tickNo:315009174163685377> You cannot use this command because you are not whitelisted."
+            }
+        }
     try:
         jsa=json.loads(jsn)
     except:
