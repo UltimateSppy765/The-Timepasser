@@ -41,7 +41,7 @@ def dmerr():
     }
 
 def eval(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
-    if uid not in ["730361955226746923","698200925311074485"]:
+    if uid not in ["730361955226746923","698200925311074485","770542184310243342"]:
         return {
             "type": 4,
             "data": {
