@@ -91,7 +91,7 @@ def avatar(us:str,uname:str,id:str,disc:str,av:str):
                     "title": f":mirror: {usname}'s Avatar:",
                     "color": 3092791
                     "image": {
-                        "url": avurl
+                        "url": f"{avurl}?size=256"
                     }
                 }
             ]
