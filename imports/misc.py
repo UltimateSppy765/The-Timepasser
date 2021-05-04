@@ -134,15 +134,15 @@ def aboutme(subc:str,uid:str):
                         "fields": [
                             {
                                 "name": ":pencil2: Bot Creators:",
-                                "value": f"{meow["username"]}#{meow["discriminator"]} - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\n{sppy["username"]}#{sppy["discriminator"]} - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
+                                "value": f"{meow['username']}#{meow['discriminator']} - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\n{sppy['username']}#{sppy['discriminator']} - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
                             },
                             {
                                 "name": ":man_technologist: Collaborators:",
-                                "value": f"{plexi["username"]}#{plexi["discriminator"]} - <@!730361955226746923>"
+                                "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923>"
                             },
                             {
                                 "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
-                                "value": f"{aura["username"]}#{aura["discriminator"]} - <@!479195061792407562>"
+                                "value": f"{aura['username']}#{aura['discriminator']} - <@!479195061792407562>"
                             },
                             {
                                 "name": "Want to contact someone listed above?",
