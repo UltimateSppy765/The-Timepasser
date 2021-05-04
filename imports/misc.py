@@ -90,7 +90,7 @@ def eval(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
                     }
                 }
 
-def aboutme(subc:str,uid:str):
+def aboutme(token:str,id:str,aid:str,subc:str,uid:str):
     if subc=="story":
         return {
             "type": 4,
@@ -115,6 +115,7 @@ def aboutme(subc:str,uid:str):
             }
         }
     else:
+        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5,"data":{"flags":64}})
         m= requests.get(f"{baseurl}users/698200925311074485",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
         s=requests.get(f"{baseurl}users/770542184310243342",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
         p=requests.get(f"{baseurl}users/730361955226746923",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
@@ -123,33 +124,31 @@ def aboutme(subc:str,uid:str):
         sppy=s.json()
         plexi=p.json()
         aura=a.json()
-        return {
-            "type": 4,
-            "data": {
-                "flags": 64,
-                "content": f"> Hey <@!{uid}>!\n> <:developer2:792583451063615518> Want the list of the bot developers? \n> Here you go:",
-                "embeds": [
-                    {
-                        "color": 3092791,
-                        "fields": [
-                            {
-                                "name": ":pencil2: Bot Creators:",
-                                "value": f"{meow['username']}#{meow['discriminator']} - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\n{sppy['username']}#{sppy['discriminator']} - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
-                            },
-                            {
-                                "name": ":man_technologist: Collaborators:",
-                                "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923>"
-                            },
-                            {
-                                "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
-                                "value": f"{aura['username']}#{aura['discriminator']} - <@!479195061792407562>"
-                            },
-                            {
-                                "name": "Want to contact someone listed above?",
-                                "value": "You might need to join our community server to contact them. (as their DMs might be disabled)\n[Join our Server!](https://discord.gg/JXGe9MfXPF)"
-                            }
-                        ]
-                    }
-                ]
-            }
+        njs={
+            "content": f"> Hey <@!{uid}>!\n> <:developer2:792583451063615518> Want the list of the bot developers? \n> Here you go:",
+            "embeds": [
+                {
+                    "color": 3092791,
+                    "fields": [
+                        {
+                            "name": ":pencil2: Bot Creators:",
+                            "value": f"{meow['username']}#{meow['discriminator']} - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\n{sppy['username']}#{sppy['discriminator']} - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
+                        },
+                        {
+                            "name": ":man_technologist: Collaborators:",
+                            "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923>"
+                        },
+                        {
+                            "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
+                            "value": f"{aura['username']}#{aura['discriminator']} - <@!479195061792407562>"
+                        },
+                        {
+                            "name": "Want to contact someone listed above?",
+                            "value": "You might need to join our community server to contact them. (as their DMs might be disabled)\n[Join our Server!](https://discord.gg/JXGe9MfXPF)"
+                        }
+                    ]
+                }
+            ]
         }
+        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=njs)
+        return
