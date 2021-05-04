@@ -125,6 +125,10 @@ def aboutme(subc:str,uid:str):
                                 "value": "Plexi#3266 - <@!730361955226746923>"
                             },
                             {
+                                "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
+                                "value": "Aurus 79#0079 - <@!479195061792407562>"
+                            },
+                            {
                                 "name": "Want to contact someone listed above?",
                                 "value": "You might need to join our community server to contact them. (as their DMs might be disabled)\n[Join our Server!](https://discord.gg/JXGe9MfXPF)"
                             }
