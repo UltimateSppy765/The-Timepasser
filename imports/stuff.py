@@ -10,11 +10,11 @@ def anipic(anim:bool,animal:str):
             ficon="https://cdn.discordapp.com/attachments/789798190353743874/798118721091928074/logo.png"
             greet="Ring-ding-ding-ding-dingeringeding!"
         else:
-            return misc.existnt(cname="/anipic")
+            return misc.existnt(cname="anipic")
     elif animal=="Cat":
-        return misc.existnt(cname="/anipic")
+        return misc.existnt(cname="anipic")
     elif animal=="Dog":
-        return misc.existnt(cname="/anipic")
+        return misc.existnt(cname="anipic")
     return {
         "type": 4,
         "data": {
