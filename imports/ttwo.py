@@ -28,6 +28,8 @@ def slashc(r):
                 except KeyError:
                     use=None
                 return fun.avatar(us=use,uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
+            elif cmdname=="quote":
+                return stuff.quote(subc=r.json["data"]["options"][0]["name"],query=r.json["data"]["options"][0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"])
             elif cmdname=="anipic":
                 try:
                     ani=r.json["data"]["options"][1]["value"]
