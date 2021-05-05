@@ -68,15 +68,17 @@ def qsearch(query:str):
     except:
         json={
             "embeds": [
-                "title": f"No result found for query: **'{query}'**",
-                "description": "Sorry, your query didn't work, please try with a different one.",
-                "color": 3092791,
-                "thumbnail": {
-                    "url": thum
-                },
-                "footer": {
-                    "text": ftext,
-                    "icon_url": ficon
+                {
+                    "title": f"No result found for query: **'{query}'**",
+                    "description": "Sorry, your query didn't work, please try with a different one.",
+                    "color": 3092791,
+                    "thumbnail": {
+                        "url": thum
+                    },
+                    "footer": {
+                        "text": ftext,
+                        "icon_url": ficon
+                    }
                 }
             ]
         }
@@ -97,30 +99,34 @@ def qsearch(query:str):
         try:
             json={
                 "embeds": [
-                    "title": f"Search result for query: **'{query}'**",
-                    "description": f"{qt}\n- {autor}",
-                    "color": 3092791,
-                    "thumbnail": {
-                        "url": thum
-                    },
-                    "footer": {
-                        "text": ftext,
-                        "icon_url": ficon
+                    {
+                        "title": f"Search result for query: **'{query}'**",
+                        "description": f"{qt}\n- {autor}",
+                        "color": 3092791,
+                        "thumbnail": {
+                            "url": thum
+                        },
+                        "footer": {
+                            "text": ftext,
+                            "icon_url": ficon
+                        }
                     }
                 ]
             }
         except:
             json={
                 "embeds": [
-                    "title": f"No result for query: **'{query}'**",
-                    "description": "Sorry, couldn't find a quote for the given query, please try again.",
-                    "color": 3092791,
-                    "thumbnail": {
-                        "url": thum
-                    },
-                    "footer": {
-                        "text": ftext,
-                        "icon_url": ficon
+                    {
+                        "title": f"No result for query: **'{query}'**",
+                        "description": "Sorry, couldn't find a quote for the given query, please try again.",
+                        "color": 3092791,
+                        "thumbnail": {
+                            "url": thum
+                        },
+                        "footer": {
+                            "text": ftext,
+                            "icon_url": ficon
+                        }
                     }
                 ]
             }   
