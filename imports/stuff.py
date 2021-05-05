@@ -106,5 +106,6 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
         if a is not None:
             return a
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5})
-        notcmd.qsearch(query=query)
-        return misc.existnt(cname="quote")
+        jsr=notcmd.qsearch(query=query)
+        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
+        return
