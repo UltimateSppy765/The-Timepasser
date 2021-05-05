@@ -2,7 +2,7 @@ import requests
 from imports import misc
 def anipic(anim:bool,animal:str):
     if animal=="fox":
-        if anim==False
+        if anim==False:
             foxy=requests.get("https://randomfox.ca/floof").json()
             url=foxy["image"]
             cont=":fox: Here's a fox pic for you."
