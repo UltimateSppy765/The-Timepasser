@@ -31,7 +31,6 @@ def slashc(r):
             elif cmdname=="anipic":
                 try:
                     ani=r.json["data"]["options"][1]["value"]
-                    print(ani,type(ani))
                 except:
                     ani=False
                 return stuff.anipic(animal=r.json["data"]["options"][0]["value"],anim=ani)
