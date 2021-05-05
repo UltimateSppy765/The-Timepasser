@@ -1,4 +1,4 @@
-from imports import misc,fun
+from imports import misc,fun, stuff
 import traceback
 def slashc(r):
     try:
@@ -28,6 +28,12 @@ def slashc(r):
                 except KeyError:
                     use=None
                 return fun.avatar(us=use,uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
+            elif cmdname=="anipic":
+                try:
+                    ani=r.json["data"]["options"][1]["value"]
+                except:
+                    ani=False
+                return stuff.anipic(animal=r.json["data"]["options"][0]["value"],anim=ani)
             else:
                 return misc.existnt(cmdname)
         except:
