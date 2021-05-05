@@ -1,4 +1,4 @@
-import os,requests
+import os,requests,wikiquote,wikiquotes
 from imports import misc
 def anipic(anim:bool,animal:str):
     if animal=="Fox":
@@ -67,6 +67,36 @@ def anipic(anim:bool,animal:str):
     }
 def quote(subc:str,query:str,token:str,aid:str,iid:str):
     if subc=="get":
-        return misc.existnt(cmdname="quote")
+        if query=="qotd":
+            titl="Quote of the Day:"
+            ftext="Quotes from Wikiquote"
+            ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+            (qt,autor)=wikiquote.quote_of_the_day()
+        elif query=="random":
+            titl="Random Quote:"
+            ftext="Powered by Quotable"
+            ficon="https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAA"
+            res=requests.get(http://api.quotable.io/random).json()
+            qt=res["content"]
+            autor=res["author"]
+        return {
+            "type": 4,
+            "data": {
+                "embeds": [
+                    {
+                        "color": 3092791,
+                        "title": titl,
+                        "description": f"{qt}\n- {autor}",
+                        "thumbnail": {
+                            "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                        },
+                        "footer": {
+                            "text": ftext,
+                            "icon_url": ficon
+                        }
+                    }
+                ]
+            }
+        }
     else:
         return misc.existnt(cmdname="quote")
