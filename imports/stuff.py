@@ -1,6 +1,6 @@
 import requests
 from imports import misc
-def anipic(anim:bool,animal:str):
+def anipic(anim,animal:str):
     if animal=="fox":
         if anim==False:
             foxy=requests.get("https://randomfox.ca/floof").json()
