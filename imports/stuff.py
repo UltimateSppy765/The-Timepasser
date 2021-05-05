@@ -1,5 +1,8 @@
 import os,requests,wikiquote,wikiquotes
 from imports import misc,notcmd
+
+baseurl=os.environ['BASE_URL']
+
 def anipic(anim:bool,animal:str):
     if animal=="Fox":
         if anim==False:
@@ -102,4 +105,6 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
         a=notcmd.analyse(cont=query)
         if a is not None:
             return a
+        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5})
+        notcmd.qsearch(query=query)
         return misc.existnt(cname="quote")
