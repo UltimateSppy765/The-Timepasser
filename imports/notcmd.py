@@ -1,4 +1,5 @@
 from googleapiclient import discovery
+from random import choice
 import os,json,wikiquotes
 
 API_KEY=os.environ['P_API_KEY']
@@ -59,4 +60,68 @@ def analyse(cont:str):
         return None
 
 def qsearch(query:str):
-    return
+    ftext="Quotes from Wikiquote"
+    ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
+    thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+    try:
+        q=wikiquotes.search(query,"english")
+    except:
+        json={
+            "embeds": [
+                "title": f"No result found for query: **'{query}'**",
+                "description": "Sorry, your query didn't work, please try with a different one.",
+                "color": 3092791,
+                "thumbnail": {
+                    "url": thum
+                },
+                "footer": {
+                    "text": ftext,
+                    "icon_url": ficon
+                }
+            ]
+        }
+    else:
+        for i in a:
+            if query.lower() in i.lower():
+                autor=i
+                qt=wikiquotes.random_quote(autor,"english")
+                break
+            else:
+                b=choice(a)
+                c=wikiquotes.get_quotes(b,"english")
+                for j in c:
+                    if query.lower() in j.lower():
+                        autor=b
+                        qt=j
+                        break
+        try:
+            json={
+                "embeds": [
+                    "title": f"Search result for query: **'{query}'**",
+                    "description": f"{qt}\n- {autor}",
+                    "color": 3092791,
+                    "thumbnail": {
+                        "url": thum
+                    },
+                    "footer": {
+                        "text": ftext,
+                        "icon_url": ficon
+                    }
+                ]
+            }
+        except:
+            json={
+                "embeds": [
+                    "title": f"No result for query: **'{query}'**",
+                    "description": "Sorry, couldn't find a quote for the given query, please try again.",
+                    "color": 3092791,
+                    "thumbnail": {
+                        "url": thum
+                    },
+                    "footer": {
+                        "text": ftext,
+                        "icon_url": ficon
+                    }
+                ]
+            }   
+    return json
