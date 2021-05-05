@@ -1,4 +1,4 @@
-import os,requests,wikiquote,wikiquotes
+import os,requests,wikiquote
 from imports import misc,notcmd
 
 baseurl=os.environ['BASE_URL']
