@@ -99,4 +99,4 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
             }
         }
     else:
-        return misc.existnt(cmdname="quote")
+        return misc.existnt(cname="quote")
