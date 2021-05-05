@@ -10,7 +10,26 @@ def anipic(anim:bool,animal:str):
             ficon="https://cdn.discordapp.com/attachments/789798190353743874/798118721091928074/logo.png"
             greet="Ring-ding-ding-ding-dingeringeding!"
         else:
-            return misc.existnt(cname="anipic")
+            return {
+                "type": 4,
+                "data": {
+                    "flags": 64,
+                    "content": "<:tickNo:315009174163685377> Sorry to say but I cannot send animated fox pics yet.\n> **A message from the bot developers:**\n> We could not find any free API which provided animated GIFs of real foxes. (*and not cartoon/meme ones*) In case if you do find any such API and would like to see this feature in the bot, please contact us, the help would be appreciated! (Info on bot devs in `/aboutme devs`)",
+                    "embeds": [
+                        {
+                            "title": ":fox: To make up for it, here's a cute fox GIF I like:",
+                            "color": 3092791,
+                            "image": {
+                                "url": "https://cdn.discordapp.com/attachments/789798190353743874/835248004478402630/fox-happy.gif"
+                            },
+                            "footer": {
+                                "text": "GIF from Tenor",
+                                "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/798133763896377404/9XiZf6X9.png"
+                            }
+                        }
+                    ]
+                }
+            }
     elif animal=="Cat":
         imgtype="png,jpg" if anim==False else "gif"
         caty=requests.get(f"https://api.thecatapi.com/v1/images/search?size=small&mime_types={imgtype}",headers={"x-api-key":os.environ['CAT_API']}).json()
@@ -46,3 +65,5 @@ def anipic(anim:bool,animal:str):
             ]
          }
     }
+def quote(subc:str,query:str,token:str,aid:str,iid:str):
+    return
