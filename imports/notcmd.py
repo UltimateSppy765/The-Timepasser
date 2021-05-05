@@ -1,5 +1,5 @@
 from googleapiclient import discovery
-import os,json
+import os,json,wikiquotes
 
 API_KEY=os.environ['P_API_KEY']
 service=discovery.build(
@@ -17,6 +17,7 @@ def usav(id:str,discid:str,av):
         return f"https://cdn.discordapp.com/avatars/{id}/{av}.gif"
     else:
         return f"https://cdn.discordapp.com/avatars/{id}/{av}.webp"
+
 def analyse(cont:str):
     ar1= {
         "comment": {"text": f"{cont}"},
@@ -56,3 +57,6 @@ def analyse(cont:str):
         }
     else:
         return None
+
+def qsearch(query:str):
+    return
