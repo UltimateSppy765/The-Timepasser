@@ -1,5 +1,5 @@
 import os,requests,wikiquote,wikiquotes
-from imports import misc
+from imports import misc,notcmd
 def anipic(anim:bool,animal:str):
     if animal=="Fox":
         if anim==False:
@@ -99,4 +99,7 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
             }
         }
     else:
+        a=notcmd.analyse(cont=query)
+        if a is not None:
+            return a
         return misc.existnt(cname="quote")
