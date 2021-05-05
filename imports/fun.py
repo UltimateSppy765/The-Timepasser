@@ -57,6 +57,14 @@ def simon(text:str):
     }
 
 def guessnum(guess:int,aid:str,iid:str,token:str):
+  if guess==42:
+    return {
+      "type": 4,
+      "data": {
+        "flags": 64,
+        "content": "> **You chose 42, and…**\n> <:tickYes:315009125694177281> Bingo! It's correct, I don't need to think of this number for your guess to be correct… \n> *It's always correct!*\nDidn't understand? [__Read this!__](https://en.m.wikipedia.org/wiki/42_(number))"
+      }
+    }
   if guess not in range(1,11):
     return {
       "type": 4,
