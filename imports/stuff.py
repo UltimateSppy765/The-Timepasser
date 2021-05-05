@@ -75,7 +75,7 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
         elif query=="random":
             titl="Random Quote:"
             ftext="Powered by Quotable"
-            ficon="https://cdn.discordapp.com/attachments/789798190353743874/796731399671250954/G7Xop8IK4d3myXhyWYendh3hmR9cz0at9cwvyXD4DiMS3tgKznJnfTaFIIBAAAAAAAAAA"
+            ficon="https://cdn.discordapp.com/attachments/839610105858752522/839610124271484938/download.jpeg"
             res=requests.get("http://api.quotable.io/random").json()
             qt=res["content"]
             autor=res["author"]
