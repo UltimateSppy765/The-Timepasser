@@ -66,4 +66,7 @@ def anipic(anim:bool,animal:str):
          }
     }
 def quote(subc:str,query:str,token:str,aid:str,iid:str):
-    return
+    if subc=="get":
+        return misc.existnt(cmdname="quote")
+    else:
+        return misc.existnt(cmdname="quote")
