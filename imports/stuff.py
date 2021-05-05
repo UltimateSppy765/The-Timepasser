@@ -12,6 +12,10 @@ def anipic(anim:bool,animal:str):
         else:
             return misc.existnt(cname="anipic")
     elif animal=="Cat":
+        imgtype="png,jpg" if anim==False else "gif"
+        caty=requests.get(f"https://api.thecatapi.com/v1/images/search?size=small&mime_types={imgtype}").json()
+        url=caty[0]['url']
+        print(caty)
         return misc.existnt(cname="anipic")
     elif animal=="Dog":
         return misc.existnt(cname="anipic")
