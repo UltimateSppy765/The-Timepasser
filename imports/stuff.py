@@ -20,10 +20,16 @@ def anipic(anim:bool,animal:str):
         "data": {
             "content": cont,
             "embeds": [
-                "title": greet,
-                "color": 3092791,
-                "image": {
-                    "url": url
+                {
+                    "title": greet,
+                    "color": 3092791,
+                    "image": {
+                        "url": url
+                    },
+                    "footer": {
+                        "text": ftext,
+                        "icon_url": ficon
+                    }
                 }
             ]
          }
