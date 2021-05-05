@@ -1,8 +1,7 @@
 import requests
 from imports import misc
-def anipic(anim,animal:str):
-    print(animal)
-    if animal=="fox":
+def anipic(anim:bool,animal:str):
+    if animal=="Fox":
         if anim==False:
             foxy=requests.get("https://randomfox.ca/floof").json()
             url=foxy["image"]
@@ -12,9 +11,9 @@ def anipic(anim,animal:str):
             greet="Ring-ding-ding-ding-dingeringeding!"
         else:
             return misc.existnt(cname="/anipic")
-    elif animal=="cat":
+    elif animal=="Cat":
         return misc.existnt(cname="/anipic")
-    elif animal=="dog":
+    elif animal=="Dog":
         return misc.existnt(cname="/anipic")
     return {
         "type": 4,
