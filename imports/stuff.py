@@ -1,4 +1,4 @@
-import requests
+import os,requests
 from imports import misc
 def anipic(anim:bool,animal:str):
     if animal=="Fox":
@@ -13,7 +13,7 @@ def anipic(anim:bool,animal:str):
             return misc.existnt(cname="anipic")
     elif animal=="Cat":
         imgtype="png,jpg" if anim==False else "gif"
-        caty=requests.get(f"https://api.thecatapi.com/v1/images/search?size=small&mime_types={imgtype}").json()
+        caty=requests.get(f"https://api.thecatapi.com/v1/images/search?size=small&mime_types={imgtype}",headers={"x-api-key":os.environ['CAT_API']}).json()
         url=caty[0]['url']
         cont=":cat: Here's a cat pic for you." if anim==False else ":cat: Here's an animated cat pic for you."
         greet="Meow..."
