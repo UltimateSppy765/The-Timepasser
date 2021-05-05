@@ -24,7 +24,7 @@ def anipic(anim:bool,animal:str):
         dogy=requests.get(f"https://api.thedogapi.com/v1/images/search?size=small&mime_types={imgtype}",headers={"x-api-key":os.environ['DOG_API']}).json()
         url=dogy[0]['url']
         cont=":dog: Here's a dog pic for you." if anim==False else ":dog: Here's an animated dog pic for you."
-        greet="Woof..."
+        greet="Woof!"
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
