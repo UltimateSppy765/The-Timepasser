@@ -67,6 +67,7 @@ def qsearch(query:str):
     try:
         quote=quote.qfind(query=query)
     except Exception as l:
+        print(traceback.format_exc())
         ename=type(l).__name__
         if ename=="NoAuthorFound":
             json={
@@ -85,7 +86,7 @@ def qsearch(query:str):
                     }
                 ]
             }
-        else:
+        elif ename=="NoQuoteFound":
             json={
                 "embeds": [
                     {
