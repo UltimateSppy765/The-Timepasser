@@ -67,7 +67,7 @@ def qsearch(query:str):
         try:
             a=wikiquote.search(query)
         except:
-            a=wikiquotes.search(query)
+            a=wikiquotes.search(query,"english")
     except:
         json={
             "embeds": [
