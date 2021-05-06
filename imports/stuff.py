@@ -77,8 +77,8 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
             (qt,autor)=wikiquote.quote_of_the_day()
         elif query=="random":
             titl="Random Quote:"
-            autor=wikiquote.random_titles(max_titles=1)
-            qt=wikiquote.quotes(aut[0],max_quotes=1)[0]
+            autor=wikiquote.random_titles(max_titles=1)[0]
+            qt=wikiquote.quotes(autor,max_quotes=1)[0]
         return {
             "type": 4,
             "data": {
