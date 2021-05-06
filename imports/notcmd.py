@@ -65,7 +65,7 @@ def qsearch(query:str):
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     try:
-        quote=quote.qfind(query=query)
+        quot=quote.qfind(query=query)
     except Exception as l:
         print(traceback.format_exc())
         ename=type(l).__name__
@@ -104,8 +104,8 @@ def qsearch(query:str):
                 ]
             }
     else:
-        qt=quote[0]
-        autor=quote[1]         
+        qt=quot[0]
+        autor=quot[1]         
         json={
             "embeds": [
                 {
