@@ -65,64 +65,15 @@ def qsearch(query:str):
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     try:
-        au1=wikiquote.search(query)
-    except:
-        au1=[]
-    try:
-        au2=wikiquotes.search(query,"english")
-    except:
-        au2=[]
-    a=au1+au2
-    if a==[]:
-        json={
-            "embeds": [
-                {
-                    "title": f"No result found for query: **'{query}'**",
-                    "description": "Sorry, your query didn't work, please try with a different one.",
-                    "color": 3092791,
-                    "thumbnail": {
-                        "url": thum
-                    },
-                    "footer": {
-                        "text": ftext,
-                        "icon_url": ficon
-                    }
-                }
-            ]
-        }
-    else:
-        for i in a:
-            if query.lower() in i.lower():
-                autor=i
-                qt=choice(wikiquote.quotes(autor)) if (2==(num:=randint(1,2))) else wikiquotes.random_quote(autor,"english")
-                break
-        try:
-            meow=f"{qt}\n- {autor}"
-        except:
-            for l in a:
-                b=choice(a)
-                rnum=randint(1,5)
-                c=wikiquote.quotes(b) if rnum in [1,3,5] else wikiquotes.get_quotes(b,"english")
-                for j in c:
-                    if query.lower() in j.lower():
-                        autor=b
-                        qt=j
-                        break
-        try:
-            meow1=f"{qt}\n- {autor}"
-        except:
-            d=wikiquotes.get_quotes(b,"english") if rnum in [1,3,5] else wikiquote.quotes(b)
-            for k in d:
-                if query.lower() in k.lower():
-                    autor=b
-                    qt=k
-                    break     
-        try:
+        quote=quote.qfind(query=query)
+    except Exception as l:
+        ename=type(l).__name__
+        if ename=="NoAuthorFound":
             json={
                 "embeds": [
                     {
-                        "title": f"Search result for query: **'{query}'**",
-                        "description": f"{qt}\n- {autor}",
+                        "title": f"No result found for query: **'{query}'**",
+                        "description": "Sorry, your query didn't work, please try with a different one.",
                         "color": 3092791,
                         "thumbnail": {
                             "url": thum
@@ -134,7 +85,7 @@ def qsearch(query:str):
                     }
                 ]
             }
-        except:
+        else:
             json={
                 "embeds": [
                     {
@@ -151,5 +102,24 @@ def qsearch(query:str):
                     }
                 ]
             }
+    else:
+        qt=quote[0]
+        autor=quote[1]         
+        json={
+            "embeds": [
+                {
+                    "title": f"Search result for query: **'{query}'**",
+                    "description": f"{qt}\n- {autor}",
+                    "color": 3092791,
+                    "thumbnail": {
+                        "url": thum
+                    },
+                    "footer": {
+                        "text": ftext,
+                        "icon_url": ficon
+                    }
+                }
+            ]
+        }
     print(json)   
     return json
