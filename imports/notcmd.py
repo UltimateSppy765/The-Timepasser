@@ -104,7 +104,7 @@ def qsearch(query:str):
                 except:
                     d=wikiquotes.get_quotes(b)
                     for k in d:
-                        if query.lower() in k.lower()
+                        if query.lower() in k.lower():
                             autor=b
                             qt=k
         try:
