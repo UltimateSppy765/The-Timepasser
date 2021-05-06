@@ -93,7 +93,7 @@ def qsearch(query:str):
                 break
             else:
                 b=choice(a)
-                c=wikiquote.quotes(b)
+                c=wikiquotes.get_quotes(b,"english")
                 for j in c:
                     if query.lower() in j.lower():
                         autor=b
@@ -102,7 +102,7 @@ def qsearch(query:str):
                 try:
                     meow=f"{qt}\n- {autor}"
                 except:
-                    d=wikiquotes.get_quotes(b,"english")
+                    d=wikiquote.get_quotes(b)
                     for k in d:
                         if query.lower() in k.lower():
                             autor=b
