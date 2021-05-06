@@ -149,5 +149,6 @@ def qsearch(query:str):
                         }
                     }
                 ]
-            }   
+            }
+    print(json)   
     return json
