@@ -1,5 +1,6 @@
 from googleapiclient import discovery
 from random import choice,randint
+from imports import quote
 import os,json,wikiquote,wikiquotes
 
 API_KEY=os.environ['P_API_KEY']
