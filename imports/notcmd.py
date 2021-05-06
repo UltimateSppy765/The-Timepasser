@@ -96,7 +96,7 @@ def qsearch(query:str):
         except:
             b=choice(a)
             rnum=randint(1,10)
-            c=wikiquotes.get_quotes(b,"english") if rnum in [1,2,4,7,9,10] else wikiquote.quotes(b)
+            c=wikiquote.quotes(b) if rnum in [1,2,4,7,9,10] else wikiquotes.get_quotes(b,"english")
             for j in c:
                 if query.lower() in j.lower():
                     autor=b
@@ -105,7 +105,7 @@ def qsearch(query:str):
             try:
                 meow1=f"{qt}\n- {autor}"
             except:
-                d=wikiquote.quotes(b) if rnum in [1,2,4,7,9,10] else wikiquotes.get_quotes(b,"english")
+                d=wikiquotes.get_quotes(b,"english") if rnum in [1,2,4,7,9,10] else wikiquote.quotes(b)
                 for k in d:
                     if query.lower() in k.lower():
                         autor=b
