@@ -65,6 +65,7 @@ def qsearch(query:str):
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     try:
         a=wikiquote.search(query)
+        print(a)
     except:
         json={
             "embeds": [
@@ -86,11 +87,14 @@ def qsearch(query:str):
         for i in a:
             if query.lower() in i.lower():
                 autor=i
-                qt=choice(wikiquote.quotes(autor))
+                z=wikiquote.quotes(autor)
+                print(z)
+                qt=choice(z)
                 break
             else:
                 b=choice(a)
                 c=wikiquote.quotes(b)
+                print(c)
                 for j in c:
                     if query.lower() in j.lower():
                         autor=b
