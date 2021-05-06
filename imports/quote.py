@@ -28,7 +28,7 @@ def qfind(query:str):
     raise NoAuthorFound
   else:
     for c in auxlist1:
-      if query.lower() in c.lower():
+      if query.lower()==c.lower():
         autor=c
         try:
           d=[wikiquotes.random_quote(c,"english")]
@@ -39,6 +39,19 @@ def qfind(query:str):
         except:
           e=[]
         qt=choice(d+e)
+        break
+      elif query.lower() in c.lower():
+        autor=c
+        try:
+          d=[wikiquotes.random_quote(c,"english")]
+        except:
+          d=[]
+        try:
+          e=wikiquote.quotes(c,max_quotes=1)
+        except:
+          e=[]
+        qt=choice(d+e)
+        break
     try:
       return [qt,autor]
     except:
