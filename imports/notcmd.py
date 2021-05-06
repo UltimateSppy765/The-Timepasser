@@ -94,23 +94,32 @@ def qsearch(query:str):
         try:
             meow=f"{qt}\n- {autor}"
         except:
-            b=choice(a)
-            rnum=randint(1,5)
-            c=wikiquote.quotes(b) if rnum in [1,3,5] else wikiquotes.get_quotes(b,"english")
-            for j in c:
-                if query.lower() in j.lower():
-                    autor=b
-                    qt=j
-                    break
-            try:
-                meow1=f"{qt}\n- {autor}"
-            except:
-                d=wikiquotes.get_quotes(b,"english") if rnum in [1,3,5] else wikiquote.quotes(b)
-                for k in d:
-                    if query.lower() in k.lower():
+            for l in a:
+                b=choice(a)
+                rnum=randint(1,5)
+                c=wikiquote.quotes(b) if rnum in [1,3,5] else wikiquotes.get_quotes(b,"english")
+                for j in c:
+                    if query.lower() in j.lower():
                         autor=b
-                        qt=k
+                        qt=j
                         break
+                try:
+                    meow1=f"{qt}\n- {autor}"
+                except:
+                    d=wikiquotes.get_quotes(b,"english") if rnum in [1,3,5] else wikiquote.quotes(b)
+                    for k in d:
+                        if query.lower() in k.lower():
+                            autor=b
+                            qt=k
+                            break
+                    try:
+                        meow2=f"{qt}\n - {autor}"
+                    except:
+                        pass
+                    else:
+                        break
+                else:
+                    break       
         try:
             json={
                 "embeds": [
