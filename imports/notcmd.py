@@ -121,9 +121,9 @@ def qsearch(query:str):
                     except:
                         pass
                     else:
-                        pass
+                        break
                 else:
-                    pass       
+                    break       
         try:
             json={
                 "embeds": [
