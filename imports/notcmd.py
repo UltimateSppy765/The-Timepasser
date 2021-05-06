@@ -1,6 +1,6 @@
 from googleapiclient import discovery
-from random import choice
-import os,json,wikiquote
+from random import choice,randint
+import os,json,wikiquote,wikiquotes
 
 API_KEY=os.environ['P_API_KEY']
 service=discovery.build(
@@ -64,8 +64,10 @@ def qsearch(query:str):
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     try:
-        a=wikiquote.search(query)
-        print(a)
+        try:
+            a=wikiquote.search(query)
+        except:
+            a=wikiquotes.search(query)
     except:
         json={
             "embeds": [
@@ -87,19 +89,24 @@ def qsearch(query:str):
         for i in a:
             if query.lower() in i.lower():
                 autor=i
-                z=wikiquote.quotes(autor)
-                print(z)
-                qt=choice(z)
+                qt=choice(wikiquote.quotes(autor)) if (2==(num:=randint(1,2))) else wikiquotes.random_quote(autor)
                 break
             else:
                 b=choice(a)
                 c=wikiquote.quotes(b)
-                print(c)
                 for j in c:
                     if query.lower() in j.lower():
                         autor=b
                         qt=j
                         break
+                try:
+                    meow=f"{qt}\n- {autor}"
+                except:
+                    d=wikiquotes.get_quotes(b)
+                    for k in d:
+                        if query.lower() in k.lower()
+                            autor=b
+                            qt=k
         try:
             json={
                 "embeds": [
