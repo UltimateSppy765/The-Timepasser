@@ -70,18 +70,15 @@ def anipic(anim:bool,animal:str):
     }
 def quote(subc:str,query:str,token:str,aid:str,iid:str):
     if subc=="get":
+        ftext="Quotes from Wikiquote"
+        ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
         if query=="qotd":
             titl="Quote of the Day:"
-            ftext="Quotes from Wikiquote"
-            ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
             (qt,autor)=wikiquote.quote_of_the_day()
         elif query=="random":
             titl="Random Quote:"
-            ftext="Powered by Quotable"
-            ficon="https://cdn.discordapp.com/attachments/839610105858752522/839610124271484938/download.jpeg"
-            res=requests.get("http://api.quotable.io/random").json()
-            qt=res["content"]
-            autor=res["author"]
+            autor=wikiquote.random_titles(max_titles=1)
+            qt=wikiquote.quotes(aut[0],max_quotes=1)[0]
         return {
             "type": 4,
             "data": {
