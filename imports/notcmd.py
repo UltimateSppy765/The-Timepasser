@@ -64,12 +64,15 @@ def qsearch(query:str):
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     try:
-        a=wikiquote.search(query)
+        au1=wikiquote.search(query)
     except:
-        a=wikiquotes.search(query,"english")
+        au1=[]
     try:
-        list=a
+        au2=wikiquotes.search(query,"english")
     except:
+        au2=[]
+    a=au1+au2
+    if a==[]:
         json={
             "embeds": [
                 {
