@@ -74,7 +74,7 @@ def qsearch(query:str):
                 "embeds": [
                     {
                         "title": f"No result found for query: **'{query}'**",
-                        "description": "Sorry, your query didn't work, please try with a different one.",
+                        "description": "Sorry, your query didn't work. Please try with a different one.",
                         "color": 3092791,
                         "thumbnail": {
                             "url": thum
@@ -91,7 +91,7 @@ def qsearch(query:str):
                 "embeds": [
                     {
                         "title": f"No result for query: **'{query}'**",
-                        "description": "Sorry, couldn't find a quote for the given query, please try again.",
+                        "description": "Sorry, I couldn't find a quote for the given query. Please try again.",
                         "color": 3092791,
                         "thumbnail": {
                             "url": thum
