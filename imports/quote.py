@@ -59,7 +59,7 @@ def qfind(query:str):
     except:
       pass
     qtlist3=[]
-    for f in aulist:
+    for f in auxlist:
       try:
         g=wikiquotes.get_quotes(f,"english")
       except:
