@@ -3,3 +3,4 @@ discord_interactions
 wikiquote
 wikiquotes
 requests
+google-api-python-client
