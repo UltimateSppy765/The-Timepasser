@@ -69,7 +69,7 @@ def qfind(query:str):
         for q1 in g:
           auxlist1.append(q1)
       try:
-        h=wikiquote.quotes(f,max_quotes=10)
+        h=wikiquote.quotes(f,max_quotes=5)
         for q2 in h:
           if q2 not in auxlist1:
             auxlist1.append(q2)
