@@ -103,6 +103,8 @@ def qsearch(query:str):
                     }
                 ]
             }
+        else:
+            return misc.err(traceback.format_exc())
     else:
         qt=quot[0]
         autor=quot[1]         
