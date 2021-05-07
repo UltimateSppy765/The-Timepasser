@@ -58,29 +58,31 @@ def qfind(query:str):
       return [qt,autor]
     except:
       pass
-    qtlist3=[]
+    qtlist=[]
     for f in auxlist:
+      auxlist1=[]
       try:
         g=wikiquotes.get_quotes(f,"english")
       except:
         g=[]
+      else:
+        for q1 in g:
+          auxlist1.append(q1)
       try:
         h=wikiquote.quotes(f,max_quotes=10)
+        for q2 in h:
+          if q2 not in auxlist1:
+            auxlist1.append(q2)
       except:
         h=[]
-      qtlist2=h+g
-      auxlist2=[]
-      for s in qtlist2:
-        if not s in auxlist2:
-          auxlist2.append(s)
-      for i in auxlist2:
+      for i in auxlist1:
         if query.lower() in i.lower():
           r=[i,f]
-          qtlist3.append(r)
-    if qtlist3==[]:
+          qtlist.append(r)
+    if qtlist==[]:
       pass
     else:
-      p=choice(qtlist3)
+      p=choice(qtlist)
       qt=p[0]
       autor=p[1]
     try:
