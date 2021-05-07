@@ -1,6 +1,6 @@
 import os
-from flask import Flask, request, jsonify, abort
-from discord_interactions import verify_key_decorator, InteractionType, InteractionResponseType
+from flask import Flask,request,jsonify,abort
+from discord_interactions import verify_key_decorator,InteractionType, InteractionResponseType
 from imports import ttwo
 
 app = Flask(__name__)
