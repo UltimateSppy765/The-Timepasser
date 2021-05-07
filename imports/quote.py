@@ -11,23 +11,25 @@ class NoQuoteFound(Error):
   pass
 
 def qfind(query:str):
+  auxlist=[]
   try:
     a=wikiquote.search(query)
   except:
     a=[]
+  else:
+    for wor in a:
+      auxlist.append(wor)
   try:
     b=wikiquotes.search(query,"english")
+    for word in b:
+      if word not in auxlist:
+        auxlist.append(word)
   except:
     b=[]
-  aulist=a+b
-  auxlist1=[]
-  for word in aulist:
-    if word not in auxlist1:
-      auxlist1.append(word)
-  if aulist==[]:
+  if auxlist==[]:
     raise NoAuthorFound
   else:
-    for c in auxlist1:
+    for c in auxlist:
       if query.lower()==c.lower():
         autor=c
         try:
