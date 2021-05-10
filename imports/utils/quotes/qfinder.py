@@ -1,5 +1,5 @@
 import traceback
-from imports.utils import qlogic
+from imports.utils.quotes import qlogic
 
 def qres(query:str):
     ftext="Quotes from Wikiquote"
