@@ -1,4 +1,4 @@
-import requests
+import os,requests
 
 def cmd(anim:bool,animal:str):
     if animal=="Fox":
