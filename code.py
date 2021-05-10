@@ -17,8 +17,4 @@ def code():
     elif request.json["type"]==3:
         return jsonify(tthree.tthree(r=request))
 
-port=os.getenv('PORT')
-if port:
-    app.run(host='0.0.0.0',port=port)
-else:
-    print("Unable to find PORT environment variable.")
+ app.run(host='0.0.0.0',port=8080)
