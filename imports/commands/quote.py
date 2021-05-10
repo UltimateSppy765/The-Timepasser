@@ -4,7 +4,7 @@ from imports.utils import perspective
 
 baseurl=os.environ['BASE_URL']
 
-def quote(subc:str,query:str,token:str,aid:str,iid:str):
+def cmd(subc:str,query:str,token:str,aid:str,iid:str):
     if subc=="get":
         if query=="qotd":
             titl="Quote of the Day:"
