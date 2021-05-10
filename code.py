@@ -1,7 +1,7 @@
 import os
 from flask import Flask,request,jsonify,abort
 from discord_interactions import verify_key_decorator,InteractionType, InteractionResponseType
-from imports import ttwo
+from imports.interactions import ttwo,tthree
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ def code():
     elif request.json["type"]==2:
         return jsonify(ttwo.slashc(r=request))
     elif request.json["type"]==3:
-        return jsonify()
+        return jsonify(tthree.tthree(r=request))
 
 port=os.getenv('PORT')
 if port:
