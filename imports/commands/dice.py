@@ -2,7 +2,7 @@ from random import choice
 from time import sleep
 import os,requests
 
-baseurl=os.environ['BASE_URL:]
+baseurl=os.environ['BASE_URL']
 
 def dice(aid:str,iid:str,token:str):
     dice=[1,2,3,4,5,6,"**The dice got stuck against the wall. Try Again!** :exploding_head:","**The dice got lost. Try Again!** :thinking:"]
