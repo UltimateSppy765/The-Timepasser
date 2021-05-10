@@ -1,4 +1,4 @@
-from imports.utils import perspective,av
+from imports.utils import perspective,avpic
 
 def cmd(text:str,uname:str,id:str,disc:str,av):
     um=perspective.analyse(cont=text)
@@ -14,7 +14,7 @@ def cmd(text:str,uname:str,id:str,disc:str,av):
                         "description": text,
                         "author":{
                             "name": f"{uname}'s Echo!",
-                            "icon_url": av.usav(id=id,discid=disc,av=av)
+                            "icon_url": avpic.usav(id=id,discid=disc,av=av)
                         }
                     }
                 ]
