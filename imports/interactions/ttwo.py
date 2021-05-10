@@ -1,11 +1,12 @@
 from imports.commands import *
+from imports.utils import fail
 from imports import misc,stuff
 import traceback
 def slashc(r):
     try:
         r.json["member"]
     except:
-        return misc.dmerr()
+        return fail.dmerr()
     else:
         try:
             cmdname=r.json["data"]["name"]
@@ -36,6 +37,6 @@ def slashc(r):
                     ani=False
                 return stuff.anipic(animal=r.json["data"]["options"][0]["value"],anim=ani)
             else:
-                return misc.existnt(cmdname)
+                return fail.existnt(cmdname)
         except:
-            return misc.err(traceback.format_exc())
+            return fail.err(traceback.format_exc())
