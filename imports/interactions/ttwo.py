@@ -14,19 +14,19 @@ def slashc(r):
             elif cmdname=="aboutme":
                 return misc.aboutme(token=r.json["token"],iid=r.json["id"],aid=r.json["application_id"],subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
             elif cmdname=="dice":
-                return dice.dice(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+                return dice.cmd(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
             elif cmdname=="simon":
-                return simon.simon(r.json["data"]["options"][0]["value"])
+                return simon.cmd(r.json["data"]["options"][0]["value"])
             elif cmdname=="echo":
-                return echo.echo(text=r.json["data"]["options"][0]["value"],uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
+                return echo.cmd(text=r.json["data"]["options"][0]["value"],uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
             elif cmdname=="guessnum":
-                return guessnum.guessnum(guess=r.json["data"]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"])
+                return guessnum.cmd(guess=r.json["data"]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"])
             elif cmdname=="avatar":
                 try:
                     use=r.json["data"]["options"][0]["value"]
                 except KeyError:
                     use=None
-                return avatar.avatar(us=use,uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
+                return avatar.cmd(us=use,uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
             elif cmdname=="quote":
                 return stuff.quote(subc=r.json["data"]["options"][0]["name"],query=r.json["data"]["options"][0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"])
             elif cmdname=="anipic":
