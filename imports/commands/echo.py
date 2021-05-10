@@ -1,6 +1,6 @@
-from imports.utils import perspective,usav
+from imports.utils import perspective,av
 
-def echo(text:str,uname:str,id:str,disc:str,av):
+def cmd(text:str,uname:str,id:str,disc:str,av):
     um=perspective.analyse(cont=text)
     if um is not None:
         return um
@@ -14,7 +14,7 @@ def echo(text:str,uname:str,id:str,disc:str,av):
                         "description": text,
                         "author":{
                             "name": f"{uname}'s Echo!",
-                            "icon_url": usav.usav(id=id,discid=disc,av=av)
+                            "icon_url": av.usav(id=id,discid=disc,av=av)
                         }
                     }
                 ]
