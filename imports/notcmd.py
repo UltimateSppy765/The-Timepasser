@@ -67,7 +67,6 @@ def qsearch(query:str):
     try:
         quot=quote.qfind(query=query)
     except Exception as l:
-        print(traceback.format_exc())
         ename=type(l).__name__
         if ename=="NoAuthorFound":
             json={
@@ -124,5 +123,4 @@ def qsearch(query:str):
                 }
             ]
         }
-    print(json)   
     return json
