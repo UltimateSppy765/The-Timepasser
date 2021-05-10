@@ -1,6 +1,6 @@
 from random import choice
 from time import sleep
-import os
+import os,requests
 
 baseurl=os.environ['BASE_URL:]
 
