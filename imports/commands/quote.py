@@ -1,5 +1,6 @@
 import os,wikiquote,requests
-from imports.utils import qfinder,perspective
+from imports.utils.quotes import qfinder
+from imports.utils import perspective
 
 baseurl=os.environ['BASE_URL']
 
@@ -41,6 +42,6 @@ def quote(subc:str,query:str,token:str,aid:str,iid:str):
         if a is not None:
             return a
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5})
-        jsr=notcmd.qsearch(query=query)
+        jsr=qfinder.qres(query=query)
         requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
         return
