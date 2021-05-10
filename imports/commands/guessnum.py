@@ -4,7 +4,7 @@ import os,requests
 
 baseurl=os.environ['BASE_URL']
 
-def guessnum(guess:int,aid:str,iid:str,token:str):
+def cmd(guess:int,aid:str,iid:str,token:str):
     if guess==42:
         return {
             "type": 4,
