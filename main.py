@@ -8,13 +8,13 @@ app = Flask(__name__)
 @app.route('/',methods=['POST'])
 @verify_key_decorator(os.environ['CLIENT_ID'])
 def code():
-    if request.json["type"]==1:
-        return jsonify({
-            "type": 1
-        })
-    elif request.json["type"]==2:
-        return jsonify(ttwo.slashc(r=request))
-    elif request.json["type"]==3:
+  if request.json["type"]==1:
+      return jsonify({
+          "type": 1
+      })
+  elif request.json["type"]==2:
+      return jsonify(ttwo.slashc(r=request))
+  elif request.json["type"]==3:
         return jsonify(tthree.tthree(r=request))
 
- app.run(host='0.0.0.0',port=8080)
+app.run(host='0.0.0.0',port=8080)
