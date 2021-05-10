@@ -1,6 +1,6 @@
 from imports.utils import perspective
 
-def simon(text:str):
+def cmd(text:str):
     um=perspective.analyse(cont=text)
     if um is not None:
         return um
