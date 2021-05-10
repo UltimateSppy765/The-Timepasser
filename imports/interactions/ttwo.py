@@ -1,4 +1,4 @@
-from imports.commands import simon,echo,avatar,guessnum,dice,aboutme
+from imports.commands import simon,echo,avatar,guessnum,dice,aboutme,eval
 from imports import misc,stuff
 import traceback
 def slashc(r):
