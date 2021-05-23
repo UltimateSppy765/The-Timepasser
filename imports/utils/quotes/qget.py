@@ -7,6 +7,7 @@ def getquote(type:str,userid:str):
             "type": 4,
             "data": {
                 "flags": 64,
+                "content": "Here you go!",
                 "embeds": [
                     {
                         "color": 3092791,
@@ -31,6 +32,7 @@ def getquote(type:str,userid:str):
             "type": 4,
             "data": {
                 "flags": 64,
+                "content": "There you go!",
                 "embeds": [
                     {
                         "color": 3092791,
