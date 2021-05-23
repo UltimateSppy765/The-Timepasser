@@ -6,6 +6,9 @@ def tthree(r):
     try:
         b=json.loads(r.json["data"]["custom_id"])
         bname=b["bfn"]
-        if bname=="dicereroll":
+        if bname=="dicererol":
             return dicereroll.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
-    return
+        else:
+            return fail.cfail()
+    except:
+        return fail.err(traceback.format_exc())
