@@ -6,7 +6,7 @@ baseurl=os.environ['BASE_URL']
 
 def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
     if subc=="get":
-        return qget.getquote(type=query,usid=usid)
+        return qget.getquote(type=query,userid=usid)
     else:
         a=perspective.analyse(cont=query)
         if a is not None:
