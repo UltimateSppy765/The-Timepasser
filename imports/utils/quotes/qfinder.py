@@ -76,7 +76,7 @@ def qres(query:str,userid:str):
                 "type": 1,
                 "components": [{
                     "type": 2,
-                    "style": 2,
+                    "style": 1,
                     "label": "Search Again!",
                     "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
                 }]
