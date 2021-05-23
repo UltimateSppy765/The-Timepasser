@@ -52,7 +52,7 @@ def getquote(type:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Another One!",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"getran","userid":usid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"getran","userid":userid})
                 }]
             }]
         }
