@@ -37,7 +37,7 @@ def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
                     }
                 ]
             },
-            "components": [] if query=="qotd" else [{"type":1,"components":["type":2,"style":1,"label":"Another One!","custom_id":json.dumps({"bfn":"quote","subc":"getran","userid":usid})]}],
+            "components": [] if query=="qotd" else [{"type":1,"components":[{"type":2,"style":1,"label":"Another One!","custom_id":json.dumps({"bfn":"quote","subc":"getran","userid":usid})}]}]
         }
     else:
         a=perspective.analyse(cont=query)
