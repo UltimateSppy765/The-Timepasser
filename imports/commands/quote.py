@@ -21,6 +21,7 @@ def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
         return {
             "type": 4,
             "data": {
+                "flags": 64,
                 "embeds": [
                     {
                         "color": 3092791,
