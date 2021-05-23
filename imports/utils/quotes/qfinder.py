@@ -11,6 +11,7 @@ def qres(query:str,userid:str):
         ename=type(l).__name__
         if ename=="NoAuthorFound":
             json={
+                "content": "I tried searching, but...",
                 "embeds": [
                     {
                         "title": f"No result found for query: **'{query}'**",
@@ -28,6 +29,7 @@ def qres(query:str,userid:str):
             }
         elif ename=="NoQuoteFound":
             json={
+                "content": "I tried searching, but...",
                 "embeds": [
                     {
                         "title": f"No result for query: **'{query}'**",
@@ -60,6 +62,7 @@ def qres(query:str,userid:str):
         json={
             "embeds": [
                 {
+                    "content": "Here's what I found:",
                     "title": f"Search result for query: **'{query}'**",
                     "description": f"{qt}\n- {autor}",
                     "color": 3092791,
