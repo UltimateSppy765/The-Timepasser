@@ -12,6 +12,6 @@ def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
         if a is not None:
             return a
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5})
-        jsr=qfinder.qres(query=query)
+        jsr=qfinder.qres(query=query,userid=usid)
         requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
         return
