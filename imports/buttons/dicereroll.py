@@ -44,7 +44,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
                     {
                         "type": 2,
                         "style": 1 if binfo["rolls"]<5 else 4,
-                        "custom_id": json.dumps({"bfn":"diceroll","rolls":binfo["rolls"]+1,"userid":binfo["userid"]}),
+                        "custom_id": json.dumps({"bfn":"dicereroll","rolls":binfo["rolls"]+1,"userid":binfo["userid"]}),
                         "disabled": False if binfo["rolls"]<5 else True,
                         "label": "Reroll Dice" if binfo["rolls"]<5 else "You can't reroll more than 5 times."
                     }
