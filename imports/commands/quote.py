@@ -1,10 +1,10 @@
-import os,wikiquote,requests
+import os,wikiquote,requests,json
 from imports.utils.quotes import qfinder
 from imports.utils import perspective
 
 baseurl=os.environ['BASE_URL']
 
-def cmd(subc:str,query:str,token:str,aid:str,iid:str):
+def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
     if subc=="get":
         if query=="qotd":
             titl="Quote of the Day:"
@@ -35,7 +35,8 @@ def cmd(subc:str,query:str,token:str,aid:str,iid:str):
                         }
                     }
                 ]
-            }
+            },
+            "components": [] if query=="qotd" else [{"type":1,"components":["type":2,"style":1,"label":"Another One!","custom_id":json.dumps({"bfn":"quote","subc":"getran","userid":usid})]}]
         }
     else:
         a=perspective.analyse(cont=query)
