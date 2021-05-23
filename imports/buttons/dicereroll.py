@@ -34,4 +34,23 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
         }
     }
     requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=rolling)
+    sleep(1)
+    dicerolled={
+        "content": diceroll.droll(),
+        "components": [
+            {
+                "type": 1,
+                "components": [
+                    {
+                        "type": 2,
+                        "style": 1 if binfo["rolls"]<5 else 4,
+                        "custom_id": json.dumps({"bfn":"diceroll","rolls":binfo["rolls"]+1,"userid":binfo["userid"]}),
+                        "disabled": False if binfo["rolls"]<5 else True,
+                        "label": "Reroll Dice" if binfo["rolls"]<5 else "You can't reroll more than 5 times."
+                    }
+                ]
+            }
+        ]
+    }
+    requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled)
     return
