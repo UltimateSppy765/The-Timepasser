@@ -18,7 +18,7 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": "<:tickNo:315009174163685377> The input given was not a valid JSON, please enter a valid JSON."
+                "content": f"> <:tickNo:315009174163685377> The input given was not a valid JSON, please enter a valid JSON.\nYour Input:```json\n{jsn}\n```"
             }
         }
     else:
