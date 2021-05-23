@@ -14,7 +14,7 @@ def slashc(r):
             elif cmdname=="aboutme":
                 return aboutme.cmd(token=r.json["token"],iid=r.json["id"],aid=r.json["application_id"],subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
             elif cmdname=="dice":
-                return dice.cmd(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+                return dice.cmd(usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
             elif cmdname=="simon":
                 return simon.cmd(r.json["data"]["options"][0]["value"])
             elif cmdname=="echo":
