@@ -24,7 +24,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
                         {
                             "type": 2,
                             "style": 2,
-                            "custom_id": json.dumps(binfo),
+                            "custom_id": json.dumps({"bfn":binfo["bfn"],"rolls":"Rolling","userid":binfo["userid"]}),
                             "disabled": True,
                             "label": "Rerolling..."
                         }
