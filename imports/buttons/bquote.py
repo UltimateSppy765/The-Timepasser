@@ -22,9 +22,9 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
             c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"flags":64,"content":"<a:typing:597589448607399949>  Searching for Quotes..."})
             a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             d=requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()['id']}",headers={"Content-Type": "application/json"},json=a)
-            print(a.json())
+            print(d.json())
         else:
-            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"content":"<a:typing:597589448607399949>  Searching Again...","embeds":[],"components":[]}})
+            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"content":"<a:typing:597589448607399949>  Searching again...","embeds":[],"components":[]}})
             a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
         return
