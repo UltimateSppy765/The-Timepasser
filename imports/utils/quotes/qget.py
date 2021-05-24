@@ -7,7 +7,6 @@ def getquote(type:str,userid:str):
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": "Here you go!",
                 "embeds": [
                     {
                         "color": 3092791,
@@ -24,15 +23,15 @@ def getquote(type:str,userid:str):
                 ]
             }
         }
-    elif type=="random":
+    else:
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
-        autor=res["author"]
+        autor=["author"]
+    if type=="random":
         return {
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": "There you go!",
                 "embeds": [
                     {
                         "color": 3092791,
@@ -57,4 +56,11 @@ def getquote(type:str,userid:str):
                     }]
                 }]
             }
+        }
+    elif type=="bran":
+        return {
+           "flags": 64,
+            "embeds": [{
+                "title": "Another Random Quote:"
+            }]
         }
