@@ -2,10 +2,6 @@ import traceback,json
 from imports.utils.quotes import qlogic
 
 def qres(query:str,userid:str):
-    try:
-        print(json.dumps({"bfn":"quote","subc":"failre","userid":userid}))
-    except:
-        print(traceback.format_exc())
     ftext="Quotes from Wikiquote"
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
@@ -14,7 +10,7 @@ def qres(query:str,userid:str):
     except Exception as l:
         ename=type(l).__name__
         if ename=="NoAuthorFound":
-            json={
+            jsn={
                 "content": "I tried searching, but...",
                 "embeds": [
                     {
@@ -32,7 +28,7 @@ def qres(query:str,userid:str):
                 ]
             }
         elif ename=="NoQuoteFound":
-            json={
+            jsn={
                 "content": "I tried searching, but...",
                 "embeds": [
                     {
@@ -54,7 +50,7 @@ def qres(query:str,userid:str):
                         "type": 2,
                         "style": 2,
                         "label": "Try Again",
-                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid": userid})
+                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
                     }]
                 }]
             }
@@ -63,7 +59,7 @@ def qres(query:str,userid:str):
     else:
         qt=quot[0]
         autor=quot[1]         
-        json={
+        jsn={
             "embeds": [
                 {
                     "content": "Here's what I found:",
@@ -85,8 +81,8 @@ def qres(query:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid": userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
                 }]
             }]
         }
-    return json
+    return jsn
