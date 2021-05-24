@@ -2,6 +2,10 @@ import traceback,json
 from imports.utils.quotes import qlogic
 
 def qres(query:str,userid:str):
+    try:
+        print(userid)
+    except:
+        print(traceback.format_exc())
     ftext="Quotes from Wikiquote"
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
