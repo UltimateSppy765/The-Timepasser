@@ -85,5 +85,8 @@ def qres(query:str,userid:str):
                 }]
             }]
         }
-    print(json)
+    try:
+        print(json)
+    except:
+        print(traceback.format_exec())
     return json
