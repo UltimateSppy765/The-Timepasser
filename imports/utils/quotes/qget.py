@@ -71,5 +71,14 @@ def getquote(type:str,userid:str):
                     "text": "Powered by Quotable API",
                     "icon_url": "https://cdn.discordapp.com/attachments/839610105858752522/839610124271484938/download.jpeg"
                 }
+            }],
+            "components": [{
+                "type": 1,
+                "components":[{
+                    "type": 2,
+                    "style": 1,
+                    "label": "Another One!",
+                    "custom_id": json.dumps({"bfn":"quote","subc":"getran","userid":userid})
+                }]
             }]
         }
