@@ -13,8 +13,8 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
             }
         }
     if binfo["subc"]=="getran":
-        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=qget.getquote(type="random",userid=binfo["userid"]))
-        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json={"components":[]})
+        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[]}})
+        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=qget.getquote(type="bran",userid=binfo["userid"]))
         return
     else:
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":6})
