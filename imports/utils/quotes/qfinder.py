@@ -50,7 +50,7 @@ def qres(query:str,userid:str):
                         "type": 2,
                         "style": 2,
                         "label": "Try Again",
-                        "custom_id": "test"
+                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
                     }]
                 }]
             }
@@ -81,12 +81,8 @@ def qres(query:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
-                    "custom_id": "test"
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
                 }]
             }]
         }
-    try:
-        print(json)
-    except:
-        print(traceback.format_exec())
     return json
