@@ -22,7 +22,7 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
         if binfo["subc"]=="passre":
             c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"content":"<a:typing:597589448607399949> Searching for Quotes..."})
             print(c.json())
-            requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()["message"]["id"]}",headers={"Content-Type": "application/json"},json=a)
+            requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()['message']['id']}",headers={"Content-Type": "application/json"},json=a)
         else:
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
         return
