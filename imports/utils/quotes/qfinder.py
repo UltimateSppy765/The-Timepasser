@@ -50,7 +50,7 @@ def qres(query:str,userid:str):
                         "type": 2,
                         "style": 2,
                         "label": "Try Again",
-                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
+                        "custom_id": "test"
                     }]
                 }]
             }
@@ -81,7 +81,7 @@ def qres(query:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                    "custom_id": "test"
                 }]
             }]
         }
