@@ -1,6 +1,8 @@
 import json,os,requests
 from imports.utils.quotes import qget,qfinder
 
+baseurl=os.environ['BASE_URL']
+
 def btn(aid:str,iid:str,token:str,binfo,usid:str):
     if usid!=binfo["userid"]:
         return {
