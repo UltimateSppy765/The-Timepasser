@@ -54,7 +54,6 @@ def qres(query:str,userid:str):
                     }]
                 }]
             }
-            print(json)
         else:
             return misc.err(traceback.format_exc())
     else:
@@ -86,4 +85,5 @@ def qres(query:str,userid:str):
                 }]
             }]
         }
+    print(json)
     return json
