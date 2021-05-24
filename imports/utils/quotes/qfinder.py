@@ -3,7 +3,7 @@ from imports.utils.quotes import qlogic
 
 def qres(query:str,userid:str):
     try:
-        print(userid)
+        print(json.dumps({"bfn":"quote","subc":"failre","userid":userid}))
     except:
         print(traceback.format_exc())
     ftext="Quotes from Wikiquote"
@@ -54,7 +54,7 @@ def qres(query:str,userid:str):
                         "type": 2,
                         "style": 2,
                         "label": "Try Again",
-                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
+                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid": userid})
                     }]
                 }]
             }
@@ -85,7 +85,7 @@ def qres(query:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid": userid})
                 }]
             }]
         }
