@@ -19,12 +19,12 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
     else:        
         if binfo["subc"]=="passre":
             requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[]}})
-            c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"content":"<a:typing:597589448607399949> Searching for Quotes..."}) 
+            c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"flags":64,"content":"<a:typing:597589448607399949>  Searching for Quotes..."}) 
             print(c.json())
-            a=qfinder.qres(query=binfo["query"])
+            a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()['message']['id']}",headers={"Content-Type": "application/json"},json=a)
         else:
-            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"content":"<a:typing:597589448607399949> Searching Again...","components":[]}})
-            a=qfinder.qres(query=binfo["query"])
+            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"content":"<a:typing:597589448607399949>  Searching Again...","embeds":[],"components":[]}})
+            a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
         return
