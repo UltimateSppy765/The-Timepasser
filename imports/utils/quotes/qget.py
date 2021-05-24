@@ -61,6 +61,16 @@ def getquote(type:str,userid:str):
         return {
            "flags": 64,
             "embeds": [{
-                "title": "Another Random Quote:"
+                "color": 3092791,
+                "title": "Another Random Quote:",
+                "description": f"{qt}\n- {autor}",
+                "thumbnail": {
+                    "thumbnail": {
+                        "url": "https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
+                    },
+                "footer": {
+                    "text": "Powered by Quotable API",
+                    "icon_url": "https://cdn.discordapp.com/attachments/839610105858752522/839610124271484938/download.jpeg"
+                }
             }]
         }
