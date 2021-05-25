@@ -34,7 +34,7 @@ def slashc(r):
                     ani=r.json["data"]["options"][1]["value"]
                 except:
                     ani=False
-                return anipic.cmd(animal=r.json["data"]["options"][0]["value"],anim=ani)
+                return anipic.cmd(usid=r.json["member"]["user"]["id"],animal=r.json["data"]["options"][0]["value"],anim=ani)
             else:
                 return fail.existnt(cmdname)
         except:
