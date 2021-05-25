@@ -20,7 +20,16 @@ def pic(anim:bool,animal:str,usid:str):
                                 "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/798133763896377404/9XiZf6X9.png"
                             }
                         }
-                    ]
+                    ],
+                    "components": [{
+                        "type": 1,
+                        "components": [{
+                            "type": 2,
+                            "style": 5,
+                            "label": "Search Fox GIFs on Giphy!",
+                            "url": "https://giphy.com/search/Cute-Fox"
+                        }]
+                    }]
                 }
             }
         else:
