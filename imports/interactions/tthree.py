@@ -10,6 +10,8 @@ def tthree(r):
             return dicereroll.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
         elif bname=="quote":
             return bquote.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        elif bname=="banipic":
+            return banipic.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
         else:
             return fail.cfail()
     except:
