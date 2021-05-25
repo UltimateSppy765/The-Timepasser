@@ -1,5 +1,7 @@
-import reqeusts,os
+import requests,os
 from imports.utils.common import anipicc
+
+baseurl=os.environ["BASE_URL"]
 
 def btn(aid:str,iid:str,token:str,usid:str,binfo):
     if usid!=binfo["userid"]:
