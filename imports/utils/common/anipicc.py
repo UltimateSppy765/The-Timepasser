@@ -1,4 +1,4 @@
-import requests,json
+import os,requests,json
 
 def pic(anim:bool,animal:str,usid:str):
     if animal=="Fox":
