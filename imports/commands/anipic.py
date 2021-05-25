@@ -1,4 +1,3 @@
-import os,requests
 from imports.utils.common import anipicc
 
 def cmd(anim:bool,animal:str,usid:str):
