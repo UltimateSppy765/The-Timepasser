@@ -27,6 +27,7 @@ def pic(anim:bool,animal:str,usid:str):
             return {
                 "type": 4,
                 "data": {
+                    "flags": 64,
                     "content": ":fox: Here's a fox pic for you.",
                     "embeds": [
                         {
@@ -67,6 +68,7 @@ def pic(anim:bool,animal:str,usid:str):
     return {
         "type": 4,
         "data": {
+            "flags": 64,
             "content": cont,
             "embeds": [
                 {
