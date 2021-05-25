@@ -26,7 +26,7 @@ def getquote(type:str,userid:str):
     else:
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
-        autor=["author"]
+        autor=res["author"]
     if type=="random":
         return {
             "type": 4,
