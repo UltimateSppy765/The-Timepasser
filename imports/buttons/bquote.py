@@ -14,16 +14,18 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
         }
     if binfo["subc"]=="getran":
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[]}})
-        requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json=qget.getquote(type="bran",userid=binfo["userid"]))
+        requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json=qget.getquote(type="random",userid=binfo["userid"]))
         return
     else:        
         if binfo["subc"]=="passre":
-            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[]}})
-            c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"content":"<a:typing:597589448607399949>  Searching for Quotes..."})
+            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":6})
+            #c=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json={"content":"<a:typing:597589448607399949>  Searching for Quotes..."})
             a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
-            requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()['id']}",headers={"Content-Type": "application/json"},json=a)
+            requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json=a)
+            requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json={"components":[]})
+            #requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/{c.json()['id']}",headers={"Content-Type": "application/json"},json=a)
         else:
-            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"content":"<a:typing:597589448607399949>  Searching again...","embeds":[],"components":[]}})
+            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"embeds":[{"color":392791,"title":":mag: Searching Again..."}],"components":[]}})
             a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
         return
