@@ -8,7 +8,6 @@ def cmd(usid:str,aid:str,iid:str,token:str):
     rolling={
         "type": 4,
         "data": {
-            "flags": 64,
             "content": "<a:loading:747680523459231834> Rolling the Dice…"
         }
     }
