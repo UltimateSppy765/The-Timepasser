@@ -23,8 +23,8 @@ def getquote(type:str,userid:str):
                 "components":[{
                     "type": 2,
                     "style": 1,
-                    "label": "Saerch Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor})
+                    "label": "Search Quote from Author",
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":str(autor)})
                 }]
             }]
         }
