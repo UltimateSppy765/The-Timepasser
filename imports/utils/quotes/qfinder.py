@@ -28,7 +28,6 @@ def qres(query:str,userid:str):
             }
         elif ename=="NoQuoteFound":
             jsn={
-                "content": "",
                 "embeds": [
                     {
                         "title": f"No result for query: **'{query}'**",
