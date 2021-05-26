@@ -32,7 +32,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
             ]
         }
     }
-    requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":6)
+    requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":6})
     sleep(1)
     dicerolled={
         "content": diceroll.droll(),
