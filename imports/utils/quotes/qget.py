@@ -60,7 +60,7 @@ def getquote(type:str,userid:str):
                     "type": 2,
                     "style": 2,
                     "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
                 }]
             }]
         }
