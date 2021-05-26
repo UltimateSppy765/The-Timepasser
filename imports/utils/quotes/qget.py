@@ -3,6 +3,7 @@ import wikiquote,requests,json,traceback
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
+        print(json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor}))
         return {
             "embeds": [
                 {
@@ -24,7 +25,7 @@ def getquote(type:str,userid:str):
                     "type": 2,
                     "style": 1,
                     "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":"Caitlín R. Kiernan"})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor})
                 }]
             }]
         } 
