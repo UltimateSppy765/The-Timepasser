@@ -18,16 +18,7 @@ def getquote(type:str,userid:str):
                         "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                     }
                 }
-            ],
-            "components": [{
-                "type": 1,
-                "components":[{
-                    "type": 2,
-                    "style": 1,
-                    "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":f"{autor}"})
-                }]
-            }]
+            ]
         }
         except:
             print(traceback.format_exc())    
