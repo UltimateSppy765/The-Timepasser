@@ -14,7 +14,7 @@ def slashc(r):
             elif cmdname=="aboutme":
                 return aboutme.cmd(token=r.json["token"],iid=r.json["id"],aid=r.json["application_id"],subc=r.json["data"]["options"][0]["name"],uid=r.json["member"]["user"]["id"])
             elif cmdname=="dice":
-                return dice.cmd(aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+                return dice.cmd(usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
             elif cmdname=="simon":
                 return simon.cmd(r.json["data"]["options"][0]["value"])
             elif cmdname=="echo":
@@ -28,13 +28,13 @@ def slashc(r):
                     use=None
                 return avatar.cmd(us=use,uname=r.json["member"]["user"]["username"],id=r.json["member"]["user"]["id"],disc=r.json["member"]["user"]["discriminator"],av=r.json["member"]["user"]["avatar"])
             elif cmdname=="quote":
-                return quote.cmd(subc=r.json["data"]["options"][0]["name"],query=r.json["data"]["options"][0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"])
+                return quote.cmd(subc=r.json["data"]["options"][0]["name"],query=r.json["data"]["options"][0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],usid=r.json["member"]["user"]["id"])
             elif cmdname=="anipic":
                 try:
                     ani=r.json["data"]["options"][1]["value"]
                 except:
                     ani=False
-                return anipic.cmd(animal=r.json["data"]["options"][0]["value"],anim=ani)
+                return anipic.cmd(usid=r.json["member"]["user"]["id"],animal=r.json["data"]["options"][0]["value"],anim=ani)
             else:
                 return fail.existnt(cmdname)
         except:

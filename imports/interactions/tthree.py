@@ -1,2 +1,21 @@
+import traceback,json
+from imports.buttons import *
+from imports.utils import fail
+
 def tthree(r):
-    return
+    try:
+        try:
+            b=json.loads(r.json["data"]["custom_id"])
+        except:
+            return fail.cfail()
+        bname=b["bfn"]
+        if bname=="dicereroll":
+            return dicereroll.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        elif bname=="quote":
+            return bquote.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        elif bname=="banipic":
+            return banipic.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        else:
+            return fail.cfail()
+    except:
+        return fail.err(traceback.format_exc())

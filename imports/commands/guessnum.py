@@ -10,7 +10,16 @@ def cmd(guess:int,aid:str,iid:str,token:str):
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": "> **You chose 42, and…**\n> <:tickYes:315009125694177281> Bingo! It's correct, I don't need to think of this number for your guess to be correct… \n> *It's always correct!*\nDidn't understand? [Read this!](https://en.m.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy)"
+                "content": "> **You chose 42, and…**\n> <:tickYes:315009125694177281> Bingo! It's correct, I don't need to think of this number for your guess to be correct… \n> *It's always correct!*\nDidn't understand? Click the button below.",
+                "components": [{
+                    "type": 1,
+                    "components": [{
+                    "type": 2,
+                    "style": 5,
+                    "url": "https://en.m.wikipedia.org/wiki/42_(number)",
+                    "label": "Read this!"
+                    }]
+                }]
             }
         }
     if guess not in range(1,11):

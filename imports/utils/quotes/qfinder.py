@@ -1,7 +1,7 @@
-import traceback
+import traceback,json
 from imports.utils.quotes import qlogic
 
-def qres(query:str):
+def qres(query:str,userid:str):
     ftext="Quotes from Wikiquote"
     ficon="https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
@@ -10,7 +10,7 @@ def qres(query:str):
     except Exception as l:
         ename=type(l).__name__
         if ename=="NoAuthorFound":
-            json={
+            jsn={
                 "embeds": [
                     {
                         "title": f"No result found for query: **'{query}'**",
@@ -27,7 +27,7 @@ def qres(query:str):
                 ]
             }
         elif ename=="NoQuoteFound":
-            json={
+            jsn={
                 "embeds": [
                     {
                         "title": f"No result for query: **'{query}'**",
@@ -41,14 +41,24 @@ def qres(query:str):
                             "icon_url": ficon
                         }
                     }
-                ]
+                ],
+                "components": [{
+                    "type": 1,
+                    "components": [{
+                        "type": 2,
+                        "style": 2,
+                        "label": "Try Again",
+                        "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid,"query":query},ensure_ascii=False).encode().decode()
+                    }]
+                }]
             }
         else:
             return misc.err(traceback.format_exc())
     else:
         qt=quot[0]
         autor=quot[1]         
-        json={
+        jsn={
+            "content": "",
             "embeds": [
                 {
                     "title": f"Search result for query: **'{query}'**",
@@ -62,6 +72,15 @@ def qres(query:str):
                         "icon_url": ficon
                     }
                 }
-            ]
+            ],
+            "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 2,
+                    "style": 1,
+                    "label": "Search Again!",
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":query},ensure_ascii=False).encode().decode()
+                }]
+            }]
         }
-    return json
+    return jsn
