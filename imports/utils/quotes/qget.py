@@ -1,9 +1,10 @@
-import wikiquote,requests,json
+import wikiquote,requests,json,traceback
 
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
-        return {
+        try:
+            return {
             "embeds": [
                 {
                     "color": 3092791,
@@ -28,6 +29,8 @@ def getquote(type:str,userid:str):
                 }]
             }]
         }
+        except:
+            print(traceback.format_exc())    
     else:
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
