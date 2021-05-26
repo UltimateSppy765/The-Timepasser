@@ -4,7 +4,10 @@ from imports.utils import fail
 
 def tthree(r):
     try:
-        b=json.loads(r.json["data"]["custom_id"])
+        try:
+            b=json.loads(r.json["data"]["custom_id"])
+        except:
+            return fail.cfail()
         bname=b["bfn"]
         if bname=="dicereroll":
             return dicereroll.btn(binfo=b,usid=r.json["member"]["user"]["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
