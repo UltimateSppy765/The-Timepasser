@@ -3,8 +3,7 @@ import wikiquote,requests,json,traceback
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
-        try:
-            return {
+        return {
             "embeds": [
                 {
                     "color": 3092791,
@@ -18,10 +17,17 @@ def getquote(type:str,userid:str):
                         "icon_url": "https://cdn.discordapp.com/attachments/789798190353743874/794948919594450944/QqJDyLtUbgAAAAASUVORK5CYII.png"
                     }
                 }
-            ]
-        }
-        except:
-            print(traceback.format_exc())    
+            ],
+            "components": [{
+                "type": 1,
+                "components":[{
+                    "type": 2,
+                    "style": 1,
+                    "label": "Search Quote from Author",
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":"Cats"})
+                }]
+            }]
+        } 
     else:
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
