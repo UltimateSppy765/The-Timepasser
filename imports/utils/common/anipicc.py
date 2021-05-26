@@ -31,7 +31,6 @@ def pic(anim:bool,animal:str,usid:str):
             }
         else:
             return {
-                "flags": 64,
                 "content": ":fox: Here's a fox pic for you.",
                 "embeds": [
                     {
@@ -71,7 +70,6 @@ def pic(anim:bool,animal:str,usid:str):
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
-        "flags": 64,
         "content": cont,
         "embeds": [
             {
