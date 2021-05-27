@@ -72,6 +72,7 @@ def pic(anim:bool,animal:str,usid:str):
         cont=":cat: Here's a dog pic for you." if anim==False else ":dog: Here's an animated dog pic for you."
         greet="Woof..."
         bemname="🐶"
+        print(bemname)
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
