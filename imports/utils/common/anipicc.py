@@ -52,7 +52,7 @@ def pic(anim:bool,animal:str,usid:str):
                         "style": 1,
                         "label": "Another one!",
                         "emoji": {
-                            "name": "fox"
+                            "name": "🦊"
                         },
                         "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
                     }]
@@ -64,6 +64,7 @@ def pic(anim:bool,animal:str,usid:str):
         cont=":cat: Here's a cat pic for you." if anim==False else ":cat: Here's an animated cat pic for you."
         greet="Meow..."
         bemname="cat"
+        bemid="847614941548249108"
         ftext="Powered by The Cat API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
     elif animal=="Dog":
@@ -72,7 +73,7 @@ def pic(anim:bool,animal:str,usid:str):
         cont=":cat: Here's a dog pic for you." if anim==False else ":dog: Here's an animated dog pic for you."
         greet="Woof..."
         bemname="dog"
-        print(bemname)
+        bemid="🐶"
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
@@ -97,7 +98,8 @@ def pic(anim:bool,animal:str,usid:str):
                  "style": 2,
                  "label": "Another one!",
                  "emoji": {
-                     "name": bemname
+                     "name": bemname,
+                     "id": bemid
                  },
                  "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
               },
