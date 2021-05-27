@@ -52,7 +52,8 @@ def pic(anim:bool,animal:str,usid:str):
                         "style": 1,
                         "label": "Another one!",
                         "emoji": {
-                            "name": "🦊"
+                            "name": "fox",
+                            "id": "847621244899426365"
                         },
                         "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
                     }]
@@ -73,7 +74,7 @@ def pic(anim:bool,animal:str,usid:str):
         cont=":cat: Here's a dog pic for you." if anim==False else ":dog: Here's an animated dog pic for you."
         greet="Woof..."
         bemname="dog"
-        bemid="🐶"
+        bemid="847621035981537280"
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
@@ -107,7 +108,11 @@ def pic(anim:bool,animal:str,usid:str):
                  "type": 2,
                  "style": 1,
                  "label": "An Animated one!" if anim==False else "A Static one!",
-                 "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":False if anim==True else True,"animal":animal})
+                 "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":False if anim==True else True,"animal":animal}),
+                 "emoji": {
+                     "id": "847621447954071562" if anim==False else "847623094436233266",
+                     "name": "animated" if anim==False else "static"
+                 }
             }]
         }]
     }
