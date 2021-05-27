@@ -20,7 +20,7 @@ def cmd(usid:str,aid:str,iid:str,token:str):
                 "type": 2,
                 "style": 1,
                 "emoji": {
-                    "name": "🎲"
+                    "name": "game_die"
                 },
                 "label": "Reroll Dice",
                 "custom_id": json.dumps({"bfn":"dicereroll","rolls":1,"userid":usid})
