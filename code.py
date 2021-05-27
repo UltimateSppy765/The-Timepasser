@@ -8,7 +8,6 @@ app = Flask(__name__)
 @app.route('/',methods=['POST'])
 @verify_key_decorator(os.environ['CLIENT_ID'])
 def code():
-    print(request.json)
     if request.json["type"]==1:
         return jsonify({
             "type": 1
