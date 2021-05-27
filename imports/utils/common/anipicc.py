@@ -97,7 +97,7 @@ def pic(anim:bool,animal:str,usid:str):
                  "label": "Another one!",
                  "emoji": {
                      "name": bemname
-                 }
+                 },
                  "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
               },
               {
