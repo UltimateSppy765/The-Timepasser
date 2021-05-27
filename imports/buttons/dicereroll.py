@@ -15,24 +15,28 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
     rolling={
         "type": 7,
         "data": {
-            "content": "<a:loading:747680523459231834> Rerolling the Dice…",
             "components": [
                 {
                     "type": 1,
                     "components": [
                         {
                             "type": 2,
-                            "style": 2,
+                            "style": 3,
                             "custom_id": json.dumps({"bfn":binfo["bfn"],"rolls":"Rolling","userid":binfo["userid"]}),
                             "disabled": True,
-                            "label": "Rerolling..."
+                            "label": "Rerolling...",
+                            "emoji": {
+                                "name": "loading",
+                                "id": "747680523459231834",
+                                "animated": True
+                            }
                         }
                     ]
                 }
             ]
         }
     }
-    requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":6})
+    requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=rolling)
     sleep(1)
     dicerolled={
         "content": diceroll.droll(),
