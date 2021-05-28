@@ -24,6 +24,10 @@ def getquote(type:str,userid:str):
                 "components":[{
                     "type": 2,
                     "style": 1,
+                    "emoji": {
+                        "name": "qauthor",
+                        "id": "847687409034330132"
+                    },
                     "label": "Search Quote from Author",
                     "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
                 }]
@@ -53,6 +57,10 @@ def getquote(type:str,userid:str):
                 "components":[{
                     "type": 2,
                     "style": 1,
+                    "emoji": {
+                        "name": "quote",
+                        "id": "847687355481718794"
+                    },
                     "label": "Another One!",
                     "custom_id": json.dumps({"bfn":"quote","subc":"getran","userid":userid})
                   },
@@ -60,6 +68,10 @@ def getquote(type:str,userid:str):
                     "type": 2,
                     "style": 2,
                     "label": "Search Quote from Author",
+                    "emoji": {
+                        "name": "qauthor",
+                        "id": "847687409034330132"
+                    },
                     "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
                 }]
             }]
