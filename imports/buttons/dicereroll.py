@@ -15,7 +15,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
     rolling={
         "type": 7,
         "data": {
-            "content": "Rerolling the Dice!",
+            "content": "Rerolling the Dice...",
             "components": [
                 {
                     "type": 1,
