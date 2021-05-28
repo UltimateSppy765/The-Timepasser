@@ -51,9 +51,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
                         "custom_id": json.dumps({"bfn":"dicereroll","rolls":binfo["rolls"]+1,"userid":binfo["userid"]}),
                         "disabled": False if binfo["rolls"]<5 else True,
                         "label": "Reroll Dice" if binfo["rolls"]<5 else "You can't reroll more than 5 times.",
-                        "emoji": {} if binfo["rolls"]<5 else {
-                            "name": "🎲"
-                        }
+                        "emoji": {"name":"dice","id":"847687299688824942"} if binfo["rolls"]<5 else {}
                     }
                 ]
             }
