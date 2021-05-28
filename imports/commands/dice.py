@@ -29,6 +29,5 @@ def cmd(usid:str,aid:str,iid:str,token:str):
         }]
     }
     sleep(1)
-    c=requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled).json()
-    print(c)
+    requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=dicerolled).json()
     return
