@@ -19,6 +19,10 @@ def cmd(usid:str,aid:str,iid:str,token:str):
             "components": [{
                 "type": 2,
                 "style": 1,
+                "emoji": {
+                    "name": "dice",
+                    "id": "847687299688824942"
+                },
                 "label": "Reroll Dice",
                 "custom_id": json.dumps({"bfn":"dicereroll","rolls":1,"userid":usid})
             }]

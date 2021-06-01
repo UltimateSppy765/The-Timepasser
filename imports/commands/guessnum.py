@@ -1,6 +1,6 @@
 from time import sleep
 from random import randint
-import os,requests
+import os,requests,json
 
 baseurl=os.environ['BASE_URL']
 
@@ -14,10 +14,17 @@ def cmd(guess:int,aid:str,iid:str,token:str):
                 "components": [{
                     "type": 1,
                     "components": [{
-                    "type": 2,
-                    "style": 5,
-                    "url": "https://en.m.wikipedia.org/wiki/42_(number)",
-                    "label": "Read this!"
+                        "type": 2,
+                        "style": 5,
+                        "url": "https://en.m.wikipedia.org/wiki/42_(number)",
+                        "label": "Read this!"
+                      },
+                      {
+                        "type": 2,
+                        "style": 1,
+                        "label": "What does this do?",
+                        "emoji": {"name":"umm","id":"847712983517233152"},
+                        "custom_id": json.dumps({"bfn":"shhguess"})
                     }]
                 }]
             }

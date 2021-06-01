@@ -51,6 +51,10 @@ def pic(anim:bool,animal:str,usid:str):
                         "type": 2,
                         "style": 1,
                         "label": "Another one!",
+                        "emoji": {
+                            "name": "fox",
+                            "id": "847621244899426365"
+                        },
                         "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
                     }]
                 }]
@@ -60,6 +64,8 @@ def pic(anim:bool,animal:str,usid:str):
         url=requests.get(f"https://api.thecatapi.com/v1/images/search?size=small&mime_types={imgtype}",headers={"x-api-key":os.environ['CAT_API']}).json()[0]['url']
         cont=":cat: Here's a cat pic for you." if anim==False else ":cat: Here's an animated cat pic for you."
         greet="Meow..."
+        bemname="cat"
+        bemid="847614941548249108"
         ftext="Powered by The Cat API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
     elif animal=="Dog":
@@ -67,6 +73,8 @@ def pic(anim:bool,animal:str,usid:str):
         url=requests.get(f"https://api.thedogapi.com/v1/images/search?size=small&mime_types={imgtype}",headers={"x-api-key":os.environ['DOG_API']}).json()[0]['url']
         cont=":cat: Here's a dog pic for you." if anim==False else ":dog: Here's an animated dog pic for you."
         greet="Woof..."
+        bemname="dog"
+        bemid="847621035981537280"
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
@@ -90,13 +98,21 @@ def pic(anim:bool,animal:str,usid:str):
                  "type": 2,
                  "style": 2,
                  "label": "Another one!",
+                 "emoji": {
+                     "name": bemname,
+                     "id": bemid
+                 },
                  "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
               },
               {
                  "type": 2,
                  "style": 1,
                  "label": "An Animated one!" if anim==False else "A Static one!",
-                 "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":False if anim==True else True,"animal":animal})
+                 "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":False if anim==True else True,"animal":animal}),
+                 "emoji": {
+                     "id": "847621447954071562" if anim==False else "847623094436233266",
+                     "name": "animated" if anim==False else "static"
+                 }
             }]
         }]
     }
