@@ -59,7 +59,7 @@ def cmd(token:str,iid:str,aid:str,subc:str,uid:str):
                         },
                         {
                             "name": ":man_technologist: Collaborators:",
-                            "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923>"
+                            "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923> (_He didn't commit anything yet._)"
                         },
                         {
                             "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
