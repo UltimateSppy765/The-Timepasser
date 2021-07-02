@@ -1,8 +1,8 @@
 from imports.commands import *
 from imports.utils import fail
 import traceback
+
 def slashc(r):
-    print(r.json)
     try:
         r.json["member"]
     except:
