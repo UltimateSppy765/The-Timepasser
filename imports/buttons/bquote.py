@@ -13,8 +13,7 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
             }
         }
     if binfo["subc"]=="getran":
-        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[]}})
-        requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json=qget.getquote(type="random",userid=binfo["userid"]))
+        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":qget.getquote(type="random",userid=binfo["userid"])})
         return
     else:        
         if binfo["subc"]=="passre":
