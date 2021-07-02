@@ -2,6 +2,7 @@ from imports.commands import *
 from imports.utils import fail
 import traceback
 def slashc(r):
+    print(r.json)
     try:
         r.json["member"]
     except:
@@ -30,7 +31,6 @@ def slashc(r):
             elif cmdname=="quote":
                 return quote.cmd(subc=r.json["data"]["options"][0]["name"],query=r.json["data"]["options"][0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],usid=r.json["member"]["user"]["id"])
             elif cmdname=="anipic":
-                print(r.json)
                 try:
                     ani=r.json["data"]["options"][1]["value"]
                 except:
