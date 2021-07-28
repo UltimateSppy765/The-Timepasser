@@ -24,7 +24,10 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
     else:
         if sc=="followup":
             jsp={
-                "type": 5,
+                "type": 4,
+                "data": {
+                    "content": "<a:typing:597589448607399949>  Processing Request..."
+                }
             }
             requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsp)
             res=requests.post(f"{baseurl}webhooks/{aid}/{token}",headers={"Content-Type": "application/json"},json=jsa)
