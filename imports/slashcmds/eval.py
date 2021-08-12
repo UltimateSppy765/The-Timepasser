@@ -1,9 +1,10 @@
 import os,requests,json
+from imports.utils import botowners
 
 baseurl=os.environ['BASE_URL']
 
 def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
-    if uid not in ["730361955226746923","698200925311074485","770542184310243342"]:
+    if uid not in botowners.ownerids():
         return {
             "type": 4,
             "data": {
