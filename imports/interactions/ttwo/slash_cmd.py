@@ -1,4 +1,4 @@
-from imports.commands import *
+from imports.slashcmds import *
 from imports.utils import fail
 import traceback
 
