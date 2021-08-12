@@ -2,14 +2,18 @@ from imports.slashcmds import *
 from imports.utils import fail
 import traceback
 
+availablecmds=["aboutme","anipic","avatar","dice","echo","eval","guessnum","quote","simon"]
+
 def slashc(r):
+    cmdname=r.json["data"]["name"]
+    if not cmdname in availablecmds:
+        return fail.existnt(cmdname)
     try:
         r.json["member"]
     except:
         return fail.dmerr()
     else:
         try:
-            cmdname=r.json["data"]["name"]
             if cmdname=="eval":
                 return eval.cmd(uid=r.json["member"]["user"]["id"],token=r.json["token"],iid=r.json["id"],sc=r.json["data"]["options"][0]["name"],aid=r.json["application_id"],jsn=r.json["data"]["options"][0]["options"][0]["value"])
             elif cmdname=="aboutme":
@@ -36,7 +40,5 @@ def slashc(r):
                 except:
                     ani=False
                 return anipic.cmd(usid=r.json["member"]["user"]["id"],animal=r.json["data"]["options"][0]["value"],anim=ani)
-            else:
-                return fail.existnt(cmdname)
         except:
             return fail.err(traceback.format_exc())
