@@ -33,10 +33,12 @@ def slashc(r):
             elif cmdname=="quote":
                 return quote.cmd(subc=options[0]["name"],query=options[0]["options"][0]["value"],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],usid=itruser["id"])
             elif cmdname=="anipic":
-                try:
-                    ani=options[1]["value"]
-                except:
-                    ani=False
-                return anipic.cmd(usid=itruser["id"],animal=options[0]["value"],anim=ani)
+                ani=False
+                for i in options:
+                    if i["name"]=="animal":
+                        anioption=i["value"]
+                    elif i["name"]=="animated":
+                        ani=i["value"]
+                return anipic.cmd(usid=itruser["id"],animal=anioption,anim=ani)
         except:
             return fail.err(traceback.format_exc())
