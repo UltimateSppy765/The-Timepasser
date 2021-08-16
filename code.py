@@ -3,7 +3,7 @@ from imports.utils.fail import existnt
 from flask import Flask,request,jsonify,abort
 from discord_interactions import verify_key_decorator
 from imports.interactions import tthree
-from imports.interactions.ttwo import slash_cmd
+from imports.interactions.ttwo import slash_cmd,context_cmd
 
 app=Flask(__name__)
 
@@ -16,7 +16,7 @@ def code():
         if request.json["data"]["type"]==1: #Checks and runs if it is a CHAT_INPUT command.
             return jsonify(slash_cmd.slashc(r=request))
         else: #Runs this if it is a USER/MESSAGE command.
-            return existnt(request.json["data"]["name"])
+            return jsonify(context_cmd.contextc(r=request))
     elif request.json["type"]==3: #Checks and runs if it is a MESSAGE_COMPONENT.
         return jsonify(tthree.tthree(r=request))
 
