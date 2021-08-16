@@ -28,4 +28,4 @@ def uscontext(r):
     if not cname in usctxcmds:
         return fail.existnt(cname)
     if cname=="Avatar":
-        return avatar.uscmd(av=ruser["avatar"],uname=ruser["username"],disc=ruser["discriminator"])
+        return avatar.uscmd(usid=targetusid,av=ruser["avatar"],uname=ruser["username"],disc=ruser["discriminator"])
