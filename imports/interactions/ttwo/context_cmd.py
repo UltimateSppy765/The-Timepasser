@@ -1,5 +1,6 @@
 import traceback
 from imports.utils import fail
+from imports.contextcmds.usercmds import *
 
 usctxcmds=["Avatar"]
 msgctxcmds=[]
@@ -19,5 +20,9 @@ def msgcontext(r):
 
 def uscontext(r):
     cname=r.json["data"]["name"]
+    targetusid=r.json["data"]["target_id"]
+    ruser=r.json["data"]["resolved"]["users"][targetusid]
     if not cname in usctxcmds:
         return fail.existnt(cname)
+    if cname=="Avatar":
+        return avatar.uscmd(av=ruser["avatar"],uname=ruser["username"],disc=ruser["discriminator"])
