@@ -19,13 +19,13 @@ def contextc(r):
 def msgcontext(r):
     cname=r.json["data"]["name"]
     if not cname in msgctxcmds:
-        return fail.existnt(cname)
+        return fail.ctxexistnt(cname)
 
 def uscontext(r):
     cname=r.json["data"]["name"]
     targetusid=r.json["data"]["target_id"]
     ruser=r.json["data"]["resolved"]["users"][targetusid]
     if not cname in usctxcmds:
-        return fail.existnt(cname)
+        return fail.ctxexistnt(cname)
     if cname=="Avatar":
         return avatar.uscmd(usid=targetusid,av=ruser["avatar"],uname=ruser["username"],disc=ruser["discriminator"])
