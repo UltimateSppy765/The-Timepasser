@@ -8,10 +8,6 @@ def slashc(r):
     cmdname=r.json["data"]["name"]
     if not cmdname in availablecmds:
         return fail.existnt(cmdname)
-    try:
-        r.json["member"]
-    except:
-        return fail.dmerr()
     else:
         try:
             if cmdname=="eval":
