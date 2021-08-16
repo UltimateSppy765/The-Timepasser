@@ -1,5 +1,5 @@
 import os
-from imports.utils.fail import existnt
+from imports.utils.fail import dmerr
 from flask import Flask,request,jsonify,abort
 from discord_interactions import verify_key_decorator
 from imports.interactions import tthree
@@ -12,6 +12,10 @@ app=Flask(__name__)
 @app.route('/',methods=['POST']) #Don't mess with this, this is the default method we respond with.
 @verify_key_decorator(os.environ['CLIENT_ID']) #Don't mess with this, idk what it does.
 def code():
+    try:  #Tries to get the guild ID.
+        r.json["guild_id"]
+    except:  #If interaction was used in a DM (basically guild ID doesn't exist in a DM), returns an error.
+        return dmerr()
     if request.json["type"]==2: #Checks if it is an APPLICATION_COMMAND.
         if request.json["data"]["type"]==1: #Checks and runs if it is a CHAT_INPUT command.
             return jsonify(slash_cmd.slashc(r=request))
