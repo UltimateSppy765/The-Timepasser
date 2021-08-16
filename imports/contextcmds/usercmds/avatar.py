@@ -1,5 +1,4 @@
 from imports.utils import avpic
-import os
 
 def uscmd(usid,av,uname:str,disc):
     return {
