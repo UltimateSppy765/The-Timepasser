@@ -13,7 +13,7 @@ app=Flask(__name__)
 @verify_key_decorator(os.environ['CLIENT_ID']) #Don't mess with this, idk what it does.
 def code():
     try:  #Tries to get the guild ID.
-        r.json["guild_id"]
+        request.json["guild_id"]
     except:  #If interaction was used in a DM (basically guild ID doesn't exist in a DM), returns an error.
         return dmerr()
     if request.json["type"]==2: #Checks if it is an APPLICATION_COMMAND.
