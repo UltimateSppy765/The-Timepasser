@@ -13,7 +13,7 @@ def qsearch(query):
     for i in wikiquote.search(query):
         if i not in Authorlist:
             Authorlist.append(i)
-    if Authorlist=[]:
+    if Authorlist==[]:
         return ["NoAuthorFound"]
     else:
         Authorlist.sort()
