@@ -15,13 +15,13 @@ def qsearch(query):
             Authorlist.append(i)
     if Authorlist=[]:
         return ["NoAuthorFound"]
-    elif query in Authorlist:
-        return ["Success",choice(wikiquote.quotes(query,max_quotes=1),wikiquotes.random_quote(query,"english")),query]
     else:
         Authorlist.sort()
         for i in Authorlist:
-            if query in i:
-                return ["Success",choice(wikiquote.quotes(i,max_quotes=1),wikiquotes.random_quote(i,"english")),i]
+            if query.lower()==i.lower():
+                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i]
+            elif query.lower() in i.lower():
+                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i]
         Quotelist=[]
         Resultlist=[]
         for i in Authorlist:
@@ -31,14 +31,15 @@ def qsearch(query):
                 pass
             else:
                 Quotelist=a
+                del a
             for k in wikiquote.quotes(i,max_quotes=5):
                 if k not in Quotelist:
                     Quotelist.append(k)
             for j in Quotelist:
-                if query in Quotelist:
+                if query.lower() in j.lower():
                     Resultlist.append([j,i])
         if Resultlist!=[]:
             Quote=choice(Resultlist)
             return ["Success",Quote[0],Quote[1]]
         else:
-            return ["NoQuoteFound",AuthorList]
+            return ["NoQuoteFound",Authorlist]
