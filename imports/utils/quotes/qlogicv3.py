@@ -32,7 +32,11 @@ def qsearch(query):
             else:
                 Quotelist=a
                 del a
-            for k in wikiquote.quotes(i,max_quotes=5):
+            try:
+                c=wikiquote.quotes(i,max_quotes=5)
+            except:
+                c=[]
+            for k in c:
                 if k not in Quotelist:
                     Quotelist.append(k)
             for j in Quotelist:
