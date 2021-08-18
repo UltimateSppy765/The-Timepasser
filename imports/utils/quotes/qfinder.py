@@ -25,11 +25,8 @@ def qres(query:str,userid:str):
             ]
         }
     elif Search[0]=="NoQuoteFound":
-        print(Search[1])
         Titles=Search[1]
-        print(Titles)
         shuffle(Titles)
-        print(Titles)
         Suggestions=[]
         for i in Titles:
             if len(Suggestions)<26:
