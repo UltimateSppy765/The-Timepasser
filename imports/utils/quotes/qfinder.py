@@ -101,6 +101,7 @@ def qres(query:str,userid:str):
                     "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
                     "placeholder": "🔎 Try searching",
                     "options": Suggestions
+                }]
               },
               {
                 "type": 1,
