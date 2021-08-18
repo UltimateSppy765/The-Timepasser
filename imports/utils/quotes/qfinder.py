@@ -70,7 +70,15 @@ def qres(query:str,userid:str):
                 }]
             }]
         }
-    elif Search[0]=="Success":      
+    elif Search[0]=="Success":
+        Titles=Search[3]
+        shuffle(Titles)
+        Suggestions=[]
+        for i in Titles:
+            if len(Suggestions)<26:
+                Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
+            else:
+                break
         jsn={
             "embeds": [
                 {
@@ -89,6 +97,14 @@ def qres(query:str,userid:str):
             "components": [{
                 "type": 1,
                 "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
+                    "placeholder": "🔎 Try searching",
+                    "options": Suggestions
+                  },
+                  {
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
