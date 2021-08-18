@@ -1,6 +1,13 @@
 import wikiquote,wikiquotes
 from random import choice
 
+def ranlist(title):
+    try:
+        a=[wikiquotes.random_quote(title,"english")]
+    except:
+        a=[]
+    return a+wikiquote.quotes(title,max_quotes=1)
+
 def qfind(query):
     Authorlist=[]
     try:
@@ -18,9 +25,15 @@ def qfind(query):
     else:
         Authorlist.sort()
         for i in Authorlist:
+            if not query.lower() in i.lower():
+                if not i.lower() in query.lower():
+                    continue
+            qt=ranlist(i)
+            if qt==[]:
+                continue
             if query.lower()==i.lower():
                 return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
-            elif query.lower() in i.lower():
+            elif query.lower() in i.lower() or i.lower() in query.lower():
                 return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
         Quotelist=[]
         Resultlist=[]
