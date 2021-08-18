@@ -22,5 +22,6 @@ def cmd(subc:str,query:str,token:str,aid:str,iid:str,usid:str):
             return a
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5})
         jsr=qfinder.qres(query=query,userid=usid)
-        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
+        a=requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsr)
+        print(a.json())
         return
