@@ -68,7 +68,7 @@ def qres(query:str,userid:str):
                         "id": "847699422389600256"
                     },
                     "label": "Try Again",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid,"query":query},ensure_ascii=False).encode().decode()
+                    "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
                 }]
             }]
         }
