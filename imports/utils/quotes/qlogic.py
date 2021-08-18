@@ -1,12 +1,22 @@
 import wikiquote,wikiquotes
 from random import choice
 
+blacklist=["Quotes are arranged in chronological order"]
+
 def ranlist(title):
     try:
         a=[wikiquotes.random_quote(title,"english")]
     except:
         a=[]
-    return a+wikiquote.quotes(title,max_quotes=1)
+    try:
+        b=wikiquote.quotes(title,max_quotes=1)
+    except:
+        b=[]
+    Newlist=a+b
+    for i in blacklist:
+        if i in Newlist:
+            Newlist.remove(i)
+    return Newlist
 
 def qfind(query):
     Authorlist=[]
@@ -25,18 +35,23 @@ def qfind(query):
     else:
         Authorlist.sort()
         for i in Authorlist:
-            if not query.lower() in i.lower():
-                if not i.lower() in query.lower():
-                    continue
-            qt=ranlist(i)
-            if qt==[]:
-                continue
             if query.lower()==i.lower():
-                Authorlist.remove(i)
-                return ["Success",choice(qt),i,Authorlist]
-            elif query.lower() in i.lower() or i.lower() in query.lower():
-                Authorlist.remove(i)
-                return ["Success",choice(qt),i,Authorlist]
+                qt=ranlist(i)
+                if qt==[]:
+                    Authorlist.remove(i)
+                    continue
+                else:
+                    Authorlist.remove(i)
+                    return ["Success",choice(qt),i,Authorlist]
+        for i in Authorlist:
+            if query.lower() in i.lower() or i.lower() in query.lower():
+                qt=ranlist(i)
+                if qt==[]:
+                    Authorlist.remove(i)
+                    continue
+                else:
+                    Authorlist.remove(i)
+                    return ["Success",choice(qt),i,Authorlist]
         Quotelist=[]
         Resultlist=[]
         for i in Authorlist:
