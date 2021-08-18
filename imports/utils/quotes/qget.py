@@ -3,7 +3,6 @@ import wikiquote,requests,json,traceback
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
-        print(json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor}))
         return {
             "embeds": [
                 {
@@ -29,7 +28,7 @@ def getquote(type:str,userid:str):
                         "id": "847687409034330132"
                     },
                     "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
                 }]
             }]
         } 
@@ -72,7 +71,7 @@ def getquote(type:str,userid:str):
                         "name": "qauthor",
                         "id": "847687409034330132"
                     },
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
-                }]
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                }
             }]
         }
