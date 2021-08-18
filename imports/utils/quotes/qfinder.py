@@ -97,14 +97,14 @@ def qres(query:str,userid:str):
             "components": [{
                 "type": 1,
                 "components": [{
-                "type": 1,
-                "components": [{
                     "type": 3,
                     "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
                     "placeholder": "🔎 Try searching",
                     "options": Suggestions
-                  },
-                  {
+              },
+              {
+                "type": 1,
+                "components": [{
                     "type": 2,
                     "style": 1,
                     "label": "Search Again!",
