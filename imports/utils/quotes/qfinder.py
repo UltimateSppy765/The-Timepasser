@@ -57,19 +57,6 @@ def qres(query:str,userid:str):
                     "placeholder": "🔎 Try searching",
                     "options": Suggestions
                 }]
-              },
-              {
-                "type": 1,
-                "components": [{
-                    "type": 2,
-                    "style": 2,
-                    "emoji": {
-                        "name": "reload",
-                        "id": "847699422389600256"
-                    },
-                    "label": "Try Again",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"failre","userid":userid})
-                }]
             }]
         }
     elif Search[0]=="Success":      
