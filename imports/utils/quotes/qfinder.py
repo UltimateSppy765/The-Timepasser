@@ -31,6 +31,7 @@ def qres(query:str,userid:str):
                 Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
             else:
                 break
+        print(Suggestions)
         jsn={
             "embeds": [
                 {
