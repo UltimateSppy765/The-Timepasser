@@ -24,14 +24,14 @@ def qres(query:str,userid:str):
             ]
         }
     elif Search[0]=="NoQuoteFound":
-        Titles=Search[1].shuffle()
+        Titles=Search[1]
+        Titles.shuffle()
         Suggestions=[]
         for i in Titles:
             if len(Suggestions)<26:
                 Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
             else:
                 break
-        print(Suggestions)
         jsn={
             "embeds": [
                 {
