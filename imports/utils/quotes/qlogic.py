@@ -14,14 +14,14 @@ def qfind(query):
         if i not in Authorlist:
             Authorlist.append(i)
     if Authorlist==[]:
-        return ["NoAuthorFound"]
+        return ["NoAuthorFound",wikiquote.random_titles(max_titles=7)]
     else:
         Authorlist.sort()
         for i in Authorlist:
             if query.lower()==i.lower():
-                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i]
+                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
             elif query.lower() in i.lower():
-                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i]
+                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
         Quotelist=[]
         Resultlist=[]
         for i in Authorlist:
@@ -45,6 +45,6 @@ def qfind(query):
         if Resultlist!=[]:
             Resultlist.sort()
             Quote=choice(Resultlist)
-            return ["Success",Quote[0],Quote[1]]
+            return ["Success",Quote[0],Quote[1],Authorlist]
         else:
             return ["NoQuoteFound",Authorlist]
