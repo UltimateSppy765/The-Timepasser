@@ -32,9 +32,11 @@ def qfind(query):
             if qt==[]:
                 continue
             if query.lower()==i.lower():
-                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
+                Authorlist.remove(i)
+                return ["Success",choice(qt),i,Authorlist]
             elif query.lower() in i.lower() or i.lower() in query.lower():
-                return ["Success",choice(wikiquote.quotes(i,max_quotes=1)+[wikiquotes.random_quote(i,"english")]),i,Authorlist]
+                Authorlist.remove(i)
+                return ["Success",choice(qt),i,Authorlist]
         Quotelist=[]
         Resultlist=[]
         for i in Authorlist:
@@ -58,6 +60,7 @@ def qfind(query):
         if Resultlist!=[]:
             Resultlist.sort()
             Quote=choice(Resultlist)
+            Authorlist.remove(Quote[1])
             return ["Success",Quote[0],Quote[1],Authorlist]
         else:
             return ["NoQuoteFound",Authorlist]
