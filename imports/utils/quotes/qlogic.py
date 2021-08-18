@@ -1,7 +1,7 @@
 import wikiquote,wikiquotes
 from random import choice
 
-def qsearch(query):
+def qfind(query):
     Authorlist=[]
     try:
         a=wikiquotes.search(query,"english")
