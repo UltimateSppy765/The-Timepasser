@@ -1,5 +1,6 @@
 import traceback,json
 from imports.buttons import *
+from imports.selects import *
 from imports.utils import fail
 
 buttons=["dicereroll","quote","banipic"]
@@ -36,5 +37,4 @@ def selectitr(r,c):
     if not sname in selects:
         return fail.cfail()
     if sname=="quote":
-        #return squote.select(query=svalues[0],sinfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
-        return fail.cfail()
+        return squote.select(query=svalues[0],sinfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
