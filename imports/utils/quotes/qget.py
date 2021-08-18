@@ -72,6 +72,6 @@ def getquote(type:str,userid:str):
                         "id": "847687409034330132"
                     },
                     "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
-                }
+                }]
             }]
         }
