@@ -1,4 +1,5 @@
 import traceback,json
+from random import shuffle
 from imports.utils.quotes import qlogic
 
 def qres(query:str,userid:str):
@@ -27,8 +28,8 @@ def qres(query:str,userid:str):
         print(Search[1])
         Titles=Search[1]
         print(Titles)
-        Titles.shuffle()
-        print (Titles)
+        shuffle(Titles)
+        print(Titles)
         Suggestions=[]
         for i in Titles:
             if len(Suggestions)<26:
