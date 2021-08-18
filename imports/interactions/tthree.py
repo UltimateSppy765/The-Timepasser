@@ -33,6 +33,7 @@ def buttonitr(r,c):
 
 def selectitr(r,c):
     sname=c["sfn"]
+    itruser=r.json["member"]["user"]
     svalues=r.json["data"]["values"]
     if not sname in selects:
         return fail.cfail()
