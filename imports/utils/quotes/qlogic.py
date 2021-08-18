@@ -43,6 +43,7 @@ def qfind(query):
                 if query.lower() in j.lower():
                     Resultlist.append([j,i])
         if Resultlist!=[]:
+            Resultlist.sort()
             Quote=choice(Resultlist)
             return ["Success",Quote[0],Quote[1]]
         else:
