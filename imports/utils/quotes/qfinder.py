@@ -8,11 +8,14 @@ def qres(query:str,userid:str):
     thum="https://cdn.discordapp.com/attachments/789798190353743874/796948926590615572/oie_transparent_1.png"
     Search=qlogic.qfind(query=query)
     if Search[0]=="NoAuthorFound":
+        Suggestions=[]
+        for i in Search[1]:
+            Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
         jsn={
             "embeds": [
                 {
                     "title": f"No result found for query: **'{query}'**",
-                    "description": "Sorry, your query didn't work. Please try with a different one.",
+                    "description": "Sorry, your query didn't work. Please try with a different one or choose a suggestion from the drop-down below.",
                     "color": 3092791,
                     "thumbnail": {
                         "url": thum
@@ -22,7 +25,16 @@ def qres(query:str,userid:str):
                         "icon_url": ficon
                     }
                 }
-            ]
+            ],
+            "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
+                    "placeholder": "🔎 Try searching",
+                    "options": Suggestions
+                }]
+            }]
         }
     elif Search[0]=="NoQuoteFound":
         Titles=Search[1]
@@ -33,7 +45,6 @@ def qres(query:str,userid:str):
                 Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
             else:
                 break
-        print(Suggestions)
         jsn={
             "embeds": [
                 {
