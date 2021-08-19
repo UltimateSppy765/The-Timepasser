@@ -1,6 +1,7 @@
 from imports.slashcmds import *
 from imports.utils import fail
 import traceback
+from imports.utils.errors import errhandle
 
 availablecmds=["aboutme","anipic","avatar","dice","echo","eval","guessnum","quote","simon"]
 
@@ -41,4 +42,4 @@ def slashc(r):
                         ani=i["value"]
                 return anipic.cmd(usid=itruser["id"],animal=anioption,anim=ani)
         except:
-            return fail.err(traceback.format_exc())
+            return handle(r=r,t=traceback.format_exc())
