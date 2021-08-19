@@ -5,7 +5,7 @@ from imports.utils import fail
 from imports.utils.errors.errhandle import handle
 
 buttons=["dicereroll","quote","banipic"]
-selects=["quote","aboutme"]
+selects=["quote","aboutme","anipic"]
 
 def tthree(r):
     try:
@@ -42,3 +42,5 @@ def selectitr(r,c):
         return squote.select(query=svalues[0],sinfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif sname=="aboutme":
         return saboutme.select(query=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+    elif sname=="anipic":
+        return sanipic.select(animal=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
