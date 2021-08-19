@@ -14,7 +14,7 @@ def componenterr(r,traceback):
     Content=f"Exception raised in message component with identifier: `{cname}`" 
     Embed=[{
         "title": "🔴 Traceback Called:",
-        "color": 15745587
+        "color": 15745587,
         "description": f"```py\n{traceback}\n```",
         "fields": [{
             "name": "Interaction Created at:",
