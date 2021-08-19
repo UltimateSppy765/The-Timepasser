@@ -14,7 +14,7 @@ def handle(r,t):
         elif r.json["data"]["type"] in [2,3]:
             errlog=contexterr.contexterr(r=r,traceback=t)
     json={
-        "content": f"\n**Interaction ID:** {r.json["id"]}"+errlog[0],
+        "content": f"\n**Interaction ID:** {r.json['id']}\n"+errlog[0],
         "embeds": errlog[1],
         "components": [{
             "type": 1,
