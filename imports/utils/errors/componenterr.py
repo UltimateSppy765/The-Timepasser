@@ -27,7 +27,7 @@ def componenterr(r,traceback):
             "inline": True
           },
           {
-            "name": "Component Type:"
+            "name": "Component Type:",
             "value": f"`{ctype}`",
             "inline": True
         }]
