@@ -1,7 +1,7 @@
 import traceback
 from imports.utils import fail
 from imports.contextcmds.usercmds import *
-from imports.utils.errors import errhandle
+from imports.utils.errors.errhandle import handle
 
 usctxcmds=["Avatar"]
 msgctxcmds=[]
