@@ -1,8 +1,8 @@
 import os,requests,json
 
-catopt={"label":"Cat","description":"Shows you a cat picture.","value":"cat","emoji":{"name":"cat","id":"847614941548249108"}}
-dogopt={"label":"Dog","description":"Shows you a dog picture.","value":"dog","emoji":{"name":"dog","id":"847621035981537280"}}
-foxopt={"label":"Fox","description":"Shows you a fox picture.","value":"fox","emoji":{"name":"fox","id":"847621244899426365"}}
+catopt={"label":"Cat","description":"Shows you a cat picture.","value":"Cat","emoji":{"name":"cat","id":"847614941548249108"}}
+dogopt={"label":"Dog","description":"Shows you a dog picture.","value":"Dog","emoji":{"name":"dog","id":"847621035981537280"}}
+foxopt={"label":"Fox","description":"Shows you a fox picture.","value":"Fox","emoji":{"name":"fox","id":"847621244899426365"}}
 
 def pic(anim:bool,animal:str,usid:str):
     if animal=="Fox":
