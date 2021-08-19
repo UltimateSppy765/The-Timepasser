@@ -43,4 +43,4 @@ def selectitr(r,c):
     elif sname=="aboutme":
         return saboutme.select(query=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif sname=="anipic":
-        return sanipic.select(animal=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        return sanipic.select(animal=svalues[0],oguser=c["userid"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
