@@ -1,5 +1,6 @@
 import os,requests
 
+baseurl=os.environ['BASE_URL']
 story={"label":"Story","value":"story","description":"The story of my making!","emoji":{"name":"abstory","id":"877789615065546752"}}
 devs={"label":"Developers","value":"devs","description":"In short terms, the guys who made me.","emoji":{"name":"abdevs","id":"877789649479815198"}}
 links={"label":"Links","value":"story","description":"Links related to me!","emoji":{"name":"ablinks","id":"877928805153509406"}}
