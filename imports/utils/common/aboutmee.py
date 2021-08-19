@@ -99,7 +99,7 @@ def meinfo(query:str,uid:str):
     elif query=="links":
         return {
             "flags": 64,
-            "content": f"Hello <@{uid}>, here are some links related to me that you can refer!",
+            "content": f"Hello <@!{uid}>, here are some links related to me that you can refer!",
             "embeds": [
                 "color": 3092791,
                 "fields": [
