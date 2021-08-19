@@ -2,6 +2,7 @@ import traceback,json
 from imports.buttons import *
 from imports.selects import *
 from imports.utils import fail
+from imports.utils.errors import errhandle
 
 buttons=["dicereroll","quote","banipic"]
 selects=["quote"]
@@ -17,7 +18,7 @@ def tthree(r):
         elif r.json["data"]["component_type"]==3:
             return selectitr(r=r,c=c)
     except:
-        return fail.err(traceback.format_exc())
+        return handle(r=r,t=traceback.format_exc())
 
 def buttonitr(r,c):
     bname=c["bfn"]
