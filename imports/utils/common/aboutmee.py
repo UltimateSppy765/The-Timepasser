@@ -52,7 +52,6 @@ def meinfo(query:str,uid:str):
         plexi=requests.get(f"{baseurl}users/730361955226746923",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
         aura=requests.get(f"{baseurl}users/479195061792407562",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
         return {
-            "flags": 64,
             "content": f"> Hey <@!{uid}>!\n> <:developer2:792583451063615518> Want the list of the bot developers? \n> Here you go:",
             "embeds": [
                 {
