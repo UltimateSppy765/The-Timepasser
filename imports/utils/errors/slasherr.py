@@ -1,4 +1,4 @@
-def slashcerr(r,traceback):
+def slasherr(r,traceback):
     cmdname=r.json["data"]["name"]
     itrid=r.json["id"]
     a=int(itrid) >> 22
