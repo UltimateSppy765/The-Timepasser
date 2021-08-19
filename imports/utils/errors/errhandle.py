@@ -13,7 +13,7 @@ def handle(r,t):
             errlog=slasherr.slasherr(r=r,traceback=t)
         elif r.json["data"]["type"] in [2,3]:
             errlog=contexterr.contexterr(r=r,traceback=t)
-    json={
+    jsn={
         "content": f"\n**Interaction ID:** {r.json['id']}\n"+errlog[0],
         "embeds": errlog[1],
         "components": [{
@@ -26,5 +26,5 @@ def handle(r,t):
             }]
         }]
     }
-    requests.post(f"{baseurl}webhooks/{wid}/{wtoken}?wait=true",json=json)
+    requests.post(f"{baseurl}webhooks/{wid}/{wtoken}?wait=true",json=jsn)
     return
