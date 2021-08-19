@@ -2,7 +2,7 @@ import traceback,json
 from imports.buttons import *
 from imports.selects import *
 from imports.utils import fail
-from imports.utils.errors import errhandle
+from imports.utils.errors.errhandle import handle
 
 buttons=["dicereroll","quote","banipic"]
 selects=["quote"]
