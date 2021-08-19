@@ -6,7 +6,7 @@ def slasherr(r,traceback):
     Content=f"Exception raised in slash command: `/{cmdname}`" 
     Embed=[{
         "title": "🔴 Traceback Called:",
-        "color": 15745587
+        "color": 15745587,
         "description": f"```py\n{traceback}\n```",
         "fields": [{
             "name": "Interaction Created at:",
