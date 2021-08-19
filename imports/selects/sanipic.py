@@ -1,4 +1,3 @@
-import reqeusts,os
 from imports.utils.common.anipicc import pic
 
 def select(animal:str,oguser:str,usid:str,aid:str,token:str,iid:str):
