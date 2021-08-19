@@ -39,3 +39,5 @@ def selectitr(r,c):
         return fail.cfail()
     if sname=="quote":
         return squote.select(query=svalues[0],sinfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+    elif sname=="aboutme":
+        return saboutme.select(query=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
