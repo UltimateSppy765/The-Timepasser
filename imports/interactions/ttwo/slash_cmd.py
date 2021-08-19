@@ -1,7 +1,7 @@
 from imports.slashcmds import *
 from imports.utils import fail
 import traceback
-from imports.utils.errors import errhandle
+from imports.utils.errors.errhandle import handle
 
 availablecmds=["aboutme","anipic","avatar","dice","echo","eval","guessnum","quote","simon"]
 
