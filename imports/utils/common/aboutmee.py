@@ -1,4 +1,10 @@
-def meinfo(query):
+import os,requests
+
+story={"label":"Story","value":"story","description":"The story of my making!","emoji":{"name":"abstory","id":"877789615065546752"}}
+devs={"label":"Developers","value":"devs","description":"In short terms, the guys who made me.","emoji":{"name":"abdevs","id":"877789649479815198"}}
+links={"label":"Links","value":"story","description":"Links related to me!","emoji":{"name":"ablinks","id":"877928805153509406"}}
+
+def meinfo(query:str,uid:str):
     if query=="story":
         return {
             "flags": 64,
@@ -28,10 +34,87 @@ def meinfo(query):
                     "url": "https://discord.com/api/oauth2/authorize?client_id=791153806058455075&scope=applications.commands",
                     "label": "Bot Invite Link"
                 }]
-              }
-            ]
+              },
+              {
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"aboutme"}),
+                    "placeholder": "More stuff related to me!",
+                    "options": [devs,links]
+                }]
+            }]
         }
     elif query=="devs":
-        return
+        meow=requests.get(f"{baseurl}users/698200925311074485",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
+        sppy=requests.get(f"{baseurl}users/770542184310243342",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
+        plexi=requests.get(f"{baseurl}users/730361955226746923",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
+        aura=requests.get(f"{baseurl}users/479195061792407562",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
+        return {
+            "flags": 64,
+            "content": f"> Hey <@!{uid}>!\n> <:developer2:792583451063615518> Want the list of the bot developers? \n> Here you go:",
+            "embeds": [
+                {
+                    "color": 3092791,
+                    "fields": [
+                        {
+                            "name": ":pencil2: Bot Creators:",
+                            "value": f"{meow['username']}#{meow['discriminator']} - <@!698200925311074485> (<a:cute_cat:795581665962622976> Cat Fan)\n{sppy['username']}#{sppy['discriminator']} - <@!770542184310243342> (:detective: They're a *Sppy*  beware)"
+                        },
+                        {
+                            "name": ":man_technologist: Collaborators:",
+                            "value": f"{plexi['username']}#{plexi['discriminator']} - <@!730361955226746923> (_He didn't commit anything yet._)"
+                        },
+                        {
+                            "name": ":test_tube: Not to forget, our great bot tester! (*aka the lab rat mentioned in the Story*)",
+                            "value": f"{aura['username']}#{aura['discriminator']} - <@!479195061792407562>"
+                        },
+                        {
+                            "name": "Want to contact someone listed above?",
+                            "value": "You might need to join our community server to contact them. (as their DMs might be disabled)\nYou can join the server using the button below!"
+                        }
+                    ]
+                }
+            ],
+            "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 2,
+                    "style": 5,
+                    "url": "https://discord.gg/JXGe9MfXPF",
+                    "label": "Our Community Server!"
+                }]
+              },
+              {
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"aboutme"}),
+                    "placeholder": "More stuff related to me!",
+                    "options": [story,links]
+                }]
+            }]
+        }
     elif query=="links":
-        return
+        return {
+            "flags": 64,
+            "content": f"Hello <@{uid}>, here are some links related to me that you can refer!",
+            "embeds": [
+                "color": 3092791,
+                "fields": [
+                    {
+                        "name": "🔗 Links you can refer:",
+                        "value": "[Add me to your server from here!](https://discord.com/api/oauth2/authorize?client_id=791153806058455075&scope=applications.commands)\nA community server where you can contact the devs (_or just chill there_): [Click Here](https://discord.gg/JXGe9MfXPF)\nThe code that empowers me: [The GitHub Repo Link](https://github.com/UltimateSppy765/The-Timepasser) (it's preferred to open bug reports/feature requests on the GitHub repo)"
+                    }
+                ]
+            ],
+            "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"aboutme"}),
+                    "placeholder": "More stuff related to me!",
+                    "options": [story,devs]
+                }]
+            }]
+        }
