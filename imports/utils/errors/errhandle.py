@@ -20,7 +20,7 @@ def handle(r,t):
             "type": 1,
             "components": [{
                 "type": 3,
-                "custom_id": json.dumps(),
+                "custom_id": json.dumps({"sfn":"errlogaction","errid":r.json['id']}),
                 "placeholder": "Actions you can perform",
                 "options": [{"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}},{"label":"Delete Error","value":"delerr","description":"Deletes the error.","emoji":{"name":"trashcan","id":"877957522026287134"}}]
             }]
