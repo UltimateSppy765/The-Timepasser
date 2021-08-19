@@ -100,7 +100,7 @@ def meinfo(query:str,uid:str):
         return {
             "flags": 64,
             "content": f"Hello <@!{uid}>, here are some links related to me that you can refer!",
-            "embeds": [
+            "embeds": [{
                 "color": 3092791,
                 "fields": [
                     {
@@ -108,7 +108,7 @@ def meinfo(query:str,uid:str):
                         "value": "[Add me to your server from here!](https://discord.com/api/oauth2/authorize?client_id=791153806058455075&scope=applications.commands)\nA community server where you can contact the devs (_or just chill there_): [Click Here](https://discord.gg/JXGe9MfXPF)\nThe code that empowers me: [The GitHub Repo Link](https://github.com/UltimateSppy765/The-Timepasser) (it's preferred to open bug reports/feature requests on the GitHub repo)"
                     }
                 ]
-            ],
+            }],
             "components": [{
                 "type": 1,
                 "components": [{
