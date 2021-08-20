@@ -49,7 +49,7 @@ def qres(query:str,userid:str):
             "embeds": [
                 {
                     "title": f"No result for query: **'{query}'**",
-                    "description": "Sorry, I couldn't find a quote for the given query. Please try again.",
+                    "description": "Sorry, your query didn't work. Please try with a different one or choose a suggestion from the drop-down below.",
                     "color": 3092791,
                     "thumbnail": {
                         "url": thum
