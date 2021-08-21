@@ -5,7 +5,7 @@ from imports.utils import fail
 from imports.utils.errors.errhandle import handle
 
 buttons=["dicereroll","quote","banipic"]
-selects=["quote","aboutme","anipic"]
+selects=["quote","aboutme","anipic","errlogaction"]
 
 def tthree(r):
     try:
