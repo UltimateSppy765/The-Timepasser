@@ -18,7 +18,7 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
     if action=="delerr":
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5,"data":{"flags":64}})
         a=requests.delete(f"{baseurl}webhooks/wid/wtoken/messages/{msg['id']}")
-        pattern=r'**Interaction ID:**\ (.?)\n'
+        pattern=r'\**Interaction ID:\**\ (.*)\n'
         itrid=re.search(pattern,msg["content"]).group(1)
         if a.status_code==204:
             jsn={"content":f"<:tick:847861518195884063> Successfully deleted error with Interaction ID: {itrid}"}
