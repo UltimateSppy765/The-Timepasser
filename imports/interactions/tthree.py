@@ -45,4 +45,4 @@ def selectitr(r,c):
     elif sname=="anipic":
         return sanipic.select(animal=svalues[0],oguser=c["userid"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif sname=="errlogaction":
-        return serror.select(msg=r.json["message"],action=values[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
+        return serror.select(msg=r.json["message"],action=svalues[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
