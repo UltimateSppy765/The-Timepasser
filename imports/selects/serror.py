@@ -6,7 +6,7 @@ baseurl=os.environ["BASE_URL"]
 wtoken=os.environ["ERROR_WEBHOOK_TOKEN"]
 wid=os.environ["ERROR_WEBHOOK_ID"]
 
-def errlogaction(msg,action:str,aid:str,iid:str,token:str,uid:str):
+def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
     if uid not in ownerids():
         return {
             "type": 4,
