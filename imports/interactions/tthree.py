@@ -44,3 +44,5 @@ def selectitr(r,c):
         return saboutme.select(query=svalues[0],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif sname=="anipic":
         return sanipic.select(animal=svalues[0],oguser=c["userid"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+    elif sname=="errlogaction":
+        return serror.select(msg=r.json["message"],action=values[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
