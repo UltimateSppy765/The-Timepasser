@@ -18,7 +18,7 @@ def componenterr(r,traceback):
         "description": f"```py\n{traceback}\n```",
         "fields": [{
             "name": "Interaction Created at:",
-            "value": f"<t:{Tstamp}:F>",
+            "value": f"<t:{Tstamp/1000}:F>",
             "inline": True
           },
           {
