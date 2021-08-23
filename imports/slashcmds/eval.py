@@ -47,7 +47,7 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
             if res.status_code==204:
                 #special test starts here
                 a=requests.get(f"{baseurl}webhooks/{aid}/{token}/messages/@original").json()
-                if a['flags'] & (1 << 6 | 1 << 7):
+                if (a['flags'] & (1 << 6 | 1 << 7)) == (1 << 6 | 1 << 7):
                     print("Ephemeral and Deferred")
                 elif a['flags'] & 1 << 7:
                     print("Deferred only")
