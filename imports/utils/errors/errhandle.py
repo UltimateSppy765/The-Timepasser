@@ -12,7 +12,7 @@ def usres(r,jsnres):
     try:
         msgflags=r1["flags"]
     except:
-        return requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":4,"data":jsnres})
+        return requests.post(f"{baseurl}interactions/{r.json['id']}/{r.json['token']}/callback",json={"type":4,"data":jsnres})
     perms= 1 << 6 | 1 << 7
     if (msgflags & perms) == perms:
         requests.patch(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original",headers={"Content-Type":"application/json"},json=jsnres)
