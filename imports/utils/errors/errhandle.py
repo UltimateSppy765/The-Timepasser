@@ -22,7 +22,7 @@ def handle(r,t):
                 "type": 3,
                 "custom_id": json.dumps({"sfn":"errlogaction","errid":r.json['id']}),
                 "placeholder": "Actions you can perform",
-                "options": [{"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}},{"label":"Delete Error","value":"delerr","description":"Deletes the error.","emoji":{"name":"trashcan","id":"877957522026287134"}}]
+                "options": [{"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}},{"label":"Working on Fix","value":"fixing","description":"Marks the error as being worked on.","emoji":{"name":"inworks","id":"878990445286391809"}},{"label":"Delete Error","value":"delerr","description":"Deletes the error.","emoji":{"name":"trashcan","id":"877957522026287134"}}]
             }]
         }]
     }
