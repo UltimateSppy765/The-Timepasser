@@ -15,7 +15,7 @@ def slasherr(r,traceback):
           },
           {
             "name": "Status:",
-            "value": "Not Fixed",
+            "value": "<:cross:879423049571663892> Not Fixed",
             "inline": True
         }]
     }]
