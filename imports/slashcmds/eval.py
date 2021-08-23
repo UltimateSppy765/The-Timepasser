@@ -44,7 +44,7 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
         elif sc=="original":
             res=requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsa)
             print(res.status_code)
-            if res.status_code==200:
+            if res.status_code==204:
                 return
             else:
                 return {
