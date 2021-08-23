@@ -9,12 +9,10 @@ wtoken=os.environ['ERROR_WEBHOOK_TOKEN']
 
 def usres(r,jsnres):
     r1=requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original").json()
-    print(r1)
     try:
         msgflags=r1["flags"]
     except:
         r2=requests.post(f"{baseurl}interactions/{r.json['id']}/{r.json['token']}/callback",json={"type":4,"data":jsnres})
-        print(r2.json())
         return
     perms= 1 << 6 | 1 << 7
     if (msgflags & perms) == perms:
