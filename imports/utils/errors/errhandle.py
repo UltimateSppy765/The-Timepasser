@@ -43,6 +43,6 @@ def handle(r,t):
         }]
     }
     print(requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original").json())
-    rq2=requests.post(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}",json=jsn2)
+    rq2=requests.post(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}",headers={"Content-Type":"application/json"},json=jsn2)
     print(rq2.json())
     return
