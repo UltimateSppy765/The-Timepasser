@@ -44,6 +44,7 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
         elif sc=="original":
             res=requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsa)
             if res.status_code==200:
+                print(requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original").json())
                 return
             else:
                 return {
