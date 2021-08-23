@@ -44,3 +44,19 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
             jsn={"content":f"<:cross:879423049571663892> Failed to update error with Interaction ID: `{itrid}` ```\n{b.json()}\n```"}
         requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsn)
         return
+    elif action=="notfixed":
+        requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5,"data":{"flags":64}})
+        a=msg["embeds"][0]
+        a["color"]=15745587
+        a["fields"][1]["value"]=f"<:cross:879423049571663892> Not Fixed\nMarked by <@!{uid}> <t:{tstamp}:R>"
+        z=msg["components"]
+        z[0]["components"][0]["options"][0]={"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}}
+        b=requests.patch(f"{baseurl}webhooks/{wid}/{wtoken}/messages/{msg['id']}",json={"embeds":[a],"components":z})
+        pattern=r'\**Interaction ID:\**\ (.*)\n'
+        itrid=re.search(pattern,msg["content"]).group(1)
+        if b.status_code==200:
+            jsn={"content":f"<:tick:847861518195884063> Successfully re-marked error with Interaction ID `{itrid}` as not fixed."}
+        else:
+            jsn={"content":f"<:cross:879423049571663892> Failed to update error with Interaction ID: `{itrid}` ```\n{b.json()}\n```"}
+        requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsn)
+        return
