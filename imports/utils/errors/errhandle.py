@@ -8,7 +8,7 @@ wid=os.environ['ERROR_WEBHOOK_ID']
 wtoken=os.environ['ERROR_WEBHOOK_TOKEN']
 
 def usres(r,jsnres):
-    r1=requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original")
+    r1=requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original").json()
     try:
         msgflags=r1["flags"]
         print(msgflags)
