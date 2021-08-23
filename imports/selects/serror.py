@@ -34,6 +34,8 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         a["color"]=64768
         a["fields"][1]["value"]=f"<:tick:847861518195884063> Fixed\nMarked by <@!{uid}> <t:{tstamp}:R>"
         b=requests.patch(f"{baseurl}webhooks/{wid}/{wtoken}/messages/{msg['id']}",json={"embeds":[a]})
+        pattern=r'\**Interaction ID:\**\ (.*)\n'
+        itrid=re.search(pattern,msg["content"]).group(1)
         if b.status_code==200:
             jsn={"content":f"<:tick:847861518195884063> Successfully marked error with Interaction ID `{itrid}` as fixed."}
         else:
