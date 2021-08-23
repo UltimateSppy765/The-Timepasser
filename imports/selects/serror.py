@@ -26,7 +26,7 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         if a.status_code==204:
             jsn={"content":f"<:tick:847861518195884063> Successfully deleted error with Interaction ID: `{itrid}`"}
         else:
-            jsn={"content":f"<:tickNo:315009174163685377> Failed to delete error with Interaction ID: `{itrid}` ```\n{a.json()}\n```"}
+            jsn={"content":f"<:cross:879423049571663892> Failed to delete error with Interaction ID: `{itrid}` ```\n{a.json()}\n```"}
         requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsn)
     elif action=="markfixed":
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":5,"data":{"flags":64}})
@@ -41,6 +41,6 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         if b.status_code==200:
             jsn={"content":f"<:tick:847861518195884063> Successfully marked error with Interaction ID `{itrid}` as fixed."}
         else:
-            jsn={"content":f"<:tickNo:315009174163685377> Failed to update error with Interaction ID: `{itrid}` ```\n{b.json()}\n```"}
+            jsn={"content":f"<:cross:879423049571663892> Failed to update error with Interaction ID: `{itrid}` ```\n{b.json()}\n```"}
         requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=jsn)
         return
