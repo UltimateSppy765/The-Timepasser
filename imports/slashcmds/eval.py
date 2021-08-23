@@ -43,21 +43,7 @@ def cmd(uid:str,token:str,iid:str,sc:str,aid:str,jsn):
                 return 
         elif sc=="original":
             res=requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json=jsa)
-            print(res.status_code)
-            if res.status_code==204:
-                #special test starts here
-                a=requests.get(f"{baseurl}webhooks/{aid}/{token}/messages/@original").json()
-                if (a['flags'] & (1 << 6 | 1 << 7)) == (1 << 6 | 1 << 7):
-                    print("Ephemeral and Deferred")
-                elif a['flags'] & 1 << 7:
-                    requests.delete(f"{baseurl}webhooks/{aid}/{token}/messages/@original")
-                    requests.post(f"{baseurl}webhooks/{aid}/{token}",json={"content":"Hmmm","flags":64})
-                    print("Deferred only")
-                elif a['flags'] & 1 << 6:
-                    print("Ephemeral only")
-                else:
-                    print("Neither ephemeral nor deferred")
-                #special test ends here
+            if res.status_code==200:
                 return
             else:
                 return {
