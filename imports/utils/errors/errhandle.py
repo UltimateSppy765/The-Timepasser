@@ -11,8 +11,10 @@ def usres(r,jsnres):
     r1=requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original")
     try:
         msgflags=r1["flags"]
+        print(msgflags)
     except:
-        return requests.post(f"{baseurl}interactions/{r.json['id']}/{r.json['token']}/callback",json={"type":4,"data":jsnres})
+        requests.post(f"{baseurl}interactions/{r.json['id']}/{r.json['token']}/callback",json={"type":4,"data":jsnres})
+        return
     perms= 1 << 6 | 1 << 7
     if (msgflags & perms) == perms:
         requests.patch(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original",headers={"Content-Type":"application/json"},json=jsnres)
@@ -60,4 +62,5 @@ def handle(r,t):
             }]
         }]
     }
-    return usres(r=r,jsnres=jsn2)
+    usres(r=r,jsnres=jsn2)
+    return
