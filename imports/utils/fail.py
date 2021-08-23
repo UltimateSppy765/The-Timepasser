@@ -1,7 +1,3 @@
-from random import choice
-
-tings=["Drank too much juice...","Lazed around too much...","**Started studying**...","Looked at myself in the mirror...","Walked into the 'I give up Pit'...","**Someone asked me whether I was smart...**"]
-
 def existnt(cname:str):
     return {
         "type": 4,
