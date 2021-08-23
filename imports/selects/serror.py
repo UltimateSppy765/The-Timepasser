@@ -35,6 +35,7 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         a["fields"][1]["value"]=f"<:tick:847861518195884063> Fixed\nMarked by <@!{uid}> <t:{tstamp}:R>"
         z=msg["components"]
         z[0]["components"][0]["options"][0]={"label":"Re-mark as Not Fixed","value":"notfixed","description":"Re-marks the error as not fixed.","emoji":{"name":"cross","id":"879423049571663892"}}
+        z[0]["components"][0]["options"][1]={"label":"Working on Fix","value":"fixing","description":"Marks the error as being worked on.","emoji":{"name":"inworks","id":"878990445286391809"}}
         b=requests.patch(f"{baseurl}webhooks/{wid}/{wtoken}/messages/{msg['id']}",json={"embeds":[a],"components":z})
         pattern=r'\**Interaction ID:\**\ (.*)\n'
         itrid=re.search(pattern,msg["content"]).group(1)
@@ -51,6 +52,7 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         a["fields"][1]["value"]=f"<:cross:879423049571663892> Not Fixed\nMarked by <@!{uid}> <t:{tstamp}:R>"
         z=msg["components"]
         z[0]["components"][0]["options"][0]={"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}}
+        z[0]["components"][0]["options"][1]={"label":"Working on Fix","value":"fixing","description":"Marks the error as being worked on.","emoji":{"name":"inworks","id":"878990445286391809"}}
         b=requests.patch(f"{baseurl}webhooks/{wid}/{wtoken}/messages/{msg['id']}",json={"embeds":[a],"components":z})
         pattern=r'\**Interaction ID:\**\ (.*)\n'
         itrid=re.search(pattern,msg["content"]).group(1)
@@ -66,6 +68,7 @@ def select(msg,action:str,aid:str,iid:str,token:str,uid:str):
         a["color"]=16121600
         a["fields"][1]["value"]=f"<:inworks:878990445286391809> Working on Fix\nMarked by <@!{uid}> <t:{tstamp}:R>"
         z=msg["components"]
+        z[0]["components"][0]["options"][0]={"label":"Mark as fixed","value":"markfixed","description":"Marks the error as fixed.","emoji":{"name":"tick","id":"847861518195884063"}}
         z[0]["components"][0]["options"][1]={"label":"Re-mark as Not Fixed","value":"notfixed","description":"Re-marks the error as not fixed.","emoji":{"name":"cross","id":"879423049571663892"}}
         b=requests.patch(f"{baseurl}webhooks/{wid}/{wtoken}/messages/{msg['id']}",json={"embeds":[a],"components":z})
         pattern=r'\**Interaction ID:\**\ (.*)\n'
