@@ -9,6 +9,7 @@ wtoken=os.environ['ERROR_WEBHOOK_TOKEN']
 
 def usres(r,jsnres):
     r1=requests.get(f"{baseurl}webhooks/{r.json['application_id']}/{r.json['token']}/messages/@original").json()
+    print(r1)
     try:
         msgflags=r1["flags"]
     except:
