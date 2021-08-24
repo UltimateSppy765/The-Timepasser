@@ -1,4 +1,5 @@
 import wikiquote,requests,json,traceback
+from random import shuffle
 from .qlogic import findtitles
 
 def getquote(type:str,userid:str):
@@ -55,8 +56,12 @@ def getquote(type:str,userid:str):
         if autor in Suggestions:
             Suggestions.remove(autor)
         Options=[]
+        shuffle(Suggestions)
         for i in Suggestions:
-            Options.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
+            if len(Options)<26:
+                Options.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
+            else:
+                break
         return {
             "embeds": [
                 {
