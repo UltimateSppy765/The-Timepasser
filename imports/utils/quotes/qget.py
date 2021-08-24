@@ -3,6 +3,9 @@ import wikiquote,requests,json,traceback
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
+        Suggestions=[]
+        for i in wikiquote.random_titles(max_titles=10):
+            Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
         return {
             "embeds": [
                 {
@@ -19,6 +22,15 @@ def getquote(type:str,userid:str):
                 }
             ],
             "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
+                    "placeholder": "🔎 Try searching",
+                    "options": Suggestions
+                }]
+              },
+              {
                 "type": 1,
                 "components":[{
                     "type": 2,
