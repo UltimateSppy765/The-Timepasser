@@ -1,4 +1,4 @@
-import json,os,requests
+import json,os,requests,re
 from imports.utils.quotes import qget,qfinder
 
 baseurl=os.environ['BASE_URL']
