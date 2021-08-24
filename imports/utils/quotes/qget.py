@@ -1,4 +1,5 @@
 import wikiquote,requests,json,traceback
+from .qlogic import findtitles
 
 def getquote(type:str,userid:str):
     if type=="qotd":
@@ -48,9 +49,12 @@ def getquote(type:str,userid:str):
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
         autor=res["author"]
-        Suggestions=[]
-        for i in wikiquote.random_titles(max_titles=10):
-            Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
+        Suggestions=findtitles(query=autor)
+        if Suggestions==[]:
+            Suggestions=wikiquote.random_titles(max_titles=10)
+        Options=[]
+        for i in Suggestions:
+            Options.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
         return {
             "embeds": [
                 {
@@ -72,7 +76,7 @@ def getquote(type:str,userid:str):
                     "type": 3,
                     "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
                     "placeholder": "🔎 Try searching",
-                    "options": Suggestions
+                    "options": Options
                 }]
               },
               {
