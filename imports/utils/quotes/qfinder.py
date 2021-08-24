@@ -127,4 +127,6 @@ def qres(query:str,userid:str):
                 }]
             }]
         }
+        if Search[2]==query:
+            del jsn["components"][1]["components"][1]
     return jsn
