@@ -113,7 +113,7 @@ def qres(query:str,userid:str):
                         "name": "quote",
                         "id": "847687355481718794"
                     },
-                    "custom_id": json.dumps({"bfn":"quote","subc":"qre","userid":userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
                   },
                   {
                     "type": 2,
