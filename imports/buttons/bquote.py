@@ -17,9 +17,10 @@ def btn(aid:str,iid:str,token:str,binfo,msg,usid:str):
         return
     else:        
         if binfo["subc"]=="are":
-            query=binfo["query"]
-            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[],"embeds":[{"title":f":mag: Searching for Query: '{query}'","color":3092791}]}})
-            a=qfinder.qres(query=query,userid=binfo["userid"])
+            pattern=r"\n-\ (.*)"
+            qry=re.search(pattern,msg["embeds"][0]["description"]).group(1)
+            requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[],"embeds":[{"title":f":mag: Searching for Query: '{qry}'","color":3092791}]}})
+            a=qfinder.qres(query=qry,userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
         elif binfo["subc"]=="passre":
             pattern=r"query: \**\'(.*)'\**"
