@@ -31,6 +31,8 @@ def buttonitr(r,c):
         return bquote.btn(binfo=c,msg=r.json["message"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="banipic":
         return banipic.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+    elif bname=="shhguess":
+        return shhguess.btn(usid=itruser["id"])
 
 def selectitr(r,c):
     sname=c["sfn"]
