@@ -28,7 +28,7 @@ def buttonitr(r,c):
     if bname=="dicereroll":
         return dicereroll.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="quote":
-        return bquote.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
+        return bquote.btn(binfo=c,msg=r.json["message"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="banipic":
         return banipic.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
 
