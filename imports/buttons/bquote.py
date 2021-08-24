@@ -3,7 +3,7 @@ from imports.utils.quotes import qget,qfinder
 
 baseurl=os.environ['BASE_URL']
 
-def btn(aid:str,iid:str,token:str,binfo,usid:str):
+def btn(aid:str,iid:str,token:str,binfo,msg,usid:str):
     if usid!=binfo["userid"]:
         return {
             "type": 4,
@@ -16,12 +16,12 @@ def btn(aid:str,iid:str,token:str,binfo,usid:str):
         requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":qget.getquote(type="random",userid=binfo["userid"])})
         return
     else:        
-        if binfo["subc"]=="passre":
+        if binfo["subc"]=="qre":
             query=binfo["query"]
             requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"components":[],"embeds":[{"title":f":mag: Searching for Query: '{query}'","color":3092791}]}})
             a=qfinder.qres(query=query,userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
-        else:
+        elif binfo["subc"]=="are":
             requests.post(f"{baseurl}interactions/{iid}/{token}/callback",json={"type":7,"data":{"embeds":[{"color":3092791,"title":":mag: Searching Again..."}],"components":[]}})
             a=qfinder.qres(query=binfo["query"],userid=binfo["userid"])
             requests.patch(f"{baseurl}webhooks/{aid}/{token}/messages/@original",json=a)
