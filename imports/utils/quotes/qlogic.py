@@ -18,18 +18,22 @@ def ranlist(title):
             Newlist.remove(i)
     return Newlist
 
-def qfind(query):
-    Authorlist=[]
+def findtitles(query):
+    List=[]
     try:
         a=wikiquotes.search(query,"english")
     except:
         pass
     else:
-        Authorlist=a
+        List=a
         del a
     for i in wikiquote.search(query):
-        if i not in Authorlist:
-            Authorlist.append(i)
+        if i not in List:
+            List.append(i)
+    return List
+
+def qfind(query):
+    Authorlist=findtitles(query=query)
     if Authorlist==[]:
         return ["NoAuthorFound",wikiquote.random_titles(max_titles=7)]
     else:
