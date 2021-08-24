@@ -113,7 +113,17 @@ def qres(query:str,userid:str):
                         "name": "quote",
                         "id": "847687355481718794"
                     },
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"qre","userid":userid})
+                  },
+                  {
+                    "type": 2,
+                    "style": 2,
+                    "label": "Search Quote from Author",
+                    "emoji": {
+                        "name": "qauthor",
+                        "id": "847687409034330132"
+                    },
+                    "custom_id": json.dumps({"bfn":"quote","subc":"are","userid":userid})
                 }]
             }]
         }
