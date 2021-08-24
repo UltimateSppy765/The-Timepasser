@@ -41,7 +41,7 @@ def getquote(type:str,userid:str):
                         "id": "847687409034330132"
                     },
                     "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"are","userid":userid})
                 }]
             }]
         } 
@@ -101,7 +101,7 @@ def getquote(type:str,userid:str):
                         "name": "qauthor",
                         "id": "847687409034330132"
                     },
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid})
+                    "custom_id": json.dumps({"bfn":"quote","subc":"are","userid":userid})
                 }]
             }]
         }
