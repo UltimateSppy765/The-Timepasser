@@ -52,6 +52,8 @@ def getquote(type:str,userid:str):
         Suggestions=findtitles(query=autor)
         if Suggestions==[]:
             Suggestions=wikiquote.random_titles(max_titles=10)
+        if autor in Suggestions:
+            Suggestions.remove(autor)
         Options=[]
         for i in Suggestions:
             Options.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
