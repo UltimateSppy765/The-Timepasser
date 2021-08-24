@@ -8,9 +8,6 @@ def cmd(text:str):
         return {
             "type": 4,
             "data": {
-                "content": f"Simon says {text}",
-                "allowed_mentions": {
-                    "parse": []
-                }
+                "content": f"Simon says {text}"
             }
         }
