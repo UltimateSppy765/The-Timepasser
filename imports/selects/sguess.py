@@ -5,6 +5,7 @@ def select(usguess,msg):
     if usguess["pos"] in [2,4]:
         a=msg["components"][0]
         a["components"][0]["disabled"]=True
+        a["components"][0]["options"][usguess["pos"]-1]["default"]=True
         return {
             "type": 7,
             "data": {
@@ -27,6 +28,7 @@ def select(usguess,msg):
     else:
         a=msg["components"]
         a[0]["components"][0]["disabled"]=True
+        a[0]["components"][0]["options"][usguess["pos"]-1]["default"]=True
         return {
             "type": 7,
             "data": {
