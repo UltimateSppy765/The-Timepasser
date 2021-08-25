@@ -1,7 +1,7 @@
 import random,json
 
 def btn(usid:str):
-    List=random.sample(range(1,75),4)
+    List=random.sample(range(1,76),4)
     List2=["Choose me because I am a great number.","If you choose me, you get a 🍪!","This number perhaps may let you win...","Don't choose me."]
     random.shuffle(List2)
     random.shuffle(List)
