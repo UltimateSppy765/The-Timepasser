@@ -8,8 +8,7 @@ def cmd(us,uname:str,id:str,disc:str,av:str):
         usname=uname
         avurl=avpic.usav(id=id,discid=disc,av=av)
     else:
-        res=requests.get(f"{baseurl}users/{us}",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"})
-        smth=res.json()
+        smth=requests.get(f"{baseurl}users/{us}",headers={"Authorization":f"Bot {os.environ['BOT_TOKEN']}"}).json()
         av1=smth["avatar"]
         disc1=smth["discriminator"]
         usname=smth["username"]

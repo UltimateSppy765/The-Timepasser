@@ -24,7 +24,7 @@ def cmd(guess:int,aid:str,iid:str,token:str):
                         "style": 1,
                         "label": "What does this do?",
                         "emoji": {"name":"umm","id":"847712983517233152"},
-                        "custom_id": json.dumps({"bfn":"shhguess"})
+                        "custom_id": json.dumps({"bfn":"shhguess","state":False})
                     }]
                 }]
             }

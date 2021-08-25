@@ -1,9 +1,13 @@
 import wikiquote,requests,json,traceback
+from random import shuffle
+from .qlogic import findtitles
 
 def getquote(type:str,userid:str):
     if type=="qotd":
         (qt,autor)=wikiquote.quote_of_the_day()
-        print(json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor}))
+        Suggestions=[]
+        for i in wikiquote.random_titles(max_titles=10):
+            Suggestions.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
         return {
             "embeds": [
                 {
@@ -21,6 +25,15 @@ def getquote(type:str,userid:str):
             ],
             "components": [{
                 "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
+                    "placeholder": "🔎 Try searching",
+                    "options": Suggestions
+                }]
+              },
+              {
+                "type": 1,
                 "components":[{
                     "type": 2,
                     "style": 1,
@@ -29,7 +42,7 @@ def getquote(type:str,userid:str):
                         "id": "847687409034330132"
                     },
                     "label": "Search Quote from Author",
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
+                    "custom_id": json.dumps({"bfn":"quote","subc":"are","userid":userid})
                 }]
             }]
         } 
@@ -37,6 +50,18 @@ def getquote(type:str,userid:str):
         res=requests.get("http://api.quotable.io/random").json()
         qt=res["content"]
         autor=res["author"]
+        Suggestions=findtitles(query=autor)
+        if Suggestions==[]:
+            Suggestions=wikiquote.random_titles(max_titles=10)
+        if autor in Suggestions:
+            Suggestions.remove(autor)
+        Options=[]
+        shuffle(Suggestions)
+        for i in Suggestions:
+            if len(Options)<26:
+                Options.append({"label":i,"value":i,"emoji":{"name":"qauthor","id":"847687409034330132"}})
+            else:
+                break
         return {
             "embeds": [
                 {
@@ -53,6 +78,15 @@ def getquote(type:str,userid:str):
                 }
             ],
             "components": [{
+                "type": 1,
+                "components": [{
+                    "type": 3,
+                    "custom_id": json.dumps({"sfn":"quote","subc":"sgtns","userid":userid}),
+                    "placeholder": "🔎 Try searching",
+                    "options": Options
+                }]
+              },
+              {
                 "type": 1,
                 "components":[{
                     "type": 2,
@@ -72,7 +106,7 @@ def getquote(type:str,userid:str):
                         "name": "qauthor",
                         "id": "847687409034330132"
                     },
-                    "custom_id": json.dumps({"bfn":"quote","subc":"passre","userid":userid,"query":autor},ensure_ascii=False).encode().decode()
+                    "custom_id": json.dumps({"bfn":"quote","subc":"are","userid":userid})
                 }]
             }]
         }
