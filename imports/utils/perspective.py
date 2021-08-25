@@ -44,7 +44,7 @@ def analyse(cont:str):
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": f"> <:tickNo:315009174163685377> Sorry, your command usage was blocked as harmful text was detected in your input.\n> If you think it is a mistake, please contact the bot developers. (You can see them through `/aboutme devs`)\n> Reason: {reason}\n> :confused: Your input: (*just in case you forgot what you wrote...*)\n```\n{cont}\n```"
+                "content": f"> <:tickNo:315009174163685377> Sorry, your command usage was blocked as harmful text was detected in your input.\n> If you think it is a mistake, please contact the bot developers. (You can see them through `/aboutme devs`)\n> **Reason:** {reason}\n> :confused: __Your input:__ (*just in case you forgot what you wrote...*)\n```\n{cont}\n```"
             }    
         }
     else:
