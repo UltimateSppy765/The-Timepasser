@@ -5,7 +5,7 @@ from imports.utils import fail
 from imports.utils.errors.errhandle import handle
 
 buttons=["dicereroll","quote","banipic","shhguess"]
-selects=["quote","aboutme","anipic","errlogaction"]
+selects=["quote","aboutme","anipic","errlogaction","shhguess"]
 
 def tthree(r):
     try:
@@ -32,7 +32,7 @@ def buttonitr(r,c):
     elif bname=="banipic":
         return banipic.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="shhguess":
-        return shhguess.btn(usid=itruser["id"])
+        return shhguess.btn(usid=itruser["id"],state=c["state"])
 
 def selectitr(r,c):
     sname=c["sfn"]
@@ -48,3 +48,5 @@ def selectitr(r,c):
         return sanipic.select(animal=svalues[0],oguser=c["userid"],usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif sname=="errlogaction":
         return serror.select(msg=r.json["message"],action=svalues[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
+    elif sname=="shhguess":
+        return sguess.select(msg=r.json["message"],usguess=svalues)
