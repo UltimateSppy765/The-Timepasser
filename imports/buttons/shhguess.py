@@ -1,5 +1,5 @@
 import os,random,json
-from imports.fail import cfail
+from imports.utils.fail import cfail
 
 def btn(usid:str,state:boolean):
     if state==False:
