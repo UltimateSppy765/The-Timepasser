@@ -14,6 +14,7 @@ def btn(usid:str):
             "flags": 64,
             "content": f"Hey <@!{usid}>, you've found the hidden and **legendary** challenge of `Guess the Number`!\nTry your luck and see if you can win this challenge!\n_On winning you'll get a prize._ :trophy:",
             "embeds": [{
+                "color": 3092791,
                 "fields": [{
                     "name": "🤔 Guess the Number!",
                     "value": "4 *random* numbers are given in the drop-down menu below. Choose ***one*** number from the menu.\nIf you're lucky, you win! **Good Luck!** 👍"
