@@ -19,7 +19,7 @@ def select(usguess,msg):
                         "emoji": {
                             "name": "🏆"
                         },
-                        "custom_id": json.dumps({"bfn":"guessprize"})
+                        "custom_id": json.dumps({"bfn":"shhguess","state":True})
                     }]
                 }]
             }
