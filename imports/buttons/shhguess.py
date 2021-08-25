@@ -25,7 +25,7 @@ def btn(usid:str):
                     "type": 3,
                     "placeholder": "Guess the number!",
                     "disabled": False,
-                    "custom_id": json.dumps({"sfn":"shhguess"})
+                    "custom_id": json.dumps({"sfn":"shhguess"}),
                     "options": Options
                 }]
             }]
