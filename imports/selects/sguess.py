@@ -9,7 +9,7 @@ def select(usguess,msg):
             "type": 7,
             "data": {
                 "embeds": [],
-                "content": f":tada: Congrats!, you've completed the legendary `Guess the Number!` challenge! `{usguess["number"]}` was the right number!\n🏆 Click on the button below to claim your mysterious prize!",
+                "content": f":tada: Congrats!, you've completed the legendary `Guess the Number!` challenge! `{usguess['number']}` was the right number!\n🏆 Click on the button below to claim your mysterious prize!",
                 "components": [a,{
                     "type": 1,
                     "components": [{
