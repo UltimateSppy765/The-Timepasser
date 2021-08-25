@@ -1,7 +1,7 @@
 import os,random,json
 from imports.utils.fail import cfail
 
-def btn(usid:str,state:boolean):
+def btn(usid:str,state:bool):
     if state==False:
         List=random.sample(range(1,76),4)
         List2=["Choose me because I am a great number.","If you choose me, you get a 🍪!","This number perhaps may let you win...","Don't choose me."]
