@@ -1,5 +1,9 @@
 import os,requests,json
 
+catopt={"label":"Cat","description":"Shows you a cat picture.","value":"Cat","emoji":{"name":"cat","id":"847614941548249108"}}
+dogopt={"label":"Dog","description":"Shows you a dog picture.","value":"Dog","emoji":{"name":"dog","id":"847621035981537280"}}
+foxopt={"label":"Fox","description":"Shows you a fox picture.","value":"Fox","emoji":{"name":"fox","id":"847621244899426365"}}
+
 def pic(anim:bool,animal:str,usid:str):
     if animal=="Fox":
         if anim==True:
@@ -57,6 +61,15 @@ def pic(anim:bool,animal:str,usid:str):
                         },
                         "custom_id": json.dumps({"bfn":"banipic","userid":usid,"anim":anim,"animal":animal})
                     }]
+                  },
+                  {
+                    "type": 1,
+                    "components": [{
+                        "type": 3,
+                        "placeholder": "View a different animal picture",
+                        "custom_id": json.dumps({"sfn":"anipic","userid":usid}),
+                        "options": [catopt,dogopt]
+                    }]
                 }]
             }
     if animal=="Cat":
@@ -66,6 +79,7 @@ def pic(anim:bool,animal:str,usid:str):
         greet="Meow..."
         bemname="cat"
         bemid="847614941548249108"
+        selectopt=[dogopt,foxopt]
         ftext="Powered by The Cat API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794474344410906654/thecatapi_256xW.png"
     elif animal=="Dog":
@@ -75,6 +89,7 @@ def pic(anim:bool,animal:str,usid:str):
         greet="Woof..."
         bemname="dog"
         bemid="847621035981537280"
+        selectopt=[catopt,foxopt]
         ftext="Powered by The Dog API"
         ficon="https://cdn.discordapp.com/attachments/789798190353743874/794491188643102730/Z.png"
     return {
@@ -113,6 +128,15 @@ def pic(anim:bool,animal:str,usid:str):
                      "id": "847621447954071562" if anim==False else "847623094436233266",
                      "name": "animated" if anim==False else "static"
                  }
+            }]
+          },
+          {
+            "type": 1,
+            "components": [{
+                "type": 3,
+                "placeholder": "View a different animal picture",
+                "custom_id": json.dumps({"sfn":"anipic","userid":usid}),
+                "options": selectopt
             }]
         }]
     }

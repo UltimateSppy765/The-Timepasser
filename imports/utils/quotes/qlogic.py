@@ -1,91 +1,85 @@
-import wikiquotes, wikiquote
+import wikiquote,wikiquotes
 from random import choice
 
-class Error(Exception):
-  pass
+blacklist=["Quotes are arranged in chronological order"]
 
-class NoAuthorFound(Error):
-  pass
-
-class NoQuoteFound(Error):
-  pass
-
-def qfind(query:str):
-  auxlist=[]
-  try:
-    a=wikiquote.search(query)
-  except:
-    a=[]
-  else:
-    for wor in a:
-      auxlist.append(wor)
-  try:
-    b=wikiquotes.search(query,"english")
-    for word in b:
-      if word not in auxlist:
-        auxlist.append(word)
-  except:
-    b=[]
-  if auxlist==[]:
-    raise NoAuthorFound
-  else:
-    for c in auxlist:
-      if query.lower()==c.lower():
-        autor=c
-        try:
-          d=[wikiquotes.random_quote(c,"english")]
-        except:
-          d=[]
-        try:
-          e=wikiquote.quotes(c,max_quotes=1)
-        except:
-          e=[]
-        qt=choice(d+e)
-        break
-      elif query.lower() in c.lower():
-        autor=c
-        try:
-          d=[wikiquotes.random_quote(c,"english")]
-        except:
-          d=[]
-        try:
-          e=wikiquote.quotes(c,max_quotes=1)
-        except:
-          e=[]
-        qt=choice(d+e)
-        break
+def ranlist(title):
     try:
-      return [qt,autor]
+        a=[wikiquotes.random_quote(title,"english")]
     except:
-      pass
-    qtlist=[]
-    for f in auxlist:
-      auxlist1=[]
-      try:
-        g=wikiquotes.get_quotes(f,"english")
-      except:
-        g=[]
-      else:
-        for q1 in g:
-          auxlist1.append(q1)
-      try:
-        h=wikiquote.quotes(f,max_quotes=5)
-        for q2 in h:
-          if q2 not in auxlist1:
-            auxlist1.append(q2)
-      except:
-        h=[]
-      for i in auxlist1:
-        if query.lower() in i.lower():
-          r=[i,f]
-          qtlist.append(r)
-    if qtlist==[]:
-      pass
+        a=[]
+    try:
+        b=wikiquote.quotes(title,max_quotes=1)
+    except:
+        b=[]
+    Newlist=a+b
+    for i in blacklist:
+        if i in Newlist:
+            Newlist.remove(i)
+    return Newlist
+
+def findtitles(query):
+    List=[]
+    try:
+        a=wikiquotes.search(query,"english")
+    except:
+        pass
     else:
-      p=choice(qtlist)
-      qt=p[0]
-      autor=p[1]
-    try:
-      return [qt,autor]
-    except:
-      raise NoQuoteFound
+        List=a
+        del a
+    for i in wikiquote.search(query):
+        if i not in List:
+            List.append(i)
+    return List
+
+def qfind(query):
+    Authorlist=findtitles(query=query)
+    if Authorlist==[]:
+        return ["NoAuthorFound",wikiquote.random_titles(max_titles=7)]
+    else:
+        Authorlist.sort()
+        for i in Authorlist:
+            if query.lower()==i.lower():
+                qt=ranlist(i)
+                if qt==[]:
+                    Authorlist.remove(i)
+                    continue
+                else:
+                    Authorlist.remove(i)
+                    return ["Success",choice(qt),i,Authorlist]
+        for i in Authorlist:
+            if query.lower() in i.lower() or i.lower() in query.lower():
+                qt=ranlist(i)
+                if qt==[]:
+                    Authorlist.remove(i)
+                    continue
+                else:
+                    Authorlist.remove(i)
+                    return ["Success",choice(qt),i,Authorlist]
+        Quotelist=[]
+        Resultlist=[]
+        for i in Authorlist:
+            try:
+                a=wikiquotes.get_quotes(i,"english")
+            except:
+                pass
+            else:
+                Quotelist=a
+                del a
+            try:
+                c=wikiquote.quotes(i,max_quotes=5)
+            except:
+                c=[]
+            for k in c:
+                if k not in Quotelist:
+                    Quotelist.append(k)
+            for j in Quotelist:
+                if query.lower() in j.lower():
+                    Resultlist.append([j,i])
+        if Resultlist!=[]:
+            Resultlist.sort()
+            Quote=choice(Resultlist)
+            Authorlist.remove(Quote[1])
+            return ["Success",Quote[0],Quote[1],Authorlist]
+        else:
+            return ["NoQuoteFound",Authorlist]
