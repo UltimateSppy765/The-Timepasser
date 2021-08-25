@@ -1,5 +1,4 @@
 import os,random,json
-from imports.utils.fail import cfail
 
 def btn(usid:str,state:bool):
     if state==False:
@@ -35,4 +34,22 @@ def btn(usid:str,state:bool):
             }
         }
     else:
-        return cfail()
+        return {
+            "type": 4,
+            "data": {
+                "flags": 64,
+                "content": os.environ['GUESSNUM_PRIZE'],
+                "components": [{
+                    "type": 1,
+                    "components": [{
+                        "type": 2,
+                        "style": 5,
+                        "label": "Congratulations!",
+                        "emoji": {
+                            "name": "🎉"
+                        },
+                        "url": os.environ['GUESSNUM_PRIZE_2']
+                    }]
+                }]
+            }
+        }
