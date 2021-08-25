@@ -49,4 +49,4 @@ def selectitr(r,c):
     elif sname=="errlogaction":
         return serror.select(msg=r.json["message"],action=svalues[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
     elif sname=="shhguess":
-        return sguess.select(msg=r.json["message"],usguess=svalues)
+        return sguess.select(msg=r.json["message"],usguess=svalues[0])
