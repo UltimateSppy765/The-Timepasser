@@ -1,5 +1,5 @@
 import traceback
-from interactions.autocomplete import *
+from imports.autocomplete import *
 from imports.utils.errors.errhandle import handle
 
 def tfour(r):
