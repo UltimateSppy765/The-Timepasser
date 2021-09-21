@@ -30,7 +30,7 @@ def usres(r,jsnres):
 
 def handle(r,t):
     if r.json["type"]==4:
-        errlog=atcerror.atcerror(r=r,traceback=t)
+        errlog=atcerror.atcerr(r=r,traceback=t)
     elif r.json["type"]==3:
         errlog=componenterr.componenterr(r=r,traceback=t)
     elif r.json["type"]==2:
