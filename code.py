@@ -2,7 +2,7 @@ import os
 from imports.utils.fail import dmerr
 from flask import Flask,request,jsonify,abort
 from discord_interactions import verify_key_decorator
-from imports.interactions import tthree
+from imports.interactions import tthree,tfour
 from imports.interactions.ttwo import slash_cmd,context_cmd
 
 app=Flask(__name__)
@@ -23,6 +23,8 @@ def code():
             return jsonify(context_cmd.contextc(r=request))
     elif request.json["type"]==3: #Checks and runs if it is a MESSAGE_COMPONENT.
         return jsonify(tthree.tthree(r=request))
+    elif request.json["type"]==4:
+        return jsonify(tfour.tfour(r=request)) #Checks and runs if it is an Autocomplete Interaction.
 
 port=os.getenv('PORT') #Gets the OS PORT that is open (stored in environment variables).
 if port: #Checks and runs the app if a PORT exists in the environment variables.
