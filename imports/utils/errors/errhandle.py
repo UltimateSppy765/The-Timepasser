@@ -50,18 +50,19 @@ def handle(r,t):
         }]
     }
     requests.post(f"{baseurl}webhooks/{wid}/{wtoken}?wait=true",json=jsn)
-    jsn2={
-        "flags":64,
-        "content":f"<:tickNo:315009174163685377> Snap. I ran into an issue while attempting to do your bidding.\n**Reason:** _{choice(tings)}_\nYour interaction ID is `{r.json['id']}`. Please use this ID as reference if you wish to report this bug to our bot devs who can be found in their community server linked in the button below.",
-        "components": [{
-            "type": 1,
+    if r.json["type"]!=4:
+        jsn2={
+            "flags":64,
+            "content":f"<:tickNo:315009174163685377> Snap. I ran into an issue while attempting to do your bidding.\n**Reason:** _{choice(tings)}_\nYour interaction ID is `{r.json['id']}`. Please use this ID as reference if you wish to report this bug to our bot devs who can be found in their community server linked in the button below.",
             "components": [{
-                "type": 2,
-                "style": 5,
-                "label": "Our Community Server",
-                "url": "https://discord.gg/JXGe9MfXPF"
+                "type": 1,
+                "components": [{
+                    "type": 2,
+                    "style": 5,
+                    "label": "Our Community Server",
+                    "url": "https://discord.gg/JXGe9MfXPF"
+                }]
             }]
-        }]
-    }
-    usres(r=r,jsnres=jsn2)
+        }
+        usres(r=r,jsnres=jsn2)
     return
