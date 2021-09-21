@@ -1,5 +1,5 @@
 import os,json,traceback,requests
-from imports.utils.errors import slasherr,contexterr,componenterr
+from imports.utils.errors import slasherr,contexterr,componenterr,atcerror
 from random import choice
 
 tings=["Drank too much juice...","Lazed around too much...","**Started studying**...","Looked at myself in the mirror...","Walked into the 'I give up Pit'...","**Someone asked me whether I was smart...**"]
@@ -29,7 +29,9 @@ def usres(r,jsnres):
         return
 
 def handle(r,t):
-    if r.json["type"]==3:
+    if r.json["type"]==4:
+        errlog=atcerror.atcerror(r=r,traceback=t)
+    elif r.json["type"]==3:
         errlog=componenterr.componenterr(r=r,traceback=t)
     elif r.json["type"]==2:
         if r.json["data"]["type"]==1:
