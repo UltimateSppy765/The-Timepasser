@@ -5,7 +5,7 @@ def atc(input):
     input=input.strip()
     titles=findtitles(input)
     if titles==[]:
-        return
+        return {"type":8,"data":{"choices":[]}}
     rtlist=[]
     for i in titles:
         if len(rtlist)<21:
