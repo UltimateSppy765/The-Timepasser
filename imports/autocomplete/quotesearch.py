@@ -6,16 +6,25 @@ def atc(input):
     titles=findtitles(input)
     if titles==[]:
         return
-    if len(titles)>20:
-        list=sample(set(titles),20)
-    else:
-        list=titles
     rtlist=[]
+    for i in titles:
+        if len(rtlist)<21:
+            if i.lower()==input.lower():
+                rtlist.append(i)
+                titles.remove(i)
+            elif i.lower() in input.lower() or input.lower() in i.lower():
+                rtlist.append(i)
+                titles.remove(i)
+    if len(rtlist)==20:
+        list=rtlist
+    else:
+        list=rtlist+sample(set(titles),20-len(rtlist))
+    nlist=[]
     for i in list:
-        rtlist.append({"name":i,"value":i})
+        nlist.append({"name":i,"value":i})
     return {
         "type": 8,
         "data": {
-            "choices": rtlist
+            "choices": nlist
         }
     }
