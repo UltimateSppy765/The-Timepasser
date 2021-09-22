@@ -8,17 +8,17 @@ def atc(input):
         return {"type":8,"data":{"choices":[]}}
     rtlist=[]
     for i in titles:
-        if len(rtlist)<21:
+        if len(rtlist)<26:
             if i.lower()==input.lower():
                 rtlist.append(i)
                 titles.remove(i)
             elif i.lower() in input.lower() or input.lower() in i.lower():
                 rtlist.append(i)
                 titles.remove(i)
-    if len(rtlist)==20:
+    if len(rtlist)==25:
         list=rtlist
     else:
-        num=len(titles) if 20-len(rtlist)>len(titles) else 20-len(rtlist)
+        num=len(titles) if 25-len(rtlist)>len(titles) else 25-len(rtlist)
         list=rtlist+sample(set(titles),num)
     nlist=[]
     for i in list:
