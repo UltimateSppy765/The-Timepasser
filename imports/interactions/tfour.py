@@ -6,6 +6,7 @@ def tfour(r):
     cmdname=r.json["data"]["name"]
     try:
         if cmdname=="quote":
+            print(r.json)
             return quotesearch.atc(input=r.json["data"]["options"][0]["options"][0]["value"])
     except:
         return handle(r=r,t=traceback.format_exc())
