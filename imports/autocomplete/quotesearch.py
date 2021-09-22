@@ -18,7 +18,8 @@ def atc(input):
     if len(rtlist)==20:
         list=rtlist
     else:
-        list=rtlist+sample(set(titles),20-len(rtlist))
+        num=len(titles) if 20-len(rtlist)>len(titles) else 20-len(rtlist)
+        list=rtlist+sample(set(titles),num)
     nlist=[]
     for i in list:
         nlist.append({"name":i,"value":i})
