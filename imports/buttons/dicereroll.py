@@ -9,7 +9,7 @@ def btn(usid:str,iid:str,aid:str,token:str,binfo):
             "type": 4,
             "data": {
                 "flags": 64,
-                "content": "<:tickNo:315009174163685377> You can't reroll someone else's dice can you?"
+                "content": "<:tickNo:315009174163685377> You can't reroll someone else's dice, can you?"
             }
         }
     rolling={
