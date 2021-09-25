@@ -9,8 +9,8 @@ app=Flask(__name__)
 
 #"it" refers to the interaction received unless specified.
 
-@app.route('/',methods=['POST']) #Don't mess with this, this is the default method we respond with.
-@verify_key_decorator(os.environ['CLIENT_ID']) #Don't mess with this, idk what it does.
+@app.route('/',methods=['POST']) #Don't mess with this, this is used to make the app listen to `POST` requests on the route specified in the function.
+@verify_key_decorator(os.environ['CLIENT_ID']) #Don't mess with this, it is used to verify the incoming interactions.
 def code():
     try:  #Tries to get the guild ID.
         request.json["guild_id"]
