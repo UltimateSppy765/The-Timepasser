@@ -33,6 +33,8 @@ def buttonitr(r,c):
         return banipic.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="shhguess":
         return shhguess.btn(usid=itruser["id"],state=c["state"])
+    else:
+        return fail.cfail()
 
 def selectitr(r,c):
     sname=c["sfn"]
@@ -50,3 +52,5 @@ def selectitr(r,c):
         return serror.select(msg=r.json["message"],action=svalues[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
     elif sname=="shhguess":
         return sguess.select(msg=r.json["message"],usguess=svalues[0])
+    else:
+        return fail.cfail()
