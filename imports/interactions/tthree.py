@@ -21,7 +21,10 @@ def tthree(r):
         return handle(r=r,t=traceback.format_exc())
 
 def buttonitr(r,c):
-    bname=c["bfn"]
+    try:
+        bname=c["bfn"]
+    else:
+        return fail.cfail()
     itruser=r.json["member"]["user"]
     if not bname in buttons:
         return fail.cfail()
@@ -33,11 +36,12 @@ def buttonitr(r,c):
         return banipic.btn(binfo=c,usid=itruser["id"],aid=r.json["application_id"],token=r.json["token"],iid=r.json["id"])
     elif bname=="shhguess":
         return shhguess.btn(usid=itruser["id"],state=c["state"])
-    else:
-        return fail.cfail()
 
 def selectitr(r,c):
-    sname=c["sfn"]
+    try:
+        sname=c["sfn"]
+    else:
+        return fail.cfail()
     itruser=r.json["member"]["user"]
     svalues=r.json["data"]["values"]
     if not sname in selects:
@@ -52,5 +56,3 @@ def selectitr(r,c):
         return serror.select(msg=r.json["message"],action=svalues[0],aid=r.json["application_id"],iid=r.json["id"],token=r.json["token"],uid=itruser["id"])
     elif sname=="shhguess":
         return sguess.select(msg=r.json["message"],usguess=svalues[0])
-    else:
-        return fail.cfail()
