@@ -23,7 +23,7 @@ def tthree(r):
 def buttonitr(r,c):
     try:
         bname=c["bfn"]
-    else:
+    except:
         return fail.cfail()
     itruser=r.json["member"]["user"]
     if not bname in buttons:
@@ -40,7 +40,7 @@ def buttonitr(r,c):
 def selectitr(r,c):
     try:
         sname=c["sfn"]
-    else:
+    except:
         return fail.cfail()
     itruser=r.json["member"]["user"]
     svalues=r.json["data"]["values"]
