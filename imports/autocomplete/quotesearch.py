@@ -22,7 +22,7 @@ def atc(input):
         list=rtlist+sample(set(titles),num)
     nlist=[]
     for i in list:
-        nlist.append({"name":i if input in i else f'{input} from {i}',"value":json.dumps({'s':None if input in i else input,'a':i})})
+        nlist.append({"name":i if input in i else f'{input} from {i}',"value":i if input in i else json.dumps({'s':input,'a':i})})
     return {
         "type": 8,
         "data": {
