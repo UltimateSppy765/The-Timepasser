@@ -1,5 +1,6 @@
 from imports.utils.quotes.qlogic import findtitles
 from random import sample
+import json
 
 def atc(input):
     input=input.strip()
